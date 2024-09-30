@@ -1,0 +1,565 @@
+{% stylesheet %}
+
+  .tech-specs {
+    font-size: 1.5rem;
+    color: #000000 !important;
+  }
+
+.pd-section h3 {
+	font-weight: 700;
+	font-size: 2.5rem;
+	margin-top: 0;
+	text-transform: normal;
+    margin-bottom: 15px;
+  color: #e74c3c;
+}
+
+.product-metafields {
+	color: #000000;
+	display: flex;
+	font-size: 1.3rem;
+    padding: 6px 12px;
+}
+
+.product-metafields div {
+	display: block;
+}
+
+.flex-container {
+  display: block;
+}
+
+@media screen and (min-width: 750px) {
+
+  .flex-container {
+  	display: flex;
+  }
+  
+  .pd-left {
+  	max-width: 50% !important;
+       width: calc(50% - var(--grid-desktop-horizontal-spacing) / 2) !important;
+  }
+  
+  .pd-right {
+  	max-width: 50% !important;
+        width: calc(50% - var(--grid-desktop-horizontal-spacing) / 2) !important;
+        padding: 0 0 0 5rem;
+    }
+}
+
+  @media screen and (min-width: 990px) {
+ .pd-left {
+  	max-width: 55% !important;
+       width: calc(55% - var(--grid-desktop-horizontal-spacing) / 2) !important;
+  }
+  
+  .pd-right {
+  	max-width: 45% !important;
+        width: calc(45% - var(--grid-desktop-horizontal-spacing) / 2) !important;
+        padding: 0 0 0 5rem;
+    }
+}
+ 
+.pd-section {
+	padding-bottom: 40px;
+}
+
+  
+.mf-key {
+	font-weight: bold;
+    color: #293540;
+}
+
+.pd-left .mf-key {
+  	width: 45%;
+      padding-right: 20px;
+  }
+  
+  .pd-left .mf-value {
+  	width: 55%;
+  }  
+
+@media screen and (min-width: 990px) {
+
+  .product-metafields {
+	padding: 8px 15px;
+	font-size: 1.5rem;
+}
+  
+  .pd-left .mf-key {
+  	width: 35%;
+  }
+  
+  .pd-left .mf-value {
+  	width: 65%;
+  }
+
+}
+
+.degree-farenheight {
+	font-family: Helvetica, sans-serif;
+}
+
+{% endstylesheet %}
+  
+{% style %}
+
+ .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+}
+
+    @media screen and (min-width: 750px) {
+      .section-{{ section.id }}-padding {
+        padding-top: {{ section.settings.padding_top }}px;
+        padding-bottom: {{ section.settings.padding_bottom }}px;
+      }
+    }
+
+.pd-left .pd-section > div:nth-of-type(odd) {
+	 background-color:{{ section.settings.table_background_odd }};
+}
+
+.pd-left .pd-section > div:nth-of-type(even) {
+	 background-color:{{ section.settings.table_background_even }};
+}
+
+{% endstyle %}
+
+<section 
+  id="Specs-{{ section.id }}"
+  class="section-{{ section.id }}-padding tech-specs color-{{ section.settings.color_scheme }} gradient"
+  data-section="{{ section.id }}"
+>
+
+<div class="page-width" >
+
+
+<div class="grid grid--1-col grid--2-col-tablet">
+
+
+<div class="grid__item pd-left ">
+
+
+{% if product.metafields.custom.brand != blank or 
+      product.metafields.custom.pattern_collection != blank or 
+      product.metafields.custom.mpn != blank or 
+      product.metafields.custom.color != blank or 
+      product.metafields.custom.color_family != blank
+%}
+  
+<div class="pd-section">
+
+  <h3>Product Details</h3>
+  
+{% if product.metafields.custom.brand %}
+
+  <div class="product-metafields">
+    <span class="mf-key">Brand:</span> <span class="mf-value"><a href="{{shop.secure_url}}/collections/{{product.metafields.custom.brand | handleize}}">{{product.metafields.custom.brand}}</a></span>
+  </div>
+
+{% endif %}
+
+  
+{% if product.metafields.custom.pattern_collection %}
+
+  <div class="product-metafields">
+    <span class="mf-key">Pattern:</span> <span class="mf-value"><a href="{{product.metafields.custom.pattern_collection.value.url}}">{{product.metafields.custom.pattern}}</a></span>
+  </div>
+
+{% endif %}
+
+
+{% if product.metafields.custom.mpn %}
+
+  <div class="product-metafields">
+    <span class="mf-key">MPN:</span> <span class="mf-value">{{product.metafields.custom.mpn}}</span>
+  </div>
+
+{% endif %}
+
+  
+{% if product.metafields.custom.color %}
+
+  <div class="product-metafields ">
+    <span class="mf-key">Color:</span><span class="mf-value">{{product.metafields.custom.color}}</span>
+  </div>
+
+{% endif %}  
+
+  
+{% if product.metafields.custom.color_family %}
+
+  <div class="product-metafields ">
+    <span class="mf-key">Color Family:</span><span class="mf-value">
+  		{% for color_family in product.metafields.custom.color_family.value %}
+  			<a href="{{shop.secure_url}}/collections/{{color_family | handleize}}">{{color_family}}</a>{% if forloop.last != true %}, {% endif %}
+  		{% endfor %}
+  	</span>
+  </div>
+
+{% endif %}
+
+</div>
+
+{% endif %}
+  
+
+{% if product.type != blank or 
+      product.metafields.custom.product_sub_type != blank or 
+      product.metafields.custom.use_application != blank or 
+      product.metafields.custom.market != blank or 
+      product.metafields.custom.indoor_outdoor != blank or
+      product.metafields.custom.pattern_design != blank 
+%}
+
+<div class="pd-section">
+
+<h3>Categories &amp; Collections</h3>  
+  
+{% if product.type %}
+      
+  <div class="product-metafields">
+  	<span class="mf-key">Category:</span> <span class="mf-value"><a href="{{shop.secure_url}}/collections/{{product.type | handleize}}">{{product.type}}</a></span>
+  </div>
+
+{% endif %}
+
+
+{% if product.metafields.custom.product_sub_type %}
+
+  <div class="product-metafields">
+    <span class="mf-key">Type:</span> <span class="mf-value"><a href="{{shop.secure_url}}/collections/{{product.metafields.custom.product_sub_type | handleize}}">{{product.metafields.custom.product_sub_type}}</a></span>
+  </div>
+
+{% endif %}
+
+{% if product.metafields.custom.use_application %}
+
+  <div class="product-metafields">
+  	<span class="mf-key">Use:</span> <span class="mf-value">
+  		{% for application in product.metafields.custom.use_application.value %}
+  			<a href="{{shop.secure_url}}/collections/{{application | handleize}}">{{application}}</a>{% if forloop.last != true %}, {% endif %}
+  		{% endfor %}
+  	</span>
+  </div>
+
+{% endif %}
+
+{% if product.metafields.custom.market %}
+
+  <div class="product-metafields">
+  	<span class="mf-key">Markets:</span> <span class="mf-value">
+  		{% for market in product.metafields.custom.market.value %}
+  			<a href="{{shop.secure_url}}/collections/{{market | handleize}}">{{market}}</a>{% if forloop.last != true %}, {% endif %}
+  		{% endfor %}
+  	</span>
+  </div>
+
+{% endif %}
+
+{% if product.metafields.custom.indoor_outdoor %}
+
+  <div class="product-metafields">
+  	<span class="mf-key">Indoor / Outdoor:</span> <span class="mf-value">
+  		{% for indoor_outdoor in product.metafields.custom.indoor_outdoor.value %}
+  			<a href="{{shop.secure_url}}/collections/{{indoor_outdoor | handleize}}">{{indoor_outdoor}}</a>{% if forloop.last != true %}, {% endif %}
+  		{% endfor %}
+  	</span>
+  </div>
+
+{% endif %}
+
+{% if product.metafields.custom.pattern_design %}
+
+  <div class="product-metafields">
+  	<span class="mf-key">Design:</span> <span class="mf-value">
+  		{% for design in product.metafields.custom.pattern_design.value %}
+  			<a href="{{shop.secure_url}}/collections/{{design | handleize}}">{{design}}</a>{% if forloop.last != true %}, {% endif %}
+  		{% endfor %}
+  	</span>
+  </div>
+
+{% endif %}
+
+{% if product.metafields.custom.collections %}
+
+  <div class="product-metafields">
+  	<span class="mf-key">Collections:</span> <span class="mf-value">
+  		{% for collection in product.metafields.custom.collections.value %}
+  			<a href="{{shop.secure_url}}/collections/{{collection | handleize}}">{{collection}}</a>{% if forloop.last != true %}, {% endif %}
+  		{% endfor %}
+  	</span>
+  </div>
+
+{% endif %}
+
+
+
+</div>
+
+{% endif %}
+  
+
+{% if product.metafields.custom.content != blank or 
+      product.metafields.custom.finish != blank or 
+      product.metafields.custom.backing != blank or 
+      product.metafields.custom.weight != blank or 
+      product.metafields.custom.width != blank or
+      product.metafields.custom.thickness != blank or
+      product.metafields.custom.railroaded != blank or
+      product.metafields.custom.repeat_vertical != blank or
+      product.metafields.custom.repeat_horizontal != blank or
+      product.metafields.custom.roll_size != blank
+%}
+
+<div class="pd-section">
+
+<h3>Composition &amp; Dimensions</h3>
+
+{% if product.metafields.custom.content %}
+
+	<div class="product-metafields">
+		<span class="mf-key">Content:</span> <span class="mf-value">{{product.metafields.custom.content}}</span>
+	</div>
+
+{% endif %}
+
+{% if product.metafields.custom.finish %}
+
+	<div class="product-metafields">
+		<span class="mf-key">Finish / Topcoat:</span> <span class="mf-value">{{product.metafields.custom.finish}}</span>
+	</div>
+
+{% endif %}
+
+{% if product.metafields.custom.backing %}
+
+	<div class="product-metafields">
+		<span class="mf-key">Backing:</span> <span class="mf-value">{{product.metafields.custom.backing}}</span>
+	</div>
+
+{% endif %}
+
+{% if product.metafields.custom.weight %}
+
+	<div class="product-metafields">
+		<span class="mf-key">Weight:</span> <span class="mf-value">{{product.metafields.custom.weight.value}}{% if product.type == 'Fabric' %} / linear yd{% endif %}</span>
+	</div>
+
+{% endif %}
+
+{% if product.metafields.custom.width %}
+
+	<div class="product-metafields">
+		<span class="mf-key">Width:</span> <span class="mf-value">{{product.metafields.custom.width.value}}</span>
+	</div>
+
+{% endif %}
+
+{% if product.metafields.custom.thickness %}
+
+<div class="product-metafields">
+    <span class="mf-key">Thickness:</span> <span class="mf-value">{{product.metafields.custom.thickness.value}}</span>
+</div>
+
+{% endif %}
+
+{% if product.metafields.custom.railroaded == true %}
+
+<div class="product-metafields">
+    <span class="mf-key">Railroaded:</span> <span class="mf-value">Yes</span>
+</div>
+
+{% endif %}
+
+{% if product.metafields.custom.repeat_vertical %}
+
+<div class="product-metafields">
+    <span class="mf-key">Repeat - Vertical:</span> <span class="mf-value">{{product.metafields.custom.repeat_vertical.value}}</span>
+</div>
+
+{% endif %}
+
+{% if product.metafields.custom.repeat_horizontal %}
+
+<div class="product-metafields">
+    <span class="mf-key">Repeat - Horizontal:</span> <span class="mf-value">{{product.metafields.custom.repeat_horizontal.value}}</span>
+</div>
+
+{% endif %}
+
+{% if product.metafields.custom.roll_size %}
+
+<div class="product-metafields">
+    <span class="mf-key">Roll Size:</span> <span class="mf-value">{{product.metafields.custom.roll_size.value}}</span>
+</div>
+
+{% endif %}
+
+</div>
+  
+{% endif %}
+
+{% if product.metafields.custom.abrasion_resistance != blank or 
+      product.metafields.custom.cold_crack != blank or 
+      product.metafields.custom.colorfastness_to_uv != blank or 
+      product.metafields.custom.colorfastness_to_light != blank or 
+      product.metafields.custom.colorfastness_to_artificial_weathering != blank
+%}  
+
+<div class="pd-section">
+
+<h3>Performance Specs</h3>
+
+{% if product.metafields.custom.abrasion_resistance %}
+
+<div class="product-metafields">
+    <span class="mf-key">Abrasion Resistance:</span> <span class="mf-value" id="abrasion-resistance">{{product.metafields.custom.abrasion_resistance}} double rubs</span>
+    <script type="text/javascript">
+      var num = {{product.metafields.custom.abrasion_resistance}};
+      var result = num.toLocaleString();
+      document.getElementById("abrasion-resistance").innerHTML = result + ' double rubs';
+    </script>
+</div>
+
+{% endif %}
+
+{% if product.metafields.custom.cold_crack %}
+
+<div class="product-metafields">
+    <span class="mf-key">Cold Crack Resistance:</span> 
+    <span class="mf-value">{{product.metafields.custom.cold_crack.value}}<span class="degree-farenheight">&#x2109;</span></span>
+</div>
+
+{% endif %}
+
+{% if product.metafields.custom.colorfastness_to_uv %}
+
+<div class="product-metafields">
+    <span class="mf-key">Colorfastness to UV:</span> 
+    <span class="mf-value">{{product.metafields.custom.colorfastness_to_uv.value}} Hours</span>
+</div>
+
+{% endif %}
+
+{% if product.metafields.custom.colorfastness_to_light %}
+
+<div class="product-metafields">
+    <span class="mf-key">Colorfastness to Light:</span> 
+    <span class="mf-value">{{product.metafields.custom.colorfastness_to_light.value}} Hours</span>
+</div>
+
+{% endif %}
+
+{% if product.metafields.custom.colorfastness_to_artificial_weathering %}
+
+<div class="product-metafields">
+    <span class="mf-key">Colorfastness to  Weathering:</span> 
+    <span class="mf-value">{{product.metafields.custom.colorfastness_to_artificial_weathering.value}} Hours</span>
+</div>
+
+{% endif %}
+
+</div>
+
+{% endif %}
+
+  
+
+</div>
+
+<div class="grid__item pd-right ">
+
+
+{%- if product.metafields.custom.product_features != blank -%}  
+<div class="pd-section">
+<h3>Features</h3>
+  <ul>
+    {% for metavalue in product.metafields.custom.product_features.value %}
+      <li>{{metavalue}}</li>
+    {% endfor %}
+  </ul>
+</div>
+{%- endif -%}  
+
+{%- if product.metafields.custom.specs_flammability != blank -%}
+<div class="pd-section">
+<h3>Flammability Specs</h3>
+  <ul style="margin-bottom: 20px">
+    {% for metavalue in product.metafields.custom.specs_flammability.value %}
+      <li>{{metavalue}}</li>
+    {% endfor %}
+  </ul>
+  <p>"Flammability" and any corresponding data refer to the typical performance in the tests indicated and should not be construed to imply the behavior of this or any other material under actual fire conditions.</p>
+</div>
+{%- endif -%}
+
+
+
+  <div class="pd-section">
+    <h3>Care Instructions</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean id dapibus neque. Ut finibus efficitur ultrices. Suspendisse porttitor molestie dolor eget consectetur.</p> 
+    <p>Aliquam vehicula, est consequat venenatis imperdiet, nisl quam imperdiet diam, ut malesuada felis nisi vitae nulla. Maecenas sed neque vel orci ornare consectetur sed sed dolor.</p> 
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+{% schema %}
+  {
+    "name": "Product Specs",
+    "tag": "section",
+    "class": "section",
+    "limit": 1,
+    "settings": [
+        {
+          "type": "color_scheme",
+          "id": "color_scheme",
+          "label": "t:sections.all.colors.label",
+          "default": "scheme-1"
+        },
+        {
+          "type": "color",
+          "id": "table_background_odd",
+          "label": "Row Color - Odd",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "table_background_even",
+          "label": "Row Color - Even",
+          "default": "#fafafa"
+        },
+      {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+    ],
+    "presets": [{
+      "name": "Product Specs",
+      "category": "Text"
+  }]
+  }
+{% endschema %}
