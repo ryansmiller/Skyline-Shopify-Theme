@@ -29,6 +29,11 @@
           "settings": {
           }
         },
+        "custom_swatches_39zNia": {
+          "type": "custom_swatches",
+          "settings": {
+          }
+        },
         "price": {
           "type": "price",
           "settings": {
@@ -69,6 +74,7 @@
         "vendor",
         "title",
         "custom_price_reviews_nxm7BV",
+        "custom_swatches_39zNia",
         "price",
         "variant_picker",
         "quantity_selector",
