@@ -1,0 +1,38 @@
+name: Merge to store themes
+ 
+on:
+ push:
+   branches:
+     - main
+   paths-ignore:
+     - 'templates/*.json'
+     - 'config/*.json'
+     - 'locales/*.json'
+ pull_request:
+   branches:
+     - main
+   paths-ignore:
+     - 'templates/*.json'
+     - 'config/*.json'
+     - 'locales/*.json'
+ 
+jobs:
+ build:
+  runs-on: ubuntu-latest
+  steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: merge
+        uses: mtanzi/action-automerge@v1
+        id: merge-auto-marine-pro
+        with:
+          github_token: ${{ github.token }}
+          source: 'main'
+          target: 'live/auto-marine-pro'
+      - name: merge
+        uses: mtanzi/action-automerge@v1
+        id: merge-east-coast-fabrics
+        with:
+          github_token: ${{ github.token }}
+          source: 'main'
+          target: 'live/east-coast-fabrics'
