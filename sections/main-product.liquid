@@ -89,6 +89,49 @@
             {%- case block.type -%}
               {%- when '@app' -%}
                 {% render block %}
+
+              {%- when 'custom_price_reviews' -%}
+
+                {%- style -%}
+
+                  .block-custom-price-reviews {
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: space-between;
+                    align-items: center; 
+                    margin: 0; 
+                    padding-bottom: 10px; 
+                    border-bottom: 1px solid #eaeaea;
+                  }
+
+                  .block-custom-price-reviews .product-price {
+                    color: #000; 
+                    font-weight: 400; 
+                    font-size: 2.2rem; 
+                    display:flex; 
+                    align-items: center;
+                  }
+                  
+                  .stamped-product-reviews-badge {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                  }
+                  
+                  {%- endstyle -%}
+                  
+                  <div class="block-custom-price-reviews" >
+                    <span class="product-price">{{ product.first_available_variant.price | money }} / yard</span>
+                    <span
+                    class="stamped-product-reviews-badge stamped-main-badge"
+                    data-id="{{ product.id }}"
+                    data-product-sku="{{ product.handle }}"
+                    data-product-title="{{product.title}}"
+                    data-product-type="{{product.type}}">
+                    {{product.metafields.stamped.badge.value}}
+                    </span>
+                  </div>
+
               {%- when 'text' -%}
                 <p
                   class="product__text inline-richtext{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}"
@@ -764,6 +807,11 @@
           "label": "t:sections.main-product.blocks.text.settings.text_style.label"
         }
       ]
+    },  
+    {
+      "type": "custom_price_reviews",
+      "name": "t:sections.main-product.blocks.custom_price_reviews.name",
+      "limit": 1,
     },
     {
       "type": "title",
@@ -2073,7 +2121,7 @@
           "label": "t:sections.main-product.blocks.icon_with_text.settings.heading_3.label",
           "info": "t:sections.main-product.blocks.icon_with_text.settings.heading.info"
         }
-      ]
+      ]      
     }
   ],
   "settings": [
