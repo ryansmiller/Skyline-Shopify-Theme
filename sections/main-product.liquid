@@ -137,13 +137,13 @@
                 <script src="https://unpkg.com/@popperjs/core@2" defer="defer"></script>
                 <script src="https://unpkg.com/tippy.js@6" defer="defer"></script>
 
-                {%- script -%}
+                {% javascript %}
                   const current = window.location.href;
                   document.querySelectorAll(`#variant-select a[href*="${current}"]`).forEach(elem => { 
                     elem.classList.add("active");
                   });
                   tippy('[data-tippy-content]');
-                {%- endscript -%}
+                  {% endjavascript %}
 
                 {% assign collection_pattern = product.metafields.custom.pattern_collection.value.handle %}
                 {% assign products = collections[collection_pattern].products | sort_natural: 'title' %}
