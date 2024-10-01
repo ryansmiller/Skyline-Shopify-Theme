@@ -115,10 +115,21 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "custom_product_specs_cU3jfk": {
+      "type": "custom-product-specs",
+      "settings": {
+        "color_scheme": "",
+        "table_background_odd": "#ffffff",
+        "table_background_even": "#fafafa",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
     "main",
+    "custom_product_specs_cU3jfk",
     "related-products"
   ]
 }
