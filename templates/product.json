@@ -12,13 +12,6 @@
     "main": {
       "type": "main-product",
       "blocks": {
-        "vendor": {
-          "type": "text",
-          "settings": {
-            "text": "{{ product.vendor }}",
-            "text_style": "body"
-          }
-        },
         "title": {
           "type": "title",
           "settings": {
@@ -31,11 +24,6 @@
         },
         "custom_swatches_39zNia": {
           "type": "custom_swatches",
-          "settings": {
-          }
-        },
-        "price": {
-          "type": "price",
           "settings": {
           }
         },
@@ -54,33 +42,24 @@
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
-            "show_dynamic_checkout": true,
-            "show_gift_card_recipient": true
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": false
           }
         },
         "description": {
           "type": "description",
           "settings": {
           }
-        },
-        "share": {
-          "type": "share",
-          "settings": {
-            "share_label": "Share"
-          }
         }
       },
       "block_order": [
-        "vendor",
         "title",
         "custom_price_reviews_nxm7BV",
         "custom_swatches_39zNia",
-        "price",
         "variant_picker",
         "quantity_selector",
         "buy_buttons",
-        "description",
-        "share"
+        "description"
       ],
       "settings": {
         "enable_sticky_info": true,
@@ -98,6 +77,16 @@
         "padding_bottom": 12
       }
     },
+    "custom_product_specs_cU3jfk": {
+      "type": "custom-product-specs",
+      "settings": {
+        "color_scheme": "",
+        "table_background_odd": "#ffffff",
+        "table_background_even": "#fafafa",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "related-products": {
       "type": "related-products",
       "settings": {
@@ -112,16 +101,6 @@
         "show_vendor": false,
         "show_rating": false,
         "columns_mobile": "2",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "custom_product_specs_cU3jfk": {
-      "type": "custom-product-specs",
-      "settings": {
-        "color_scheme": "",
-        "table_background_odd": "#ffffff",
-        "table_background_even": "#fafafa",
         "padding_top": 36,
         "padding_bottom": 36
       }
