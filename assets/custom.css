@@ -1,4 +1,13 @@
 
+
+a:link {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+  
+  
   .shopacado-discount-table {
     font-size: 1.2rem;
     text-align: left;
@@ -37,6 +46,8 @@
     }
   }
   
+
+  /*
   .product-form__buttons {
     max-width: 100%;
   }
@@ -61,12 +72,7 @@
       margin: 6px 0;
       padding-bottom: 10px;
   }
-  a:link {
-    text-decoration: none;
-  }
-  a:hover {
-    text-decoration: underline;
-  }
+  
   
 
   .product form button,
@@ -80,8 +86,6 @@
     max-width: 100% !important;
   }
   
-  
-  
   .product-form__quantity {
     display: flex;
     justify-content: space-between;
@@ -92,16 +96,7 @@
     font-weight: 700;
     color: #000;
   }
-  
-  .header__icon, .header__icon--cart {
-    width: auto !important;
-  
-  }
-  
-  
-
-  
-  
+   
   @media only screen and (min-width: 750px) {
     h1,
     .h1 {
@@ -113,3 +108,4 @@
     color: #0477bf;
     border: 1px solid #0477bf;
   }
+    */
