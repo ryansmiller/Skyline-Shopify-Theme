@@ -35,7 +35,7 @@
             "padding": 10,
             "margin_bottom": 2,
             "font_size": 16,
-            "show_remove_button": true,
+            "show_remove_button": false,
             "show_first_offer_only": true
           }
         },
