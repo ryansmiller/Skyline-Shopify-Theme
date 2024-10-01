@@ -78,14 +78,6 @@ a:hover {
       padding-bottom: 10px;
   }
   
-  
-
-  .product form button,
-  .product form input {
-    text-transform: uppercase;
-  }
-  
-
 .product-form__buttons,
 .product-form__input {
     max-width: 100% !important;
