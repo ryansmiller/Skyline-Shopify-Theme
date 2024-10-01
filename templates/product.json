@@ -27,8 +27,8 @@
           "settings": {
           }
         },
-        "custom_stock_details_9e6jt4": {
-          "type": "custom_stock_details",
+        "custom_stock_detail_yDWiM6": {
+          "type": "custom_stock_detail",
           "settings": {
           }
         },
@@ -67,7 +67,7 @@
         "title",
         "custom_price_reviews_nxm7BV",
         "custom_swatches_39zNia",
-        "custom_stock_details_9e6jt4",
+        "custom_stock_detail_yDWiM6",
         "shopacado_volume_discounts_discount_table_Bhecb7",
         "variant_picker",
         "quantity_selector",
