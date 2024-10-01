@@ -27,6 +27,11 @@
           "settings": {
           }
         },
+        "custom_stock_details_9e6jt4": {
+          "type": "custom_stock_details",
+          "settings": {
+          }
+        },
         "shopacado_volume_discounts_discount_table_Bhecb7": {
           "type": "shopify://apps/shopacado-volume-discounts/blocks/discount-table/5950831a-4e4e-40a4-82b0-674110b50a14",
           "settings": {
@@ -62,6 +67,7 @@
         "title",
         "custom_price_reviews_nxm7BV",
         "custom_swatches_39zNia",
+        "custom_stock_details_9e6jt4",
         "shopacado_volume_discounts_discount_table_Bhecb7",
         "variant_picker",
         "quantity_selector",
