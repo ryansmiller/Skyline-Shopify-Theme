@@ -38,13 +38,6 @@
             "theme_id": "123684323425"
           }
         },
-        "variant_picker": {
-          "type": "variant_picker",
-          "settings": {
-            "picker_type": "button",
-            "swatch_shape": "circle"
-          }
-        },
         "quantity_selector": {
           "type": "quantity_selector",
           "settings": {
@@ -74,7 +67,6 @@
         "custom_swatches_39zNia",
         "custom_stock_detail_yDWiM6",
         "shopacado_volume_discounts_discount_table_Bhecb7",
-        "variant_picker",
         "quantity_selector",
         "buy_buttons",
         "custom_memo_sample_8GbzFY",
