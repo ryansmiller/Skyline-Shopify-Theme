@@ -57,6 +57,11 @@
             "show_gift_card_recipient": false
           }
         },
+        "custom_memo_sample_8GbzFY": {
+          "type": "custom_memo_sample",
+          "settings": {
+          }
+        },
         "description": {
           "type": "description",
           "settings": {
@@ -72,6 +77,7 @@
         "variant_picker",
         "quantity_selector",
         "buy_buttons",
+        "custom_memo_sample_8GbzFY",
         "description"
       ],
       "settings": {
