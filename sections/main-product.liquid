@@ -310,7 +310,27 @@
                       </ul>
                   </div>
 
+              {%- when 'custom_memo_sample' -%}    
 
+                <script>
+                    
+                  jQuery(document).ready(function($){
+                    $(".no-js-hidden").on("click", function(){
+                    var refreshint = setInterval(function(){
+                    location.reload();
+                  }, 1000);    });   });
+            
+                </script>
+         
+                <div class="custom-memo-sample-button">
+                 <form id="memo-sample-button" method="post" action="/cart/add" accept-charset="UTF-8" class="form" enctype="multipart/form-data" novalidate="novalidate" data-type="add-to-cart-form">
+                   <input type="hidden" name="form_type" value="product">
+                   <input type="hidden" name="id" value="{{ product.metafields.custom.memo_sample_variant.value.id }}" />
+                   <input type="hidden" min="1" id="quantity" name="quantity" value="1"/>
+                   <input type="submit" value="Add Memo Sample" class="btn button button--full-width button--secondary" />
+                 </form>
+              </div>
+              
               {%- when 'text' -%}
                 <p
                   class="product__text inline-richtext{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}"
@@ -1000,6 +1020,11 @@
     {
       "type": "custom_stock_detail",
       "name": "Custom: Stock Detail",
+      "limit": 1
+    },
+    {
+      "type": "custom_memo_sample",
+      "name": "Custom: Memo Sample",
       "limit": 1
     },
     {
