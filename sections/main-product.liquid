@@ -321,16 +321,20 @@
                   }, 1000);    });   });
             
                 </script>
-         
-                <div class="custom-memo-sample-button">
-                 <form id="memo-sample-button" method="post" action="/cart/add" accept-charset="UTF-8" class="form" enctype="multipart/form-data" novalidate="novalidate" data-type="add-to-cart-form">
-                   <input type="hidden" name="form_type" value="product">
-                   <input type="hidden" name="id" value="{{ product.metafields.custom.memo_sample_variant.value.id }}" />
-                   <input type="hidden" min="1" id="quantity" name="quantity" value="1"/>
-                   <input type="submit" value="Add Memo Sample" class="btn button button--full-width button--secondary" />
-                 </form>
-              </div>
-              
+
+                {% for variant in product.variants %}
+                  {% if variant.option1 == 'Memo Sample' %}
+                    <div class="custom-memo-sample-button">
+                    <form id="memo-sample-button" method="post" action="/cart/add" accept-charset="UTF-8" class="form" enctype="multipart/form-data" novalidate="novalidate" data-type="add-to-cart-form">
+                      <input type="hidden" name="form_type" value="product">
+                      <input type="hidden" name="id" value="{{ variant.id }}" />
+                      <input type="hidden" min="1" id="quantity" name="quantity" value="1"/>
+                      <input type="submit" value="Add Memo Sample" class="btn button button--full-width button--secondary" />
+                    </form>
+                  </div>
+                {% endif %}
+              {% endfor %}
+
               {%- when 'text' -%}
                 <p
                   class="product__text inline-richtext{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}"
