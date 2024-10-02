@@ -1,4 +1,4 @@
-
+/* Base Edits */
 
 a:link {
   text-decoration: none;
@@ -6,99 +6,89 @@ a:link {
 a:hover {
   text-decoration: underline;
 }
-  
-  
-  .shopacado-discount-table {
-    font-size: 1.2rem;
-    text-align: left;
-    margin: 0 !important;
-    color: #000;
-    width: 100%;
-    line-height: 2.4rem !important;
-  }
-  
-  .shopacado-discount-table-block h4 {
-    padding: 5px 0 10px 0;
-    font-size: 2rem;
-    color: #e74c3c;
-    margin: 0;
-    line-height: 2.5rem;
-  }
-  .shopacado-discount-table-block {
-    padding: 10px 20px;
-    background-color: #f7f0e1 !important;
-    border-radius: 8px;
-  }
 
-  .shopacado-discount-table-block span {
-    font-weight: 700;
+@media only screen and (min-width: 750px) {
+  h1,
+  .h1 {
+    font-size: calc(var(--font-heading-scale) * 2.6rem);
   }
-  .shopacado-discount-table-block strong {
-    color: #e74c3c;
-  }
-  @media screen and (min-width: 750px) {
-    .shopacado-discount-table-block {
-      padding: 15px 25px;
-    }
-    .shopacado-discount-table {
-      font-size: 1.4rem;
-      line-height: 3rem !important;
-    }
-  }
+}
  
-  @media screen and (max-width: 989px) {
-    .header {
-      padding-left: 15px !important;
-      padding-right: 15px !important;
-    }
-  }
+/* Header - Mobile Edits */
   
-  .product-form__buttons {
-    max-width: 100%;
+@media screen and (max-width: 989px) {
+  .header {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
   }
+}
+  
+/* Product Edits */ 
 
-  .product-form__input {
-    max-width: 100%;
-  }
-  .product-form__quantity {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .product-form__quantity label {
-    font-size: 1.6rem;
-    font-weight: 700;
-  }
-  .product__title {
-      margin: 6px 0;
-      padding-bottom: 10px;
-  }
-  
+.product__title {
+  margin: 6px 0;
+  padding-bottom: 10px;
+}
+
+.product-form__quantity {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.product-form__quantity label {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #000;
+}
+    
 .product-form__buttons,
 .product-form__input {
-    max-width: 100% !important;
-  }
+  max-width: 100% !important;
+}
   
-  .product-form__quantity {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+#memo-sample-button input {
+  color: #0477bf;
+  border: 1px solid #0477bf;
+}
+
+/* Product - Discount Table Edits */ 
+
+.shopacado-discount-table {
+  font-size: 1.2rem;
+  text-align: left;
+  margin: 0 !important;
+  color: #000;
+  width: 100%;
+  line-height: 2.4rem !important;
+}
+
+.shopacado-discount-table-block h4 {
+  padding: 5px 0 10px 0;
+  font-size: 2rem;
+  color: #e74c3c;
+  margin: 0;
+  line-height: 2.5rem;
+}
+.shopacado-discount-table-block {
+  padding: 10px 20px;
+  background-color: #f7f0e1 !important;
+  border-radius: 8px;
+}
+
+.shopacado-discount-table-block span {
+  font-weight: 700;
+}
+.shopacado-discount-table-block strong {
+  color: #e74c3c;
+}
+@media screen and (min-width: 750px) {
+  .shopacado-discount-table-block {
+    padding: 15px 25px;
   }
-  .product-form__quantity label {
-    font-size: 1.6rem;
-    font-weight: 700;
-    color: #000;
+  .shopacado-discount-table {
+    font-size: 1.4rem;
+    line-height: 3rem !important;
   }
-   
-  @media only screen and (min-width: 750px) {
-    h1,
-    .h1 {
-      font-size: calc(var(--font-heading-scale) * 2.6rem);
-    }
-  }
-  
-  #memo-sample-button input {
-    color: #0477bf;
-    border: 1px solid #0477bf;
-  }
+}
   
