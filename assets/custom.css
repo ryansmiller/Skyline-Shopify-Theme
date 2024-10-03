@@ -46,10 +46,14 @@ a:hover {
 .product-form__input {
   max-width: 100% !important;
 }
-  
-#memo-sample-button input {
-  color: #0477bf;
-  border: 1px solid #0477bf;
+
+.button--secondary {
+  border: var(--buttons-border-width) solid rgb(var(--color-secondary-button-text));
+}
+
+.button--secondary:hover {
+  background-color: rgb(var(--color-secondary-button-text));
+  color: rgb(var(--color-secondary-button));
 }
 
 /* Product - Discount Table Edits */ 

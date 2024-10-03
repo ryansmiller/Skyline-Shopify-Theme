@@ -3,7 +3,7 @@
     "name": "theme_info",
     "theme_name": "Skyline",
     "theme_version": "15.1.0",
-    "theme_author": "Ryan Miller / Skyline Fabrics",
+    "theme_author": "Ryan Miller",
     "theme_documentation_url": "https://help.shopify.com/manual/online-store/themes",
     "theme_support_url": "https://support.shopify.com/"
   },
@@ -41,62 +41,102 @@
         "id": "color_schemes",
         "definition": [
           {
+            "type": "header",
+            "content": "Typography"
+          },
+          {
+            "type": "color",
+            "id": "headline",
+            "label": "Headline",
+            "default": "#121212"
+          },
+          {
+            "type": "color",
+            "id": "text",
+            "label": "Text",
+            "default": "#121212"
+          },
+          {
+            "type": "color",
+            "id": "links",
+            "label": "Links",
+            "default": "#121212"
+          },
+          {
+            "type": "color",
+            "id": "links_on_hover",
+            "label": "Links On Hover",
+            "default": "#121212"
+          },
+          {
+            "type": "header",
+            "content": "Background"
+          },
+          {
             "type": "color",
             "id": "background",
-            "label": "t:settings_schema.colors.settings.background.label",
+            "label": "Background",
             "default": "#FFFFFF"
           },
           {
             "type": "color_background",
             "id": "background_gradient",
-            "label": "t:settings_schema.colors.settings.background_gradient.label",
+            "label": "Background Gradient",
             "info": "t:settings_schema.colors.settings.background_gradient.info"
           },
           {
-            "type": "color",
-            "id": "text",
-            "label": "t:settings_schema.colors.settings.text.label",
-            "default": "#121212"
+            "type": "header",
+            "content": "Buttons"
           },
           {
             "type": "color",
             "id": "button",
-            "label": "t:settings_schema.colors.settings.button_background.label",
+            "label": "Primary Button",
             "default": "#121212"
           },
           {
             "type": "color",
             "id": "button_label",
-            "label": "t:settings_schema.colors.settings.button_label.label",
+            "label": "Primary Button Label",
             "default": "#FFFFFF"
           },
           {
             "type": "color",
-            "id": "secondary_button_label",
-            "label": "t:settings_schema.colors.settings.secondary_button_label.label",
+            "id": "secondary_button",
+            "label": "Secondary Button",
             "default": "#121212"
           },
           {
             "type": "color",
-            "id": "shadow",
-            "label": "t:settings_schema.colors.settings.shadow.label",
+            "id": "secondary_button_label",
+            "label": "Secondary Button Label",
             "default": "#121212"
+          },
+          {
+            "type": "header",
+            "content": "Additional"
+          },
+          {
+            "type": "color",
+            "id": "icons",
+            "label": "Icons",
+            "default": "#FFFFFF"
           }
         ],
         "role": {
-          "text": "text",
           "background": {
             "solid": "background",
             "gradient": "background_gradient"
           },
-          "links": "secondary_button_label",
-          "icons": "text",
+          "text": "text",
           "primary_button": "button",
-          "on_primary_button": "button_label",
+          "on_primary_button": "button",
           "primary_button_border": "button",
-          "secondary_button": "background",
-          "on_secondary_button": "secondary_button_label",
-          "secondary_button_border": "secondary_button_label"
+          "secondary_button": "secondary_button",
+          "on_secondary_button": "secondary_button",
+          "secondary_button_border": "secondary_button",
+          "icons": "icons",
+          "links": "links"
         }
       }
     ]
