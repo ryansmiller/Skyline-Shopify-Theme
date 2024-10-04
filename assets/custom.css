@@ -23,6 +23,37 @@ a:hover {
   }
 }
   
+
+/* Icons */
+
+.header__icon {
+  color: rgb(var(--color-header-foreground));
+  height: 3.4rem;
+  width: 5.2rem;
+  }
+
+.header__icon .icon {
+  height: 2rem !important;
+width: 2rem !important;
+}
+
+.cart-count-bubble {
+  position: absolute;
+  height: 1.4rem;
+  width: 1.4rem;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: .9rem;
+  top: 0;
+  left: 3rem;
+  line-height: 1;
+  transition-property: opacity,transform,color,background-color;
+  transition-duration: var(--duration-default);
+  transition-timing-function: ease;
+  }
+
 /* Product Edits */ 
 
 .product__title {
