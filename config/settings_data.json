@@ -88,14 +88,14 @@
     "media_shadow_horizontal_offset": 0,
     "media_shadow_vertical_offset": 4,
     "media_shadow_blur": 5,
-    "popup_border_thickness": 2,
+    "popup_border_thickness": 0,
     "popup_border_opacity": 100,
     "popup_corner_radius": 0,
-    "popup_shadow_opacity": 5,
+    "popup_shadow_opacity": 0,
     "popup_shadow_horizontal_offset": 0,
     "popup_shadow_vertical_offset": 4,
     "popup_shadow_blur": 5,
-    "drawer_border_thickness": 2,
+    "drawer_border_thickness": 0,
     "drawer_border_opacity": 100,
     "drawer_shadow_opacity": 0,
     "drawer_shadow_horizontal_offset": 0,
@@ -167,13 +167,28 @@
           "text": "#121212",
           "links": "#121212",
           "links_on_hover": "#121212",
-          "background": "#FFFFFF",
+          "background": "#ffffff",
           "background_gradient": "",
-          "button": "#FA8C01",
-          "button_label": "#FFFFFF",
+          "button": "#c20642",
+          "button_label": "#ffffff",
           "secondary_button": "#ffffff",
-          "secondary_button_label": "#FA8C01",
-          "icons": "#FFFFFF"
+          "secondary_button_label": "#fa8c01",
+          "icons": "#ffffff"
+        }
+      },
+      "scheme-269f0bd2-789e-48df-8675-697b607b2396": {
+        "settings": {
+          "headline": "#f93d3d",
+          "text": "#000000",
+          "links": "#16abd7",
+          "links_on_hover": "#121212",
+          "background": "#dadada",
+          "background_gradient": "linear-gradient(320deg, rgba(196, 196, 196, 1) 16%, rgba(222, 222, 222, 1) 52%, rgba(234, 234, 234, 1) 87%)",
+          "button": "#f93d3d",
+          "button_label": "#ffffff",
+          "secondary_button": "#ffffff",
+          "secondary_button_label": "#fa8c01",
+          "icons": "#121212"
         }
       }
     }
