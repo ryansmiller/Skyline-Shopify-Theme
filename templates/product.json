@@ -30,6 +30,10 @@
         "custom_stock_detail_yDWiM6": {
           "type": "custom_stock_detail",
           "settings": {
+            "free_shipping": true,
+            "background_color": "#f1f2f6",
+            "headline_color": "#27ae60",
+            "icon_color": "#FA8C01"
           }
         },
         "shopacado_volume_discounts_discount_table_Bhecb7": {
