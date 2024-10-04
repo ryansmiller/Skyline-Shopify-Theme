@@ -217,7 +217,7 @@
                 </div>
               {%- when 'custom_stock_detail' -%}
 
-                <script src="https://kit.fontawesome.com/73f5f905b0.js" crossorigin="anonymous" defer="defer"></script>
+                
 
                 {%- style -%}
 
@@ -229,9 +229,9 @@
                 }
 
                 @media screen and (min-width: 750px) {
-                .stock-details {
-                padding: 20px 30px 10px 25px; 
-                }
+                  .stock-details {
+                    padding: 20px 30px 10px 25px; 
+                  }
                 }
 
                 .stock-details h4 {
@@ -259,20 +259,19 @@
                 }
 
                 .stock-details picture {
-                  min-width: 45px;
+                  width: 45px;
                   display: block;
                 }
 
-                .stock-details i {
+                .stock-details svg {
                   display: block;
                   width: 100%;
-                  height: 100%;
-                  font-size: 20px;
+                  height: auto;
                   color: {{ block.settings.icon_color }};
                   vertical-align: middle;
                 }
 
-                .stock-details .fa-bolt {
+                .stock-details .fast-delivery svg {
                 padding-left:2px;
                 font-size:25px;
                 }
@@ -284,10 +283,10 @@
                     <h4>In Stock: {{product.first_available_variant.inventory_quantity}} yards</h4>
                       <ul>
                         {%- if block.settings.free_shipping -%}
-                        <li>
+                        <li class="free-shipping">
                           <picture>
-                            <i class="fa-solid fa-truck-fast"></i>
-                          </picture>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 45 45"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M112 0C85.5 0 64 21.5 64 48l0 48L16 96c-8.8 0-16 7.2-16 16s7.2 16 16 16l48 0 208 0c8.8 0 16 7.2 16 16s-7.2 16-16 16L64 160l-16 0c-8.8 0-16 7.2-16 16s7.2 16 16 16l16 0 176 0c8.8 0 16 7.2 16 16s-7.2 16-16 16L64 224l-48 0c-8.8 0-16 7.2-16 16s7.2 16 16 16l48 0 144 0c8.8 0 16 7.2 16 16s-7.2 16-16 16L64 288l0 128c0 53 43 96 96 96s96-43 96-96l128 0c0 53 43 96 96 96s96-43 96-96l32 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l0-64 0-32 0-18.7c0-17-6.7-33.3-18.7-45.3L512 114.7c-12-12-28.3-18.7-45.3-18.7L416 96l0-48c0-26.5-21.5-48-48-48L112 0zM544 237.3l0 18.7-128 0 0-96 50.7 0L544 237.3zM160 368a48 48 0 1 1 0 96 48 48 0 1 1 0-96zm272 48a48 48 0 1 1 96 0 48 48 0 1 1 -96 0z"/></svg>
+                        </picture>
                           <div class="stock-details-content">
                             <strong><a href="#">FREE Shipping</a></strong> on orders $199+
                           </div>
@@ -297,9 +296,9 @@
                         {%- for variant in product.variants -%}
                           {%- if variant.option1 == 'Yards' -%}
                             {%- if variant.available == true -%}
-                              <li>
+                              <li class="fast-delivery">
                                 <picture>
-                                  <i class="fa-solid fa-bolt"></i>
+                                  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 45 45"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M349.4 44.6c5.9-13.7 1.5-29.7-10.6-38.5s-28.6-8-39.9 1.8l-256 224c-10 8.8-13.6 22.9-8.9 35.3S50.7 288 64 288l111.5 0L98.6 467.4c-5.9 13.7-1.5 29.7 10.6 38.5s28.6 8 39.9-1.8l256-224c10-8.8 13.6-22.9 8.9-35.3s-16.6-20.7-30-20.7l-111.5 0L349.4 44.6z"/></svg>
                                 </picture>
                                 <div class="stock-details-content">
                                   <strong><a href="#">FAST Delivery</a></strong>. Buy now and receive In Stock orders by <strong>Friday, September 21</strong>
@@ -310,9 +309,9 @@
                         {%- endfor -%}
 
                         {%- if product.metafields.custom.product_availability != "Discontinued" -%}
-                        <li>
+                        <li class="more-stock-available">
                           <picture>
-                            <i class="fa-solid fa-boxes-stacked"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 45 45"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M248 0L208 0c-26.5 0-48 21.5-48 48l0 112c0 35.3 28.7 64 64 64l128 0c35.3 0 64-28.7 64-64l0-112c0-26.5-21.5-48-48-48L328 0l0 80c0 8.8-7.2 16-16 16l-48 0c-8.8 0-16-7.2-16-16l0-80zM64 256c-35.3 0-64 28.7-64 64L0 448c0 35.3 28.7 64 64 64l160 0c35.3 0 64-28.7 64-64l0-128c0-35.3-28.7-64-64-64l-40 0 0 80c0 8.8-7.2 16-16 16l-48 0c-8.8 0-16-7.2-16-16l0-80-40 0zM352 512l160 0c35.3 0 64-28.7 64-64l0-128c0-35.3-28.7-64-64-64l-40 0 0 80c0 8.8-7.2 16-16 16l-48 0c-8.8 0-16-7.2-16-16l0-80-40 0c-15 0-28.8 5.1-39.7 13.8c4.9 10.4 7.7 22 7.7 34.2l0 160c0 12.2-2.8 23.8-7.7 34.2C323.2 506.9 337 512 352 512z"/></svg>
                           </picture>
                           <div class="stock-details-content">
                             <strong><a href="#">MORE Stock Available</a></strong>. Buy now and receive by <strong>Wednesday, September 26</strong>

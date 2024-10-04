@@ -1505,5 +1505,15 @@
         "default": "scheme-1"
       }
     ]
+  },
+  {
+    "name": "Font Awesome Code",
+    "settings": [
+      {
+        "type": "textarea",
+        "id": "font_awesome",
+        "label": "Font Awesome Script Code"
+      }
+    ]
   }
 ]
