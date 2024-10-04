@@ -126,6 +126,7 @@
     "show_cart_note": false,
     "cart_drawer_collection": "",
     "cart_color_scheme": "scheme-1",
+    "font_awesome": "<script src=\"https://kit.fontawesome.com/73f5f905b0.js\" crossorigin=\"anonymous\"></script>",
     "sections": {
       "main-password-header": {
         "type": "main-password-header",
@@ -162,7 +163,17 @@
     "color_schemes": {
       "scheme-1": {
         "settings": {
-         
+          "headline": "#121212",
+          "text": "#121212",
+          "links": "#121212",
+          "links_on_hover": "#121212",
+          "background": "#FFFFFF",
+          "background_gradient": "",
+          "button": "#121212",
+          "button_label": "#FFFFFF",
+          "secondary_button": "#121212",
+          "secondary_button_label": "#121212",
+          "icons": "#FFFFFF"
         }
       }
     }
