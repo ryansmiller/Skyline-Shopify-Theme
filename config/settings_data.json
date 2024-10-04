@@ -169,10 +169,10 @@
           "links_on_hover": "#121212",
           "background": "#FFFFFF",
           "background_gradient": "",
-          "button": "#121212",
+          "button": "#FA8C01",
           "button_label": "#FFFFFF",
-          "secondary_button": "#121212",
-          "secondary_button_label": "#121212",
+          "secondary_button": "#ffffff",
+          "secondary_button_label": "#FA8C01",
           "icons": "#FFFFFF"
         }
       }
