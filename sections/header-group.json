@@ -38,11 +38,11 @@
     "header": {
       "type": "header",
       "settings": {
-        "logo_position": "middle-left",
+        "logo_position": "top-left",
         "menu": "main-menu",
         "menu_type_desktop": "mega",
         "sticky_header_type": "on-scroll-up",
-        "show_line_separator": false,
+        "show_line_separator": true,
         "color_scheme": "scheme-269f0bd2-789e-48df-8675-697b607b2396",
         "menu_color_scheme": "scheme-269f0bd2-789e-48df-8675-697b607b2396",
         "enable_country_selector": true,
