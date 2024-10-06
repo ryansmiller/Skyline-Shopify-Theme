@@ -10,7 +10,7 @@
 {
   "current": {
     "logo": "shopify://shop_images/Auto-Marine-Pro---Color---Wide_2d074e81-39b1-49eb-87e3-59565755790f.png",
-    "logo_width": 260,
+    "logo_width": 300,
     "type_header_font": "futura_n7",
     "heading_scale": 110,
     "type_body_font": "dm_sans_n4",
@@ -190,6 +190,21 @@
           "secondary_button": "#ffffff",
           "secondary_button_label": "#fa8c01",
           "icons": "#121212"
+        }
+      },
+      "scheme-f27006d7-3830-47f4-9c27-cff0e976d14b": {
+        "settings": {
+          "headline": "#121212",
+          "text": "#121212",
+          "links": "#121212",
+          "links_on_hover": "#121212",
+          "background": "#0bb1ff",
+          "background_gradient": "",
+          "button": "#fa8c01",
+          "button_label": "#ffffff",
+          "secondary_button": "#ffffff",
+          "secondary_button_label": "#fa8c01",
+          "icons": "#ffffff"
         }
       }
     }
