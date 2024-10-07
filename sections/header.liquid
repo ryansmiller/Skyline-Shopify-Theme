@@ -121,7 +121,6 @@
   -%}
   <header class="header header--{{ section.settings.logo_position }} header--mobile-{{ section.settings.mobile_logo_position }} page-width{% if section.settings.menu_type_desktop == 'drawer' %} drawer-menu{% endif %}{% if section.settings.menu != blank %} header--has-menu{% endif %}{% if has_app_block %} header--has-app{% endif %}{% if social_links %} header--has-social{% endif %}{% if shop.customer_accounts_enabled %} header--has-account{% endif %}{% if localization_forms %} header--has-localizations{% endif %}">
     
-    
     {%- liquid
       if section.settings.menu != blank
         render 'header-drawer'
@@ -228,7 +227,13 @@
           </localization-form>
         {%- endif -%}
       </div>
-      {% render 'header-search', input_id: 'Search-In-Modal' %}
+
+      {% render 'ezfy-header-search', input_id: 'Search-In-Modal', device: 'desktop' %}
+
+        {% comment %}
+      {% render 'header-search', input_id: 'Search-In-Modal', device: 'mobile' %}
+      {% endcomment %}
+    
 
       {%- if shop.customer_accounts_enabled -%}
         <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}" class="header__icon header__icon--account link focus-inset{% if section.settings.menu != blank %} small-hide{% endif %}">
@@ -237,11 +242,11 @@
               {%- if customer and customer.has_avatar? -%}
                 {{ customer | avatar }}
               {%- else -%}
-                <span class="svg-wrapper">{{ 'icon-account.svg' | inline_asset_content }}</span>
+                <span class="svg-wrapper">{{ 'icon-account.svg' | inline_asset_content }}</span> <span class="icon-description">Account</span>
               {%- endif -%}
             </account-icon>
           {%- else -%}
-            <span class="svg-wrapper">{{ 'icon-account.svg' | inline_asset_content }}</span>
+            <span class="svg-wrapper">{{ 'icon-account.svg' | inline_asset_content }}</span> <span class="icon-description">Account</span>
           {%- endif -%}
           <span class="visually-hidden">
             {%- liquid
@@ -264,9 +269,9 @@
 
       <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble">
           {% if cart == empty %}
-            <span class="svg-wrapper">{{'icon-cart-empty.svg' | inline_asset_content }}</span>
+            <span class="svg-wrapper">{{'icon-cart-empty.svg' | inline_asset_content }}</span> <span class="icon-description">Cart</span>
           {% else %}
-            <span class="svg-wrapper">{{'icon-cart.svg' | inline_asset_content }}</span>
+            <span class="svg-wrapper">{{'icon-cart.svg' | inline_asset_content }}</span> <span class="icon-description">Cart</span>
           {% endif %}
         <span class="visually-hidden">{{ 'templates.cart.cart' | t }}</span>
         {%- if cart != empty -%}
@@ -284,7 +289,8 @@
   
     {%- if section.settings.menu != blank -%}
       {%- if section.settings.logo_position == 'top-left' or section.settings.logo_position == 'top-center' -%}
-        <header class="page-width">
+        <header class="header-lower-nav">
+          <div class="page-width">
           {%- liquid  
         if section.settings.menu_type_desktop == 'dropdown'
           render 'header-dropdown-menu'
@@ -292,6 +298,7 @@
           render 'header-mega-menu'
         endif
         %}
+        </div>
       </header>
       {%- endif -%}
     {%- endif -%}

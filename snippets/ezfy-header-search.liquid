@@ -1,0 +1,101 @@
+<style>
+
+    header .template-search__search {
+        max-width: 500px;
+        width: 400px;
+        min-width: 300px;
+        margin-right: 20px;
+    }
+
+    header .header__icon {
+        height: 4.5rem;
+        width: 100px;
+    }
+
+    header .header__icon .icon-description {
+        line-height: 4.5rem;
+    }
+
+    header .search .field:after {
+        border: none !important;
+        box-shadow: none !important;
+    }
+
+    header .search .field__input:focus-visible {
+        box-shadow: none !important;
+    }
+
+    header .search__input {
+        border: 1px solid #dadada;
+        border-radius: 5px !important;
+    }
+
+    header .predictive-search {
+        min-width: 600px;
+        border: 1px solid #dadada;
+    }
+
+    
+
+</style>
+
+
+<div class="template-search__search">
+    {%- if settings.predictive_search_enabled -%}
+      <predictive-search data-loading-text="{{ 'accessibility.loading' | t }}">
+    {%- endif -%}
+    <main-search>
+      <form action="{{ routes.search_url }}" method="get" role="search" class="search">
+        <div class="field">
+          <input
+            class="search__input field__input"
+            id="Search-In-Template"
+            type="search"
+            name="q"
+            value="{{ search.terms | escape }}"
+            placeholder="{{ 'general.search.search' | t }}"
+            {%- if settings.predictive_search_enabled -%}
+              role="combobox"
+              aria-expanded="false"
+              aria-owns="predictive-search-results"
+              aria-controls="predictive-search-results"
+              aria-haspopup="listbox"
+              aria-autocomplete="list"
+              autocorrect="off"
+              autocomplete="off"
+              autocapitalize="off"
+              spellcheck="false"
+            {%- endif -%}
+          >
+          <label class="field__label" for="Search-In-Template">{{ 'general.search.search' | t }}</label>
+          <input name="options[prefix]" type="hidden" value="last">
+
+          {%- if settings.predictive_search_enabled -%}
+            <div class="predictive-search predictive-search--search-template" tabindex="-1" data-predictive-search>
+              {%- render 'loading-spinner', class: 'predictive-search__loading-state' -%}
+            </div>
+
+            <span class="predictive-search-status visually-hidden" role="status" aria-hidden="true"></span>
+          {%- endif -%}
+
+          <button
+            type="reset"
+            class="reset__button field__button{% if search.terms == blank %} hidden{% endif %}"
+            aria-label="{{ 'general.search.reset' | t }}"
+          >
+            <span class="svg-wrapper">
+              {{- 'icon-reset.svg' | inline_asset_content -}}
+            </span>
+          </button>
+          <button type="submit" class="search__button field__button" aria-label="{{ 'general.search.search' | t }}">
+            <span class="svg-wrapper">
+              {{- 'icon-search.svg' | inline_asset_content -}}
+            </span>
+          </button>
+        </div>
+      </form>
+    </main-search>
+    {%- if settings.predictive_search_enabled -%}
+      </predictive-search>
+    {%- endif -%}
+  </div>
