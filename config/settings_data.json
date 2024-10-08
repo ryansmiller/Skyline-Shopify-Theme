@@ -206,6 +206,21 @@
           "secondary_button_label": "#fa8c01",
           "icons": "#ffffff"
         }
+      },
+      "scheme-6ab6a568-61b2-42ed-a1c8-3308b49ca08c": {
+        "settings": {
+          "headline": "#ffffff",
+          "text": "#ffffff",
+          "links": "#121212",
+          "links_on_hover": "#121212",
+          "background": "#165196",
+          "background_gradient": "",
+          "button": "#c20642",
+          "button_label": "#ffffff",
+          "secondary_button": "#ffffff",
+          "secondary_button_label": "#fa8c01",
+          "icons": "#ffffff"
+        }
       }
     }
   },
