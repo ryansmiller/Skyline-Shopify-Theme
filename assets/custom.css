@@ -127,5 +127,7 @@ width: 2rem !important;
   }
 }
   
-
+.announcement-bar .h5 {
+  font-weight: 400;
+}
 
