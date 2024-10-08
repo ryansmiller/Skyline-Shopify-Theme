@@ -40,7 +40,7 @@
 
     header .search__input {
         border: 1px solid #cacaca;
-        border-radius: 50px !important;
+        border-radius: 8px !important;
         background-color: #eaeaea;
         font-size: 1.4rem;
     }
@@ -69,11 +69,18 @@
       line-height: 2.4rem;
     }
 
-   
+   .predictive-search {
+    border-radius: 8px;
+  }
+  
+  .predictive-search__results-groups-wrapper {
+    display: block;
+  }
     
 
 </style>
 
+<div class="modal-overlay"></div>
 
 <div class="template-search__search">
     {%- if settings.predictive_search_enabled -%}
