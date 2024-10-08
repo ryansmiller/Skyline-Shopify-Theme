@@ -1,5 +1,42 @@
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
 {
   "sections": {
+    "image_banner_pUQJG3": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_Tt466p": {
+          "type": "heading",
+          "settings": {
+            "heading": "You've pimped the outside of your car. Now pimp the inside.",
+            "heading_size": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "heading_Tt466p"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/bmw-6359790_1920.jpg",
+        "image_overlay_opacity": 0,
+        "image_height": "medium",
+        "desktop_content_position": "top-left",
+        "show_text_box": true,
+        "desktop_content_alignment": "left",
+        "color_scheme": "scheme-bbd0c262-6182-4ab3-baf7-cbc0ac19112e",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
     "image-with-text": {
       "type": "image-with-text",
       "blocks": {
@@ -68,6 +105,7 @@
     }
   },
   "order": [
+    "image_banner_pUQJG3",
     "image-with-text",
     "featured_collection"
   ]
