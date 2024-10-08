@@ -11,18 +11,6 @@
   "sections": {
     "image_banner_pUQJG3": {
       "type": "image-banner",
-      "blocks": {
-        "heading_Tt466p": {
-          "type": "heading",
-          "settings": {
-            "heading": "You've pimped the outside of your car. Now pimp the inside.",
-            "heading_size": "h1"
-          }
-        }
-      },
-      "block_order": [
-        "heading_Tt466p"
-      ],
       "settings": {
         "image": "shopify://shop_images/bmw-6359790_1920.jpg",
         "image_overlay_opacity": 0,
