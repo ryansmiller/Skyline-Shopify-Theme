@@ -194,7 +194,7 @@
       },
       "scheme-f27006d7-3830-47f4-9c27-cff0e976d14b": {
         "settings": {
-          "headline": "#121212",
+          "headline": "#e90f0f",
           "text": "#121212",
           "links": "#121212",
           "links_on_hover": "#121212",
@@ -215,6 +215,21 @@
           "links_on_hover": "#121212",
           "background": "#165196",
           "background_gradient": "",
+          "button": "#c20642",
+          "button_label": "#ffffff",
+          "secondary_button": "#ffffff",
+          "secondary_button_label": "#fa8c01",
+          "icons": "#ffffff"
+        }
+      },
+      "scheme-bbd0c262-6182-4ab3-baf7-cbc0ac19112e": {
+        "settings": {
+          "headline": "#e93c16",
+          "text": "#e90f0f",
+          "links": "#121212",
+          "links_on_hover": "#121212",
+          "background": "#ffffff",
+          "background_gradient": "radial-gradient(rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.35) 100%)",
           "button": "#c20642",
           "button_label": "#ffffff",
           "secondary_button": "#ffffff",

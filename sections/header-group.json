@@ -17,7 +17,7 @@
         "announcement-bar-0": {
           "type": "announcement",
           "settings": {
-            "text": "Free Shipping on Order $199+",
+            "text": "Free Shipping on Orders $199+",
             "link": ""
           }
         }
@@ -41,17 +41,17 @@
         "logo_position": "middle-left",
         "menu": "main-menu",
         "menu_type_desktop": "mega",
-        "sticky_header_type": "always",
+        "sticky_header_type": "none",
         "show_line_separator": true,
-        "color_scheme": "scheme-f27006d7-3830-47f4-9c27-cff0e976d14b",
+        "color_scheme": "scheme-1",
         "menu_color_scheme": "scheme-f27006d7-3830-47f4-9c27-cff0e976d14b",
         "enable_country_selector": true,
         "enable_language_selector": true,
         "enable_customer_avatar": true,
         "mobile_logo_position": "left",
         "margin_bottom": 0,
-        "padding_top": 8,
-        "padding_bottom": 8
+        "padding_top": 12,
+        "padding_bottom": 12
       }
     }
   },
