@@ -9,20 +9,59 @@
 */
 {
   "sections": {
-    "image_banner_pUQJG3": {
-      "type": "image-banner",
+    "slideshow_bxcXEX": {
+      "type": "slideshow",
+      "blocks": {
+        "slide_HqaHfm": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/bmw-6359790_1920.jpg",
+            "heading": "",
+            "heading_size": "hxl",
+            "subheading": "",
+            "button_label": "",
+            "link": "",
+            "button_style_secondary": false,
+            "box_align": "middle-center",
+            "show_text_box": false,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "",
+            "text_alignment_mobile": "center"
+          }
+        },
+        "slide_WknDPA": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/istockphoto-171578812-1024x1024.jpg",
+            "heading": "",
+            "heading_size": "h1",
+            "subheading": "",
+            "button_label": "",
+            "link": "",
+            "button_style_secondary": false,
+            "box_align": "middle-center",
+            "show_text_box": false,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "",
+            "text_alignment_mobile": "center"
+          }
+        }
+      },
+      "block_order": [
+        "slide_HqaHfm",
+        "slide_WknDPA"
+      ],
       "settings": {
-        "image": "shopify://shop_images/bmw-6359790_1920.jpg",
-        "image_overlay_opacity": 0,
-        "image_height": "large",
-        "desktop_content_position": "top-left",
-        "show_text_box": true,
-        "desktop_content_alignment": "left",
-        "color_scheme": "scheme-bbd0c262-6182-4ab3-baf7-cbc0ac19112e",
+        "layout": "full_bleed",
+        "slide_height": "large",
+        "slider_visual": "dots",
+        "auto_rotate": false,
+        "change_slides_speed": 5,
         "image_behavior": "none",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": true,
-        "show_text_below": true
+        "show_text_below": true,
+        "accessibility_info": "Slideshow about our brand"
       }
     },
     "image-with-text": {
@@ -93,7 +132,7 @@
     }
   },
   "order": [
-    "image_banner_pUQJG3",
+    "slideshow_bxcXEX",
     "image-with-text",
     "featured_collection"
   ]
