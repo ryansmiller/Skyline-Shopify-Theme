@@ -64,7 +64,7 @@
     header .cart-count-bubble {
       height: 2rem;
       width: 2rem;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       left: 4.2rem;
       line-height: 2.4rem;
     }
@@ -76,11 +76,27 @@
   .predictive-search__results-groups-wrapper {
     display: block;
   }
-    
+  
+  .modal-overlay.modal-on {
+    display: block;
+  }
+
+  .modal-overlay.modal-on::after {
+    position: absolute;
+    content: '';
+    background-color: rgb(var(--color-foreground), 0.5);
+    top: 100%;
+    left: 0;
+    right: 0;
+    height: 100vh;
+  }
 
 </style>
 
-<div class="modal-overlay"></div>
+
+
+
+<div id="modalOverlay" class="modal-overlay"></div>
 
 <div class="template-search__search">
     {%- if settings.predictive_search_enabled -%}
@@ -91,7 +107,7 @@
         <div class="field">
           <input
             class="search__input field__input"
-            id="Search-In-Template"
+            id="Search-In-Header"
             type="search"
             name="q"
             value="{{ search.terms | escape }}"
@@ -141,3 +157,15 @@
       </predictive-search>
     {%- endif -%}
   </div>
+
+
+  <script>
+    var x = document.getElementById("Search-In-Header");
+    x.addEventListener("focus", function (e) {
+      document.getElementById("modalOverlay").classList.add("modal-on");
+    }, true);
+    x.addEventListener("focusout", function (e) {
+      document.getElementById("modalOverlay").classList.remove("modal-on");
+    });
+  
+  </script>
