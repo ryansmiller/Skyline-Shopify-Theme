@@ -131,3 +131,17 @@ width: 2rem !important;
   font-weight: 400;
 }
 
+
+
+@media screen and (max-width: 749px){
+  .desktop-search {
+    display:none;
+  }
+}
+
+@media screen and (min-width: 750px){
+  .header__search:not(.desktop-search),
+  .mobile-search {
+    display:none !important;
+  }
+}

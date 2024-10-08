@@ -1,8 +1,5 @@
 <style>
 
-    header .link {
-
-    }
 
     header .list-unstyled .link {
       font-size: 1.4rem;
@@ -13,10 +10,15 @@
       width: 100%;
     }
 
-    header .template-search__search {
+    header .header__search.desktop-search  {
         width: 100%;
-        min-width: 300px;
+        min-width: 200px;
     }
+    
+    header .header__search.desktop-search predictive-search {
+      width: 100% !important;
+    }
+
 
     header .header__icon {
         height: 4.5rem;
@@ -98,7 +100,7 @@
 
 <div id="modalOverlay" class="modal-overlay"></div>
 
-<div class="template-search__search">
+<div class="header__search desktop-search">
     {%- if settings.predictive_search_enabled -%}
       <predictive-search data-loading-text="{{ 'accessibility.loading' | t }}">
     {%- endif -%}
@@ -125,7 +127,7 @@
               spellcheck="false"
             {%- endif -%}
           >
-          <label class="field__label" for="Search-In-Template">{{ 'general.search.search' | t }}</label>
+          <label class="field__label" for="Search-In-Header">{{ 'general.search.search' | t }}</label>
           <input name="options[prefix]" type="hidden" value="last">
 
           {%- if settings.predictive_search_enabled -%}
@@ -160,10 +162,13 @@
 
 
   <script>
+
     var x = document.getElementById("Search-In-Header");
+
     x.addEventListener("focus", function (e) {
       document.getElementById("modalOverlay").classList.add("modal-on");
-    }, true);
+    });
+
     x.addEventListener("focusout", function (e) {
       document.getElementById("modalOverlay").classList.remove("modal-on");
     });

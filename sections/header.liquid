@@ -228,11 +228,13 @@
         {%- endif -%}
       </div>
 
-      {% render 'ezfy-header-search', input_id: 'Search-In-Modal', device: 'desktop' %}
+      
+        {% render 'custom-header-search', input_id: 'Search-In-Header', device: 'desktop' %}
+     
 
-        
-      {% render 'header-search', input_id: 'Search-In-Modal', device: 'mobile' %}
-    
+     
+        {% render 'header-search', input_id: 'Search-In-Modal', device: 'mobile' %}
+      
     
 
       {%- if shop.customer_accounts_enabled -%}
