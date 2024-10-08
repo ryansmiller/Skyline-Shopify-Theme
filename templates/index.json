@@ -54,7 +54,7 @@
         "slide_WknDPA"
       ],
       "settings": {
-        "layout": "full_bleed",
+        "layout": "grid",
         "slide_height": "large",
         "slider_visual": "dots",
         "auto_rotate": true,
