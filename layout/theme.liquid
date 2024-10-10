@@ -393,9 +393,10 @@
             dataType: 'jsonp',
             success: function(json) {
         
-                var city = json.location.city;
+                var city = json.city;
                 // output the "calling_code" object inside "location"
                 alert(city);
+                console.log(json);
                 
             }
         });
