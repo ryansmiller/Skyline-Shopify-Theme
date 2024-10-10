@@ -391,11 +391,18 @@
         $.ajax({
             url: 'http://api.ipapi.com/api/check?access_key=17505721a18c5ecedab926945a5611e2',   
             dataType: 'jsonp',
-            success: console.log("success with IP location"),
-            error: console.log("Error with IP Location")
+            success: function(json) {
+        
+                var city = json.location.city;
+                // output the "calling_code" object inside "location"
+                alert(city);
+                
+            }
         });
 
       });
+
+     
 
     </script>
 
