@@ -379,5 +379,31 @@
     {%- if settings.cart_type == 'drawer' -%}
       <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <script type="text/javascript">
+
+      $(document).ready(function() {
+
+        // get the API result via jQuery.ajax
+        $.ajax({
+            url: 'http://api.ipapi.com/api/check?access_key=17505721a18c5ecedab926945a5611e2',   
+            dataType: 'jsonp',
+            success: function(json) {
+
+                // output the "calling_code" object inside "location"
+                console.log(json.location.city);
+                
+            },
+            error: console.log("Error with IP Location")
+        });
+
+      });
+
+    </script>
+
+
   </body>
 </html>
