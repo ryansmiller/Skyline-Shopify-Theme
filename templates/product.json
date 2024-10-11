@@ -1,12 +1,12 @@
 /*
-* ------------------------------------------------------------
-* IMPORTANT: The contents of this file are auto-generated.
-*
-* This file may be updated by the Shopify admin theme editor
-* or related systems. Please exercise caution as any changes
-* made to this file may be overwritten.
-* ------------------------------------------------------------
-*/
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -27,13 +27,19 @@
           "settings": {
           }
         },
+        "custom_liquid_beJTqY": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<script>\n  const queryParams = new URLSearchParams({\n    requestId: \"32419750-8808-11ef-ae0b-1f5e4b798f97\",\n  });\n  fetch('/apps/apiease/integration/caller/call?' + queryParams).\n    then(function(response) {return response.json();}).\n    then(function(jsonResponse) {console.log(jsonResponse);});\n</script>"
+          }
+        },
         "custom_stock_detail_yDWiM6": {
           "type": "custom_stock_detail",
           "settings": {
             "free_shipping": true,
             "background_color": "#f1f2f6",
             "headline_color": "#27ae60",
-            "icon_color": "#FA8C01"
+            "icon_color": "#fa8c01"
           }
         },
         "shopacado_volume_discounts_discount_table_Bhecb7": {
@@ -69,6 +75,7 @@
         "title",
         "custom_price_reviews_nxm7BV",
         "custom_swatches_39zNia",
+        "custom_liquid_beJTqY",
         "custom_stock_detail_yDWiM6",
         "shopacado_volume_discounts_discount_table_Bhecb7",
         "quantity_selector",
