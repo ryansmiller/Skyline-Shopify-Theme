@@ -30,7 +30,7 @@
         "custom_liquid_beJTqY": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "<script>\n  const queryParams = new URLSearchParams({\n    requestId: \"32419750-8808-11ef-ae0b-1f5e4b798f97\",\n  });\n  fetch('/apps/apiease/integration/caller/call?' + queryParams).\n    then(function(response) {return response.json();}).\n    then(function(jsonResponse) {console.log(jsonResponse);});\n</script>\n\n<script>\n  const queryParams = new URLSearchParams({\n    requestId: \"a23313e0-8812-11ef-8ac8-7d9bb588dd65\",\n  });\n  fetch('/apps/apiease/integration/caller/call?' + queryParams).\n    then(function(response) {return response.json();}).\n    then(function(jsonResponse) {console.log(jsonResponse);});\n</script>"
+            "custom_liquid": "<script>\n  const queryParams = new URLSearchParams({\n    requestId: \"32419750-8808-11ef-ae0b-1f5e4b798f97\",\n  });\n  fetch('/apps/apiease/integration/caller/call?' + queryParams).\n    then(function(response) {return response.json();}).\n    then(function(jsonResponse) {console.log(jsonResponse);});\n\ndocument.getElementById(\"catApiResponseImage\").src = jsonResponse.data[0].output.rateReplyDetails;\n  });\n}\n\n</script>\n\n\n<div id=\"catApiResponseImage\"></div>"
           }
         },
         "custom_stock_detail_yDWiM6": {
