@@ -30,7 +30,7 @@
         "custom_liquid_beJTqY": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "<div id=\"dataDisplay\"></div>\n\n<script>\n  const queryParams = new URLSearchParams({\n    requestId: \"32419750-8808-11ef-ae0b-1f5e4b798f97\",\n  });\n  fetch('/apps/apiease/integration/caller/call?' + queryParams).\n    then(function(response) {return response.json();}).\n    then(function(jsonResponse) {\n    console.log(jsonResponse);\n\n\n\ndocument.getElementById(\"dataDisplay\").innerHTML = jsonResponse.data.output.rateReplyDetails[0].commit.dateDetail.dayFormat;\n  });\n\n</script>"
+            "custom_liquid": "<div id=\"dataDisplay\"></div>\n\n<script src=\"https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js\"></script>\n\n<script>\n  const queryParams = new URLSearchParams({\n    requestId: \"32419750-8808-11ef-ae0b-1f5e4b798f97\",\n  });\n  fetch('/apps/apiease/integration/caller/call?' + queryParams).\n    then(function(response) {return response.json();}).\n    then(function(jsonResponse) {\n    console.log(jsonResponse);\n    var deliveryDate = jsonResponse.data.output.rateReplyDetails[0].commit.dateDetail.dayFormat;\ndocument.getElementById(\"dataDisplay\").innerHTML = dayjs(deliveryDate).format('dddd, MMMM D, YYYY');\n  });\n\n  \n\n</script>"
           }
         },
         "custom_stock_detail_yDWiM6": {
