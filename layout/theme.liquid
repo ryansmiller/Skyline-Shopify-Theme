@@ -455,7 +455,15 @@
         
 
 
-        const bodyEmbeddedVar = JSON.stringify({
+        
+
+        var FedExDeliveryDate = sessionStorage.getItem('deliveryDate');
+
+        if(FedExDeliveryDate) {
+
+        } else {
+
+          const bodyEmbeddedVar = JSON.stringify({
             "accountNumber": {
                 "value": "740561073"
             }, 
@@ -491,11 +499,6 @@
             }
         });
 
-        var FedExDeliveryDate = sessionStorage.getItem('deliveryDate');
-
-        if(FedExDeliveryDate) {
-
-        } else {
             const queryParams = new URLSearchParams({
             requestId: "32419750-8808-11ef-ae0b-1f5e4b798f97",
             bodyEmbedded: bodyEmbeddedVar,
