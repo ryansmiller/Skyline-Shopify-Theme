@@ -397,11 +397,84 @@
                 // output the "calling_code" object inside "location"
                 alert(city);
                 console.log(json);
+
                 
             }
         });
 
       });
+
+
+      // 'input' refers to JSON Payload
+      var data = JSON.stringify(input);
+        
+      var xhr = new XMLHttpRequest();
+      xhr.withCredentials = true;
+
+      xhr.addEventListener("readystatechange", function () {
+        if (this.readyState === 4) {
+          console.log(this.responseText);
+        }
+      });
+
+      xhr.open("POST", "https://apis-sandbox.fedex.com/oauth/token");
+      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+      xhr.send(data);
+
+
+
+
+      // 'input' refers to JSON Payload
+
+      const input = {
+        "requestedShipment": {
+          "shipper": {
+            "address": {
+              "postalCode": "11418",
+              "countryCode": "US"
+            }
+          },
+          "recipients": [
+            {
+              "address": {
+                "postalCode": "92131",
+                "countryCode": "US"
+              }
+            }
+          ],
+          "packagingType": "YOUR_PACKAGING",
+          "requestedPackageLineItems": [
+            {
+              "weight": {
+                "units": "LB",
+                "value": "10"
+              }
+            }
+          ]
+        },
+        "carrierCodes": [
+          "FDXG"
+        ]
+      };
+
+
+      var data2 = JSON.stringify(input);
+        
+      var xhr = new XMLHttpRequest();
+      xhr.withCredentials = true;
+
+      xhr.addEventListener("readystatechange", function () {
+        if (this.readyState === 4) {
+          console.log(this.responseText);
+        }
+      });
+
+      xhr.open("POST", "https://apis-sandbox.fedex.com/availability/v1/transittimes");
+      xhr.setRequestHeader("Content-Type", "application/json");
+      xhr.setRequestHeader("X-locale", "en_US");
+      xhr.setRequestHeader("Authorization", "Bearer ");
+
+      xhr.send(data2);
 
      
 
