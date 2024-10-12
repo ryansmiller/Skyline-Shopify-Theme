@@ -504,7 +504,7 @@
             fetch('/apps/apiease/integration/caller/call?' + queryParams).
             then(function(response) {return response.json();}).
             then(function(jsonResponse) {
-            console.log(jsonResponse);
+                console.log(jsonResponse);
                 var deliveryDate = jsonResponse.data.output.rateReplyDetails[0].commit.dateDetail.dayFormat;
                 sessionStorage.setItem('deliveryDate', deliveryDate);
             });
