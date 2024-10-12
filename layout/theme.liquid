@@ -512,9 +512,10 @@
 
         var FedExDeliveryDate = sessionStorage.getItem('deliveryDate');
 
-        document.getElementById("dateInStock").innerHTML = dayjs(FedExDeliveryDate).format('dddd, MMMM D');
-        document.getElementById("shipLocation").innerHTML = "going to " + sessionStorage.getItem('city') + ", " + sessionStorage.getItem('region_code');
-
+        if(FedExDeliveryDate) {
+          document.getElementById("dateInStock").innerHTML = dayjs(FedExDeliveryDate).format('dddd, MMMM D');
+          document.getElementById("shipLocation").innerHTML = "going to " + sessionStorage.getItem('city') + ", " + sessionStorage.getItem('region_code');
+        }
   
 
 </script>
