@@ -382,7 +382,6 @@
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/luxon@3.5.0/build/global/luxon.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/luxon-business-days/dist/index.js"></script>
@@ -457,40 +456,40 @@
 
 
         const bodyEmbeddedVar = JSON.stringify({
-    "accountNumber": {
-        "value": "740561073"
-    }, 
-    "rateRequestControlParameters": {
-        "returnTransitTimes": true
-    },
-    "requestedShipment": {
-        "shipper": {
-            "address": {
-                "postalCode": "11418",
-                "countryCode": "US"
+            "accountNumber": {
+                "value": "740561073"
+            }, 
+            "rateRequestControlParameters": {
+                "returnTransitTimes": true
+            },
+            "requestedShipment": {
+                "shipper": {
+                    "address": {
+                        "postalCode": "11418",
+                        "countryCode": "US"
+                    }
+                },
+                "recipient": {
+                    "address": {
+                        "postalCode": `${toZip}`,
+                        "countryCode": "US",
+                        "residential": true
+                    }
+                },
+                "serviceType": "GROUND_HOME_DELIVERY",
+                "rateRequestType": ["ACCOUNT"],
+                "shipDateStamp": `${BizDay}`,
+                "pickupType": "USE_SCHEDULED_PICKUP",
+                "requestedPackageLineItems": [
+                    {
+                        "weight": {
+                            "units":"LB",
+                            "value": 10
+                        }
+                    }
+                ]
             }
-        },
-        "recipient": {
-            "address": {
-                "postalCode": `${toZip}`,
-                "countryCode": "US",
-                "residential": true
-            }
-        },
-        "serviceType": "GROUND_HOME_DELIVERY",
-        "rateRequestType": ["ACCOUNT"],
-        "shipDateStamp": `${BizDay}`,
-        "pickupType": "USE_SCHEDULED_PICKUP",
-        "requestedPackageLineItems": [
-            {
-                "weight": {
-                    "units":"LB",
-                    "value": 10
-                }
-            }
-        ]
-    }
-});
+        });
 
         var FedExDeliveryDate = sessionStorage.getItem('deliveryDate');
 
@@ -512,8 +511,10 @@
 
         var FedExDeliveryDate = sessionStorage.getItem('deliveryDate');
 
-        if(FedExDeliveryDate) {
-          document.getElementById("dateInStock").innerHTML = dayjs(FedExDeliveryDate).format('dddd, MMMM D');
+        var dd = DateTime.fromISO(FedExDeliveryDate);
+
+        if(dd) {
+          document.getElementById("dateInStock").innerHTML = dd.toFormat('cccc, LLLL d');
           document.getElementById("shipLocation").innerHTML = "going to " + sessionStorage.getItem('city') + ", " + sessionStorage.getItem('region_code');
         }
   
