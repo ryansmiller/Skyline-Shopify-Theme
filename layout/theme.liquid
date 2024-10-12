@@ -382,6 +382,10 @@
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3.5.0/build/global/luxon.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/luxon-business-days/dist/index.js"></script>
 
     <script type="text/javascript">
 
@@ -418,7 +422,102 @@
       
       }
 
-    </script>
+        // Start Luxon
+        var DateTime = luxon.DateTime;
+
+        // Get Current DateTime in New York
+        const now = DateTime.now().setZone("America/New_York");
+
+        // Get Current Hour in New York
+        const hour = now.hour;
+
+        // Check if Current Hour is before 2 pm. Set Date to next day if after 2 pm.
+        if (hour<14) {
+            var date = now;
+        } else {
+            var date = now.plus({days: 1});
+        }
+
+        // Check if Date is a Business Day. Set Date to next Business Day if not
+        if(date.isBusinessDay() == true) {
+            var nextBizDay = date;
+        } else {
+            var nextBizDay = date.plusBusiness();
+        }
+
+        var BizDay = nextBizDay.toFormat('yyyy-LL-dd');
+        
+        var toZip = sessionStorage.getItem('zip');
+        
+        var quotedDate = '"' + BizDay + '"';
+        console.log(quotedDate);
+        console.log(toZip);
+
+        
+
+
+        const bodyEmbeddedVar = JSON.stringify({
+    "accountNumber": {
+        "value": "740561073"
+    }, 
+    "rateRequestControlParameters": {
+        "returnTransitTimes": true
+    },
+    "requestedShipment": {
+        "shipper": {
+            "address": {
+                "postalCode": "11418",
+                "countryCode": "US"
+            }
+        },
+        "recipient": {
+            "address": {
+                "postalCode": `${toZip}`,
+                "countryCode": "US",
+                "residential": true
+            }
+        },
+        "serviceType": "GROUND_HOME_DELIVERY",
+        "rateRequestType": ["ACCOUNT"],
+        "shipDateStamp": `${BizDay}`,
+        "pickupType": "USE_SCHEDULED_PICKUP",
+        "requestedPackageLineItems": [
+            {
+                "weight": {
+                    "units":"LB",
+                    "value": 10
+                }
+            }
+        ]
+    }
+});
+
+        var FedExDeliveryDate = sessionStorage.getItem('deliveryDate');
+
+        if(FedExDeliveryDate) {
+
+        } else {
+            const queryParams = new URLSearchParams({
+            requestId: "32419750-8808-11ef-ae0b-1f5e4b798f97",
+            bodyEmbedded: bodyEmbeddedVar,
+            });
+            fetch('/apps/apiease/integration/caller/call?' + queryParams).
+            then(function(response) {return response.json();}).
+            then(function(jsonResponse) {
+            console.log(jsonResponse);
+                var deliveryDate = jsonResponse.data.output.rateReplyDetails[0].commit.dateDetail.dayFormat;
+                sessionStorage.setItem('deliveryDate', deliveryDate);
+            });
+        }
+
+        var FedExDeliveryDate = sessionStorage.getItem('deliveryDate');
+
+        document.getElementById("dateInStock").innerHTML = dayjs(FedExDeliveryDate).format('dddd, MMMM D');
+        document.getElementById("shipLocation").innerHTML = "going to " + sessionStorage.getItem('city') + ", " + sessionStorage.getItem('region_code');
+
+  
+
+</script>
 
 
   </body>
