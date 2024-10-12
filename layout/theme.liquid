@@ -381,8 +381,6 @@
     {%- endif -%}
 
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-
     <script src="https://cdn.jsdelivr.net/npm/luxon@3.5.0/build/global/luxon.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/luxon-business-days/dist/index.js"></script>
 
@@ -394,30 +392,34 @@
       
       } else {
 
-        $(document).ready(function() {
+        // Define the API URL
+        const apiUrl = 'http://api.ipapi.com/api/check?access_key=17505721a18c5ecedab926945a5611e2';
 
-          // get the API result via jQuery.ajax
-          $.ajax({
-              url: 'http://api.ipapi.com/api/check?access_key=17505721a18c5ecedab926945a5611e2',   
-              dataType: 'jsonp',
-              success: function(json) {
-          
-                  sessionStorage.setItem('ipaddress', json.ip);
-                  sessionStorage.setItem('country_code', json.country_code);
-                  sessionStorage.setItem('region_code', json.region_code);
-                  sessionStorage.setItem('city', json.city);
-                  sessionStorage.setItem('zip', json.zip);
-                  
-                  var city = json.city;
-                  // output the "calling_code" object inside "location"
-                  alert(city);
-                  console.log(json);
-
-                  
-              }
+        // Make a GET request
+        fetch(apiUrl)
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+            return response.json();
+            
+          })
+          .then(data => {
+            sessionStorage.setItem('ipaddress', data.ip);
+            sessionStorage.setItem('country_code', data.country_code);
+            sessionStorage.setItem('region_code', data.region_code);
+            sessionStorage.setItem('city', data.city);
+            sessionStorage.setItem('zip', data.zip);
+            var zip = data.zip;
+            // output the "calling_code" object inside "location"
+            alert(zip);
+            console.log(zip);
+          })
+          .catch(error => {
+            console.error('Error:', error);
           });
 
-        });
+        
       
       }
 
