@@ -134,87 +134,96 @@
               {%- when 'custom_swatches' -%}
 
                 <!-- Production -->
-                <script src="https://unpkg.com/@popperjs/core@2" defer="defer"></script>
-                <script src="https://unpkg.com/tippy.js@6" defer="defer"></script>
+                <script src="https://unpkg.com/@popperjs/core@2" defer></script>
+<script src="https://unpkg.com/tippy.js@6" defer></script>
 
-                <script>
-                  const current = window.location.href;
-                  document.querySelectorAll(`#variant-select a[href*="${current}"]`).forEach(elem => { 
-                    elem.classList.add("active");
-                  });
-                  tippy('[data-tippy-content]');
-                </script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const currentUrl = window.location.href;
+    const activeLinks = document.querySelectorAll(`#variant-select a[href*="${currentUrl}"]`);
+    
+    activeLinks.forEach(link => {
+      link.classList.add("active");
+    });
+    
+    tippy('[data-tippy-content]');
+  });
+</script>
 
-                {% assign collection_pattern = product.metafields.custom.pattern_collection.value.handle %}
-                {% assign products = collections[collection_pattern].products | sort_natural: 'title' %}
+{% assign collectionPattern = product.metafields.custom.pattern_collection.value.handle %}
+{% assign products = collections[collectionPattern].products | sort_natural: 'title' %}
 
-                {%- style -%}
+{%- style -%}
+  .block-custom-fabric-color-swatches {
+    padding: 0;
+  }
 
-                  .block-custom-fabric-color-swatches {
-                    padding: 0;
-                  }
+  .swatch-color-name {
+    color: #000; 
+    font-size: 1.6rem; 
+    padding-bottom: 20px;
+  }
 
-                  .swatch-color-name {
-                    color:#000; 
-                    font-size: 1.6rem; 
-                    padding-bottom: 20px;
-                  }
+  #variant-select {
+    position: relative;
+    list-style: none;
+    margin: 0;
+    padding: 0 0 15px 0;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(45px, 1fr));
+    gap: 10px;
+  }
 
-                  #variant-select {
-                    position: relative;
-                    list-style: none;
-                    margin: 0;
-                    padding: 0 0 15px 0;
-                    width: 100%;
-                    display: grid;
-                    grid-template-columns: repeat( auto-fill, minmax(45px, 1fr) );
-                    gap: 10px;
-                  }
+  #variant-select a {
+    width: 45px;
+    height: 45px;
+    display: block;
+    border-radius: 5px;
+    background-color: #fff;
+    transition: transform 0.25s;
+    position: relative;
+  }
 
-                  #variant-select a {
-                    width: 45px;
-                    height: 45px;
-                    display: block;
-                    border-radius: 5px;
-                    background-color: #fff;
-                    transition: transform .25s;
-                    position: relative;
-                  }
+  #variant-select .active {
+    filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.25));
+  }
 
-                  #variant-select .active {
-                    filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.25));
-                  }
+  #variant-select img {
+    border-radius: 5px;
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+  }
 
-                  #variant-select img {
-                    border-radius: 5px;
-                    max-width: 100%;
-                    max-height: 100%;
-                    display: block;
-                  }
+  #variant-select .active img,
+  #variant-select img:hover {
+    transform: scale(0.85);
+  }
+{%- endstyle -%}
 
-                  #variant-select .active img,
-                  #variant-select img:hover {
-                    transform: scale(0.85);
-                  }
+<div class="block-custom-fabric-color-swatches">
+  <div class="swatch-color-name">
+    <strong>Color:</strong> {{ product.metafields.custom.mpn }} {{ product.metafields.custom.color }}
+  </div>
 
-                {%- endstyle -%}
+  <ul id="variant-select">
+    {% for product in products %}
+      <li>
+        <a class="variant-swatch" 
+           href="{{ shop.secure_url }}{{ product.url }}" 
+           data-tippy-content="{{ product.metafields.custom.mpn }} {{ product.metafields.custom.color }}" 
+           aria-label="Check out {{ product.title }}">
+          <img src="{{ product.featured_image | image_url: width: 45 }}" 
+               width="45" 
+               height="45" 
+               alt="Image of {{ product.title }}" />
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
 
-                <div class="block-custom-fabric-color-swatches">
-
-                  <div class="swatch-color-name">
-                    <strong>Color:</strong> {{product.metafields.custom.mpn}} {{product.metafields.custom.color}}
-                  </div>
-
-                  <ul id="variant-select">
-                    {% for product in products %}
-                      <li>
-                        <a class="variant-swatch" href="{{shop.secure_url}}{{product.url}}" data-tippy-content="{{product.metafields.custom.mpn}} {{product.metafields.custom.color}}" aria-label="Check out {{product.title}}">
-                          <img src="{{ product.featured_image | image_url: width: 45 }}" width="45" height="45" alt="Image of {{product.title}}" />
-                        </a>
-                      </li>
-                    {% endfor %}
-                  </ul>
-                </div>
               {%- when 'custom_stock_detail' -%}
 
                 
