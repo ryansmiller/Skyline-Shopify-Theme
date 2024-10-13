@@ -490,6 +490,19 @@
     </script>
     
 
+    <script>  
+      const queryParams = new URLSearchParams({    
+        requestId: "ad1f94d0-8903-11ef-a65b-cf28678958d9",  
+      });  
+      fetch('/apps/apiease/integration/caller/call?' + queryParams).    
+      then(function(response) {
+        return response.json();}).    
+      then(function(jsonResponse) {
+        console.log(jsonResponse);
+        
+      });
+    </script>
+
 
   </body>
 </html>
