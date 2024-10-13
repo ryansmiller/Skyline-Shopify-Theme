@@ -383,78 +383,78 @@
 
     <script src="https://cdn.jsdelivr.net/npm/luxon@3.5.0/build/global/luxon.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/luxon-business-days/dist/index.js"></script>
-
+    
     <script type="text/javascript">
-
-      (async () => {
-        const ipaddress = sessionStorage.getItem('ipaddress');
+    (async () => {
+        const API_URL = 'http://api.ipapi.com/api/check?access_key=17505721a18c5ecedab926945a5611e2';
+        const sessionKeys = {
+            ip: 'ipaddress',
+            country: 'country_code',
+            region: 'region_code',
+            city: 'city',
+            zip: 'zip',
+            deliveryDate: 'deliveryDate'
+        };
     
-        if (!ipaddress) {
-            // Define the API URL
-            const apiUrl = 'http://api.ipapi.com/api/check?access_key=17505721a18c5ecedab926945a5611e2';
-    
+        // Function to fetch IP data
+        async function fetchIPData() {
             try {
-                // Make a GET request
-                const response = await fetch(apiUrl);
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                const data = await response.json();
-                sessionStorage.setItem('ipaddress', data.ip);
-                sessionStorage.setItem('country_code', data.country_code);
-                sessionStorage.setItem('region_code', data.region_code);
-                sessionStorage.setItem('city', data.city);
-                sessionStorage.setItem('zip', data.zip);
-                console.log(data.zip);
+                const response = await fetch(API_URL);
+                if (!response.ok) throw new Error('Network response was not ok');
+                return await response.json();
             } catch (error) {
                 console.error('Error fetching IP address:', error);
             }
         }
     
+        // Check for IP address in sessionStorage
+        const ipaddress = sessionStorage.getItem(sessionKeys.ip);
+        if (!ipaddress) {
+            const data = await fetchIPData();
+            if (data) {
+                sessionStorage.setItem(sessionKeys.ip, data.ip);
+                sessionStorage.setItem(sessionKeys.country, data.country_code);
+                sessionStorage.setItem(sessionKeys.region, data.region_code);
+                sessionStorage.setItem(sessionKeys.city, data.city);
+                sessionStorage.setItem(sessionKeys.zip, data.zip);
+                console.log(data.zip);
+            }
+        }
+    
         // Start Luxon
         const DateTime = luxon.DateTime;
-    
-        // Get Current DateTime in New York
         const now = DateTime.now().setZone("America/New_York");
         const hour = now.hour;
     
         // Set date based on current hour
         let date = (hour < 14) ? now : now.plus({ days: 1 });
-    
-        // Check if Date is a Business Day
         let nextBizDay = date.isBusinessDay() ? date : date.plusBusiness();
         const BizDay = nextBizDay.toFormat('yyyy-LL-dd');
         
-        const toZip = sessionStorage.getItem('zip');
-        const quotedDate = `"${BizDay}"`;
-        console.log(quotedDate);
+        const toZip = sessionStorage.getItem(sessionKeys.zip);
+        console.log(`Quoted Date: "${BizDay}"`);
     
-        const FedExDeliveryDate = sessionStorage.getItem('deliveryDate');
-    
-        if (!FedExDeliveryDate) {
+        // Function to fetch FedEx delivery date
+        async function fetchFedExDeliveryDate() {
             const bodyEmbeddedVar = JSON.stringify({
-                "accountNumber": { "value": "740561073" },
-                "rateRequestControlParameters": { "returnTransitTimes": true },
-                "requestedShipment": {
-                    "shipper": {
-                        "address": { "postalCode": "11418", "countryCode": "US" }
+                accountNumber: { value: "740561073" },
+                rateRequestControlParameters: { returnTransitTimes: true },
+                requestedShipment: {
+                    shipper: {
+                        address: { postalCode: "11418", countryCode: "US" }
                     },
-                    "recipient": {
-                        "address": {
-                            "postalCode": toZip,
-                            "countryCode": "US",
-                            "residential": true
+                    recipient: {
+                        address: {
+                            postalCode: toZip,
+                            countryCode: "US",
+                            residential: true
                         }
                     },
-                    "serviceType": "GROUND_HOME_DELIVERY",
-                    "rateRequestType": ["ACCOUNT"],
-                    "shipDateStamp": BizDay,
-                    "pickupType": "USE_SCHEDULED_PICKUP",
-                    "requestedPackageLineItems": [
-                        {
-                            "weight": { "units": "LB", "value": 10 }
-                        }
-                    ]
+                    serviceType: "GROUND_HOME_DELIVERY",
+                    rateRequestType: ["ACCOUNT"],
+                    shipDateStamp: BizDay,
+                    pickupType: "USE_SCHEDULED_PICKUP",
+                    requestedPackageLineItems: [{ weight: { units: "LB", value: 10 } }]
                 }
             });
     
@@ -467,23 +467,28 @@
                 const response = await fetch(`/apps/apiease/integration/caller/call?${queryParams}`);
                 const jsonResponse = await response.json();
                 console.log(jsonResponse);
-                const deliveryDate = jsonResponse.data.output.rateReplyDetails[0].commit.dateDetail.dayFormat;
-                sessionStorage.setItem('deliveryDate', deliveryDate);
+                return jsonResponse.data.output.rateReplyDetails[0].commit.dateDetail.dayFormat;
             } catch (error) {
-                console.error('Error fetching FedEx delivery date', error);
+                console.error('Error fetching FedEx delivery date:', error);
             }
         }
     
-        const dd = DateTime.fromISO(sessionStorage.getItem('deliveryDate'));
+       // const FedExDeliveryDate = sessionStorage.getItem(sessionKeys.deliveryDate);
+        if (!FedExDeliveryDate) {
+            const deliveryDate = await fetchFedExDeliveryDate();
+            if (deliveryDate) {
+                sessionStorage.setItem(sessionKeys.deliveryDate, deliveryDate);
+            }
+        }
     
+        const dd = DateTime.fromISO(sessionStorage.getItem(sessionKeys.deliveryDate));
         if (dd) {
             document.getElementById("dateInStock").innerHTML = dd.toFormat('cccc, LLLL d');
-            document.getElementById("shipLocation").innerHTML = `going to ${sessionStorage.getItem('city')}, ${sessionStorage.getItem('region_code')}`;
+            document.getElementById("shipLocation").innerHTML = `going to ${sessionStorage.getItem(sessionKeys.city)}, ${sessionStorage.getItem(sessionKeys.region)}`;
         }
     })();
-  
-
-</script>
+    </script>
+    
 
 
   </body>
