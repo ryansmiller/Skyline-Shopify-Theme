@@ -386,142 +386,103 @@
 
     <script type="text/javascript">
 
-      var ipaddress = sessionStorage.getItem('ipaddress');
-
-      if(ipaddress) {
-      
-      } else {
-
-        // Define the API URL
-        const apiUrl = 'http://api.ipapi.com/api/check?access_key=17505721a18c5ecedab926945a5611e2';
-
-        // Make a GET request
-        fetch(apiUrl)
-          .then(response => {
-            if (!response.ok) {
-              throw new Error('Network response was not ok');
+      (async () => {
+        const ipaddress = sessionStorage.getItem('ipaddress');
+    
+        if (!ipaddress) {
+            // Define the API URL
+            const apiUrl = 'http://api.ipapi.com/api/check?access_key=17505721a18c5ecedab926945a5611e2';
+    
+            try {
+                // Make a GET request
+                const response = await fetch(apiUrl);
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const data = await response.json();
+                sessionStorage.setItem('ipaddress', data.ip);
+                sessionStorage.setItem('country_code', data.country_code);
+                sessionStorage.setItem('region_code', data.region_code);
+                sessionStorage.setItem('city', data.city);
+                sessionStorage.setItem('zip', data.zip);
+                alert(data.zip);
+                console.log(data.zip);
+            } catch (error) {
+                console.error('Error fetching IP address:', error);
             }
-            return response.json();
-            
-          })
-          .then(data => {
-            sessionStorage.setItem('ipaddress', data.ip);
-            sessionStorage.setItem('country_code', data.country_code);
-            sessionStorage.setItem('region_code', data.region_code);
-            sessionStorage.setItem('city', data.city);
-            sessionStorage.setItem('zip', data.zip);
-            var zip = data.zip;
-            // output the "calling_code" object inside "location"
-            alert(zip);
-            console.log(zip);
-          })
-          .catch(error => {
-            console.error('Error:', error);
-          });
-
-        
-      
-      }
-
+        }
+    
         // Start Luxon
-        var DateTime = luxon.DateTime;
-
+        const DateTime = luxon.DateTime;
+    
         // Get Current DateTime in New York
         const now = DateTime.now().setZone("America/New_York");
-
-        // Get Current Hour in New York
         const hour = now.hour;
-
-        // Check if Current Hour is before 2 pm. Set Date to next day if after 2 pm.
-        if (hour<14) {
-            var date = now;
-        } else {
-            var date = now.plus({days: 1});
-        }
-
-        // Check if Date is a Business Day. Set Date to next Business Day if not
-        if(date.isBusinessDay() == true) {
-            var nextBizDay = date;
-        } else {
-            var nextBizDay = date.plusBusiness();
-        }
-
-        var BizDay = nextBizDay.toFormat('yyyy-LL-dd');
+    
+        // Set date based on current hour
+        let date = (hour < 14) ? now : now.plus({ days: 1 });
+    
+        // Check if Date is a Business Day
+        let nextBizDay = date.isBusinessDay() ? date : date.plusBusiness();
+        const BizDay = nextBizDay.toFormat('yyyy-LL-dd');
         
-        var toZip = sessionStorage.getItem('zip');
-        
-        var quotedDate = '"' + BizDay + '"';
+        const toZip = sessionStorage.getItem('zip');
+        const quotedDate = `"${BizDay}"`;
         console.log(quotedDate);
         console.log(toZip);
-
-        
-
-
-        
-
-        var FedExDeliveryDate = sessionStorage.getItem('deliveryDate');
-
-        if(FedExDeliveryDate) {
-
-        } else {
-
-          const bodyEmbeddedVar = JSON.stringify({
-            "accountNumber": {
-                "value": "740561073"
-            }, 
-            "rateRequestControlParameters": {
-                "returnTransitTimes": true
-            },
-            "requestedShipment": {
-                "shipper": {
-                    "address": {
-                        "postalCode": "11418",
-                        "countryCode": "US"
-                    }
-                },
-                "recipient": {
-                    "address": {
-                        "postalCode": `${toZip}`,
-                        "countryCode": "US",
-                        "residential": true
-                    }
-                },
-                "serviceType": "GROUND_HOME_DELIVERY",
-                "rateRequestType": ["ACCOUNT"],
-                "shipDateStamp": `${BizDay}`,
-                "pickupType": "USE_SCHEDULED_PICKUP",
-                "requestedPackageLineItems": [
-                    {
-                        "weight": {
-                            "units":"LB",
-                            "value": 10
+    
+        const FedExDeliveryDate = sessionStorage.getItem('deliveryDate');
+    
+        if (!FedExDeliveryDate) {
+            const bodyEmbeddedVar = JSON.stringify({
+                "accountNumber": { "value": "740561073" },
+                "rateRequestControlParameters": { "returnTransitTimes": true },
+                "requestedShipment": {
+                    "shipper": {
+                        "address": { "postalCode": "11418", "countryCode": "US" }
+                    },
+                    "recipient": {
+                        "address": {
+                            "postalCode": toZip,
+                            "countryCode": "US",
+                            "residential": true
                         }
-                    }
-                ]
-            }
-        });
-
+                    },
+                    "serviceType": "GROUND_HOME_DELIVERY",
+                    "rateRequestType": ["ACCOUNT"],
+                    "shipDateStamp": BizDay,
+                    "pickupType": "USE_SCHEDULED_PICKUP",
+                    "requestedPackageLineItems": [
+                        {
+                            "weight": { "units": "LB", "value": 10 }
+                        }
+                    ]
+                }
+            });
+    
             const queryParams = new URLSearchParams({
-            requestId: "32419750-8808-11ef-ae0b-1f5e4b798f97",
-            bodyEmbedded: bodyEmbeddedVar,
+                requestId: "32419750-8808-11ef-ae0b-1f5e4b798f97",
+                bodyEmbedded: bodyEmbeddedVar,
             });
-            fetch('/apps/apiease/integration/caller/call?' + queryParams).
-            then(function(response) {return response.json();}).
-            then(function(jsonResponse) {
+    
+            try {
+                const response = await fetch(`/apps/apiease/integration/caller/call?${queryParams}`);
+                const jsonResponse = await response.json();
                 console.log(jsonResponse);
-                var deliveryDate = jsonResponse.data.output.rateReplyDetails[0].commit.dateDetail.dayFormat;
+                const deliveryDate = jsonResponse.data.output.rateReplyDetails[0].commit.dateDetail.dayFormat;
                 sessionStorage.setItem('deliveryDate', deliveryDate);
-            });
+            } catch (error) {
+                console.error('Error fetching FedEx delivery date', error);
+            }
         }
-
-        var FedExDeliveryDate = sessionStorage.getItem('deliveryDate');
-
-        var dd = DateTime.fromISO(FedExDeliveryDate);
-
-        if(dd) {
-          document.getElementById("dateInStock").innerHTML = dd.toFormat('cccc, LLLL d');
-          document.getElementById("shipLocation").innerHTML = "going to " + sessionStorage.getItem('city') + ", " + sessionStorage.getItem('region_code');
+    
+        const dd = DateTime.fromISO(sessionStorage.getItem('deliveryDate'));
+    
+        if (dd) {
+            document.getElementById("dateInStock").innerHTML = dd.toFormat('cccc, LLLL d');
+            document.getElementById("shipLocation").innerHTML = `going to ${sessionStorage.getItem('city')}, ${sessionStorage.getItem('region_code')}`;
         }
+    })();
   
 
 </script>
