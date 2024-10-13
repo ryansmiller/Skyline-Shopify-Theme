@@ -229,49 +229,48 @@
                 
 
                 {%- style -%}
-
                 .stock-details {
-                  background-color:{{ block.settings.background_color }}; 
-                  color: #000; 
-                  padding: 20px 20px 10px 20px;
-                  border-radius:8px;
+                  background-color: {{ block.settings.background_color }};
+                  color: #000;
+                  padding: 20px 20px 10px;
+                  border-radius: 8px;
                 }
-
+              
                 @media screen and (min-width: 750px) {
                   .stock-details {
-                    padding: 20px 30px 10px 25px; 
+                    padding: 20px 30px 10px 25px;
                   }
                 }
-
+              
                 .stock-details h4 {
-                  color:{{ block.settings.headline_color }}; 
-                  line-height: 2rem; 
-                  font-size: 2rem; 
+                  color: {{ block.settings.headline_color }};
+                  line-height: 2rem;
+                  font-size: 2rem;
                   padding-bottom: 15px;
-                  margin:0;
+                  margin: 0;
                   font-weight: 700;
                 }
-
+              
                 .stock-details ul {
-                  padding: 10px 0 0 0; 
-                  margin: 0; 
-                  list-style-type:none;
+                  padding: 10px 0 0;
+                  margin: 0;
+                  list-style-type: none;
                 }
-
+              
                 .stock-details li {
                   display: flex;
                   flex-direction: row;
                   align-items: center;
-                padding-bottom:15px;
-                font-size:1.4rem !important;
-                line-height: 2.2rem;
+                  padding-bottom: 15px;
+                  font-size: 1.4rem !important;
+                  line-height: 2.2rem;
                 }
-
+              
                 .stock-details li picture {
                   min-width: 45px !important;
                   display: block;
                 }
-
+              
                 .stock-details i {
                   display: block;
                   width: 100%;
@@ -280,56 +279,53 @@
                   color: {{ block.settings.icon_color }};
                   vertical-align: middle;
                 }
-
+              
                 .stock-details .fast-delivery i {
-                padding-left:2px;
-                font-size:25px;
+                  padding-left: 2px;
+                  font-size: 25px;
                 }
-
-                {%- endstyle -%}
-
-                
-                  <div class="stock-details">
-                    <h4>In Stock: {{product.first_available_variant.inventory_quantity}} yards</h4>
-                      <ul>
-                        {%- if block.settings.free_shipping -%}
-                        <li class="free-shipping">
-                          <picture>
-                            <i class="fa-solid fa-truck-fast"></i>
+              {%- endstyle -%}
+              
+              <div class="stock-details">
+                <h4>In Stock: {{ product.first_available_variant.inventory_quantity }} yards</h4>
+                <ul>
+                  {%- if block.settings.free_shipping -%}
+                    <li class="free-shipping">
+                      <picture>
+                        <i class="fa-solid fa-truck-fast"></i>
+                      </picture>
+                      <div class="stock-details-content">
+                        <strong><a href="#">FREE Shipping</a></strong> on orders $199+
+                      </div>
+                    </li>
+                  {%- endif -%}
+              
+                  {%- for variant in product.variants -%}
+                    {%- if variant.option1 == 'Yards' and variant.available -%}
+                      <li class="fast-delivery">
+                        <picture>
+                          <i class="fa-solid fa-bolt"></i>
                         </picture>
-                          <div class="stock-details-content">
-                            <strong><a href="#">FREE Shipping</a></strong> on orders $199+
-                          </div>
-                        </li>
-                        {%- endif -%}
-
-                        {%- for variant in product.variants -%}
-                          {%- if variant.option1 == 'Yards' -%}
-                            {%- if variant.available == true -%}
-                              <li class="fast-delivery">
-                                <picture>
-                                  <i class="fa-solid fa-bolt"></i>
-                                </picture>
-                                <div class="stock-details-content">
-                                  <strong><a href="#">FAST Delivery</a></strong>. Buy now and receive In Stock orders by <strong><span id="dateInStock"></span></strong> <span id="shipLocation"></span>
-                                </div>
-                              </li>
-                            {%- endif -%}
-                          {%- endif -%}
-                        {%- endfor -%}
-
-                        {%- if product.metafields.custom.product_availability != "Discontinued" -%}
-                        <li class="more-stock-available">
-                          <picture>
-                            <i class="fa-solid fa-boxes-stacked"></i>
-                          </picture>
-                          <div class="stock-details-content">
-                            <strong><a href="#">MORE Stock Available</a></strong>. Buy now and receive your order within 2 to 3 weeks.
-                          </div>
-                        </li>
-                        {%- endif -%}
-                      </ul>
-                  </div>
+                        <div class="stock-details-content">
+                          <strong><a href="#">FAST Delivery</a></strong>. Buy now and receive In Stock orders by <strong><span id="dateInStock"></span></strong> <span id="shipLocation"></span>
+                        </div>
+                      </li>
+                    {%- endif -%}
+                  {%- endfor -%}
+              
+                  {%- if product.metafields.custom.product_availability != "Discontinued" -%}
+                    <li class="more-stock-available">
+                      <picture>
+                        <i class="fa-solid fa-boxes-stacked"></i>
+                      </picture>
+                      <div class="stock-details-content">
+                        <strong><a href="#">MORE Stock Available</a></strong>. Buy now and receive your order within 2 to 3 weeks.
+                      </div>
+                    </li>
+                  {%- endif -%}
+                </ul>
+              </div>
+              
 
               {%- when 'custom_memo_sample' -%}    
 
