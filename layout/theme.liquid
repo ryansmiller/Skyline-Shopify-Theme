@@ -405,7 +405,6 @@
                 sessionStorage.setItem('region_code', data.region_code);
                 sessionStorage.setItem('city', data.city);
                 sessionStorage.setItem('zip', data.zip);
-                alert(data.zip);
                 console.log(data.zip);
             } catch (error) {
                 console.error('Error fetching IP address:', error);
@@ -429,7 +428,6 @@
         const toZip = sessionStorage.getItem('zip');
         const quotedDate = `"${BizDay}"`;
         console.log(quotedDate);
-        console.log(toZip);
     
         const FedExDeliveryDate = sessionStorage.getItem('deliveryDate');
     
