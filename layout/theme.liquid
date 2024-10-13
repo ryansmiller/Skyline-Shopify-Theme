@@ -473,7 +473,7 @@
             }
         }
     
-       // const FedExDeliveryDate = sessionStorage.getItem(sessionKeys.deliveryDate);
+        const FedExDeliveryDate = sessionStorage.getItem(sessionKeys.deliveryDate);
         if (!FedExDeliveryDate) {
             const deliveryDate = await fetchFedExDeliveryDate();
             if (deliveryDate) {
