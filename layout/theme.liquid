@@ -437,8 +437,10 @@
         // Function to fetch FedEx delivery date
         async function fetchFedExDeliveryDate() {
 
+          const token = "{{shop.metafields.custom.fedex_access_key }}";
+
           const headerParamsEmbeddedVar = JSON.stringify({
-            authorization: `Bearer {{shop.metafields.custom.fedex_access_key }}`,
+            authorization: `Bearer ${token}`,
           });
 
           const bodyEmbeddedVar = JSON.stringify({
