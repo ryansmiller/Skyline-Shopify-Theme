@@ -433,14 +433,12 @@
         
         const toZip = sessionStorage.getItem(sessionKeys.zip);
         console.log(`Quoted Date: "${BizDay}"`);
-
-        const accessToken = {{shop.metafields.custom.fedex_access_key }};
     
         // Function to fetch FedEx delivery date
         async function fetchFedExDeliveryDate() {
 
           const headerParamsEmbeddedVar = JSON.stringify({
-            authorization: "Bearer " + accessToken,
+            authorization: "Bearer " + {{shop.metafields.custom.fedex_access_key }},
           });
 
           const bodyEmbeddedVar = JSON.stringify({
