@@ -433,44 +433,52 @@
         
         const toZip = sessionStorage.getItem(sessionKeys.zip);
         console.log(`Quoted Date: "${BizDay}"`);
+
+        const accessToken = {{shop.metafields.custom.fedex_access_key }};
     
         // Function to fetch FedEx delivery date
         async function fetchFedExDeliveryDate() {
-            const bodyEmbeddedVar = JSON.stringify({
-                accountNumber: { value: "740561073" },
-                rateRequestControlParameters: { returnTransitTimes: true },
-                requestedShipment: {
-                    shipper: {
-                        address: { postalCode: "11418", countryCode: "US" }
-                    },
-                    recipient: {
-                        address: {
-                            postalCode: toZip,
-                            countryCode: "US",
-                            residential: true
-                        }
-                    },
-                    serviceType: "GROUND_HOME_DELIVERY",
-                    rateRequestType: ["ACCOUNT"],
-                    shipDateStamp: BizDay,
-                    pickupType: "USE_SCHEDULED_PICKUP",
-                    requestedPackageLineItems: [{ weight: { units: "LB", value: 10 } }]
-                }
-            });
-    
-            const queryParams = new URLSearchParams({
-                requestId: "32419750-8808-11ef-ae0b-1f5e4b798f97",
-                bodyEmbedded: bodyEmbeddedVar,
-            });
-    
-            try {
-                const response = await fetch(`/apps/apiease/integration/caller/call?${queryParams}`);
-                const jsonResponse = await response.json();
-                console.log(jsonResponse);
-                return jsonResponse.data.output.rateReplyDetails[0].commit.dateDetail.dayFormat;
-            } catch (error) {
-                console.error('Error fetching FedEx delivery date:', error);
-            }
+
+          const headerParamsEmbeddedVar = JSON.stringify({
+            authorization: "Bearer " + accessToken,
+          });
+
+          const bodyEmbeddedVar = JSON.stringify({
+              accountNumber: { value: "740561073" },
+              rateRequestControlParameters: { returnTransitTimes: true },
+              requestedShipment: {
+                  shipper: {
+                      address: { postalCode: "11418", countryCode: "US" }
+                  },
+                  recipient: {
+                      address: {
+                          postalCode: toZip,
+                          countryCode: "US",
+                          residential: true
+                      }
+                  },
+                  serviceType: "GROUND_HOME_DELIVERY",
+                  rateRequestType: ["ACCOUNT"],
+                  shipDateStamp: BizDay,
+                  pickupType: "USE_SCHEDULED_PICKUP",
+                  requestedPackageLineItems: [{ weight: { units: "LB", value: 10 } }]
+              }
+          });
+
+          const queryParams = new URLSearchParams({
+            requestId: "a23313e0-8812-11ef-8ac8-7d9bb588dd65",
+            headersEmbedded: headerParamsEmbeddedVar,
+            bodyEmbedded: bodyEmbeddedVar,
+          });
+
+          try {
+            const response = await fetch(`/apps/apiease/integration/caller/call?${queryParams}`);
+            const jsonResponse = await response.json();
+            console.log(jsonResponse);
+            return jsonResponse.data.output.rateReplyDetails[0].commit.dateDetail.dayFormat;
+          } catch (error) {
+              console.error('Error fetching FedEx delivery date:', error);
+          }
         }
     
         const FedExDeliveryDate = sessionStorage.getItem(sessionKeys.deliveryDate);
@@ -489,20 +497,5 @@
     })();
     </script>
     
-
-    <script>  
-      const queryParams = new URLSearchParams({    
-        requestId: "ad1f94d0-8903-11ef-a65b-cf28678958d9",  
-      });  
-      fetch('/apps/apiease/integration/caller/call?' + queryParams).    
-      then(function(response) {
-        return response.json();}).    
-      then(function(jsonResponse) {
-        console.log(jsonResponse);
-        
-      });
-    </script>
-
-
   </body>
 </html>
