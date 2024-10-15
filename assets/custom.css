@@ -49,6 +49,10 @@ width: 2rem !important;
   transition-timing-function: ease;
   }
 
+  .header svg.spinner {
+    display: none !important;
+  }
+
 /* Product Edits */ 
 
 .product__title {
