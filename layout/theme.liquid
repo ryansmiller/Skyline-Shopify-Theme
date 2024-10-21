@@ -389,15 +389,15 @@
         
         const sessionKeys = {
             ip: 'ipaddress',
-            country: 'country_code2',
-            region: 'state_prov',
+            country: 'country',
+            region: 'region_code',
             city: 'city',
-            zip: 'zipcode',
+            zip: 'postal',
             deliveryDate: 'deliveryDate'
         };
     
         // Function to fetch IP data
-        const API_URL = 'https://api.ipgeolocation.io/ipgeo?apiKey=962d8822aecb4dc6a4b06733363ab42c';
+        const API_URL = 'https://ipapi.co/json/';
         async function fetchIPData() {
             try {
               const response = await fetch(API_URL);
@@ -414,11 +414,11 @@
             const data = await fetchIPData();
             if (data) {
                 sessionStorage.setItem(sessionKeys.ip, data.ip);
-                sessionStorage.setItem(sessionKeys.country, data.country_code2);
-                sessionStorage.setItem(sessionKeys.region, data.state_prov);
+                sessionStorage.setItem(sessionKeys.country, data.country);
+                sessionStorage.setItem(sessionKeys.region, data.region_code);
                 sessionStorage.setItem(sessionKeys.city, data.city);
-                sessionStorage.setItem(sessionKeys.zip, data.zipcode);
-                console.log(data.zip);
+                sessionStorage.setItem(sessionKeys.zip, data.postal);
+                console.log(data.postal);
             }
         }
     
