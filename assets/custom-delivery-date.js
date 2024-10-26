@@ -43,7 +43,7 @@
         let date = (hour < 14) ? now : now.plus({ days: 1 });
     
         // Ensure proper use of Luxon Business Days
-        const nextBizDay = date.isBusinessDay() ? date : date.plusBusinessDays(1);
+        const nextBizDay = date.isBusinessDay() ? date : date.plusBusiness(1);
         const BizDay = nextBizDay.toFormat('yyyy-LL-dd');
     
         const toZip = sessionStorage.getItem(sessionKeys.zip);
