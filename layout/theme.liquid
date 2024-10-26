@@ -381,9 +381,9 @@
     {%- endif -%}
 
 
-    <script src="https://cdn.jsdelivr.net/npm/luxon@3.5.0/build/global/luxon.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/luxon-business-days@3.0.1/dist/index.js"></script>
-    
+    <script src="{{ 'luxon.min.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'luxon-business-days.min.js' | asset_url }}" defer="defer"></script>
+
     <script type="text/javascript">
     (async () => {
         const sessionKeys = {
