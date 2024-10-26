@@ -172,8 +172,8 @@
           "background_gradient": "",
           "button": "#faca01",
           "button_label": "#000000",
-          "secondary_button": "#ffffff",
-          "secondary_button_label": "#f93d3d",
+          "secondary_button": "#f93d3d",
+          "secondary_button_label": "#ffffff",
           "icons": "#ffffff"
         }
       },
