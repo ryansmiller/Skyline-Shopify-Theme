@@ -382,7 +382,7 @@
 
 
     <script src="https://cdn.jsdelivr.net/npm/luxon@3.5.0/build/global/luxon.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/luxon-business-days@2.7.0/dist/index.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/luxon-business-days@3.0.1/dist/index.js" defer></script>
     
     <script type="text/javascript">
     (async () => {
@@ -422,7 +422,8 @@
         }
     
         // Start Luxon
-        const now = luxon.DateTime.now().setZone("America/New_York");
+        var DateTime = luxon.DateTime;
+        const now = DateTime.now().setZone("America/New_York");
         const hour = now.hour;
     
         // Set date based on current hour
