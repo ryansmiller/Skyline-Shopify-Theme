@@ -94,6 +94,14 @@
   	width: 60%;
   }
 
+  .pd-left .performance-specs  .mf-key {
+    width: 50%;
+  }
+
+  .pd-left .performance-specs .mf-value {
+    width: 50%
+  }
+
 }
 
 .degree-farenheight {
@@ -412,9 +420,21 @@
       product.metafields.custom.colorfastness_to_artificial_weathering != blank
 %}  
 
-<div class="pd-section">
+<div class="pd-section performance-specs">
 
 <h3>Performance Specs</h3>
+
+<div class="product-metafields">
+  <span class="mf-key">ACT® Registered Certification Marks:</span>
+  <span class="mf-value">
+    <img style="display: inline-block" src="https://contracttextiles.org/wp-content/uploads/2016/09/Icon-top-level-with-label-flammability-small.jpg" width="30" />
+    <img style="display:inline-block" src="https://contracttextiles.org/wp-content/uploads/2016/09/Icon-top-level-with-label-wet-dry-crocking-small.jpg" width="30" />
+    <img style="display:inline-block" src="https://contracttextiles.org/wp-content/uploads/2016/09/Icon-top-level-with-label-colorfastness-to-light-small.jpg" width="30" />
+    <img style="display:inline-block" src="https://contracttextiles.org/wp-content/uploads/2016/09/Icon-top-level-with-label-physical-properties-small.jpg" width="30" />
+    <img style="display:inline-block" src="https://contracttextiles.org/wp-content/uploads/2016/09/Icon-top-level-with-label-abrasion-high-traffic-small.jpg" width="30" />
+  </span>
+</div>
+
 
 {% if product.metafields.custom.abrasion_resistance %}
 
@@ -441,8 +461,8 @@
 {% if product.metafields.custom.colorfastness_to_uv %}
 
 <div class="product-metafields">
-    <span class="mf-key">Colorfastness to UV:</span> 
-    <span class="mf-value">{{product.metafields.custom.colorfastness_to_uv.value}} Hours</span>
+    <span class="mf-key">Colorfastness to UV:<br /><span style="font-weight: 400";>ASTM D-4329 / CFFA-2 c2</span></span> 
+    <span class="mf-value">{{product.metafields.custom.colorfastness_to_uv.value}} Hours - Pass</span>
 </div>
 
 {% endif %}
@@ -451,7 +471,7 @@
 
 <div class="product-metafields">
     <span class="mf-key">Colorfastness to Light:</span> 
-    <span class="mf-value">{{product.metafields.custom.colorfastness_to_light.value}} Hours</span>
+    <span class="mf-value">{{product.metafields.custom.colorfastness_to_light.value}} Hours - Pass</span>
 </div>
 
 {% endif %}
@@ -459,8 +479,8 @@
 {% if product.metafields.custom.colorfastness_to_artificial_weathering %}
 
 <div class="product-metafields">
-    <span class="mf-key">Colorfastness to  Weathering:</span> 
-    <span class="mf-value">{{product.metafields.custom.colorfastness_to_artificial_weathering.value}} Hours</span>
+    <span class="mf-key">Colorfastness to  Weathering:<br /><span style="font-weight: 400";>ISO 105-B04 / WeatherOmeter</span></span> 
+    <span class="mf-value">{{product.metafields.custom.colorfastness_to_artificial_weathering.value}} Hours - Pass</span>
 </div>
 
 {% endif %}
@@ -481,7 +501,19 @@
 <h3>Features</h3>
   <ul>
     {% for metavalue in product.metafields.custom.product_features.value %}
-      <li>{{metavalue}}</li>
+      {%  if metavalue == 'Mildew Resistance' %}
+        <li>{{metavalue}} - ASTM G21</li>
+      {% elsif metavalue == 'Bacterial Resistance' %}  
+        <li>{{metavalue}} - AATCC 147</li>
+      {% elsif metavalue == 'Static Resistance' %}  
+        <li>{{metavalue}} - ASTM D257</li>
+      {% elsif metavalue == 'Pink Stain Resistance' %}  
+        <li>{{metavalue}} - ASTM E1428</li>
+      {% elsif metavalue == 'Sulfide Stain Resistance' %}  
+        <li>{{metavalue}} - FISHER BODY TM 31-12</li>
+      {% else %}
+        <li>{{metavalue}}</li>
+      {% endif %}
     {% endfor %}
   </ul>
 </div>
