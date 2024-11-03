@@ -172,8 +172,8 @@
           "background_gradient": "",
           "button": "#faca01",
           "button_label": "#000000",
-          "secondary_button": "#ffffff",
-          "secondary_button_label": "#f93d3d",
+          "secondary_button": "#f93d3d",
+          "secondary_button_label": "#ffffff",
           "icons": "#ffffff"
         }
       },
@@ -183,7 +183,7 @@
           "text": "#000000",
           "links": "#16abd7",
           "links_on_hover": "#121212",
-          "background": "#ffffff",
+          "background": "#fafafa",
           "background_gradient": "",
           "button": "#f93d3d",
           "button_label": "#121212",
