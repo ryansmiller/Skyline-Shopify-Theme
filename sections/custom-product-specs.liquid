@@ -498,7 +498,7 @@
 
 {%- if product.metafields.custom.product_features != blank -%}  
 <div class="pd-section">
-<h3>Features</h3>
+<h3>Performance Features</h3>
   <ul>
     {% for metavalue in product.metafields.custom.product_features.value %}
         <li>{{metavalue}}</li>
@@ -518,6 +518,17 @@
   <p>"Flammability" and any corresponding data refer to the typical performance in the tests indicated and should not be construed to imply the behavior of this or any other material under actual fire conditions.</p>
 </div>
 {%- endif -%}
+
+{%- if product.metafields.custom.compliance_and_certifications != blank -%}
+  <div class="pd-section">
+  <h3>Compliance &amp; Certifications</h3>
+    <ul style="margin-bottom: 20px">
+      {% for metavalue in product.metafields.custom.compliance_and_certifications.value %}
+        <li>{{metavalue}}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  {%- endif -%}
 
 
 
