@@ -443,7 +443,7 @@
     <script type="text/javascript">
       var num = {{product.metafields.custom.abrasion_resistance}};
       var result = num.toLocaleString();
-      document.getElementById("abrasion-resistance").innerHTML = result + ' double rubs';
+      document.getElementById("abrasion-resistance").innerHTML = result + '+ double rubs';
     </script>
 </div>
 
@@ -501,19 +501,7 @@
 <h3>Features</h3>
   <ul>
     {% for metavalue in product.metafields.custom.product_features.value %}
-      {%  if metavalue == 'Mildew Resistance' %}
-        <li>{{metavalue}} - ASTM G21</li>
-      {% elsif metavalue == 'Bacterial Resistance' %}  
-        <li>{{metavalue}} - AATCC 147</li>
-      {% elsif metavalue == 'Static Resistance' %}  
-        <li>{{metavalue}} - ASTM D257</li>
-      {% elsif metavalue == 'Pink Stain Resistance' %}  
-        <li>{{metavalue}} - ASTM E1428</li>
-      {% elsif metavalue == 'Sulfide Stain Resistance' %}  
-        <li>{{metavalue}} - FISHER BODY TM 31-12</li>
-      {% else %}
         <li>{{metavalue}}</li>
-      {% endif %}
     {% endfor %}
   </ul>
 </div>
