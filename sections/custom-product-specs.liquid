@@ -531,6 +531,18 @@
 </div>
 {%- endif -%}
 
+{%- if product.metafields.custom.environmental_specs != blank -%}
+  <div class="pd-section">
+  <h3>Environmental Specs</h3>
+    <ul style="margin-bottom: 20px">
+      {% for metavalue in product.metafields.custom.environmental_specs.value %}
+        <li>{{metavalue}}</li>
+      {% endfor %}
+    </ul>
+    <p>"Flammability" and any corresponding data refer to the typical performance in the tests indicated and should not be construed to imply the behavior of this or any other material under actual fire conditions.</p>
+  </div>
+  {%- endif -%}
+
 
 
   <div class="pd-section">
