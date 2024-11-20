@@ -161,6 +161,20 @@ width: 2rem !important;
   }
 }
 
+@media screen and (min-width: 990px) {
+  .header--top-left, .header--middle-left:not(.header--has-menu) {
+    grid-template-areas: 
+    'heading icons'
+    'navigation navigation';
+    grid-template-columns: auto 1fr;
+  }
+  .header__heading {
+    padding-right: 30px;
+  }
+}
+
+
+
 
 slideshow-component {
   padding: 0 !important;

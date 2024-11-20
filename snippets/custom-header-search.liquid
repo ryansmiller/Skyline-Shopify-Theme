@@ -2,8 +2,15 @@
 
 
     header .list-unstyled .link {
-      font-size: 1.4rem;
-      font-weight: 400;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #000 !important;
+    }
+
+    header .header__menu-item {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #000 !important;
     }
 
     header .header__icons {
@@ -40,9 +47,9 @@
     }
 
     header .search__input {
-        border: 1px solid #cacaca;
-        border-radius: 8px !important;
-        background-color: #f7f7f7;
+        border: 2px solid #000000 !important;
+        border-radius: 24px !important;
+        background-color: #fff;
         font-size: 1.4rem;
     }
 
@@ -58,12 +65,20 @@
         background-color: #ffffff;
     }
 
+    header .list-menu--inline {
+    display: flex;
+  }
+
     @media screen and (min-width: 990px) {
       header .predictive-search-results {
-        border: 1px solid #dadada;
+        
         min-width: 600px;
-        border-radius: 8px;
+       
       }
+
+      header .list-menu li:last-child {
+      margin-left: auto;
+    }
     }
 
     header .header__active-menu-item {
