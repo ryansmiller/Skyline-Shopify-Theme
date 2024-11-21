@@ -14,18 +14,15 @@
       "blocks": {
         "title": {
           "type": "title",
-          "settings": {
-          }
+          "settings": {}
         },
         "custom_price_reviews_nxm7BV": {
           "type": "custom_price_reviews",
-          "settings": {
-          }
+          "settings": {}
         },
         "custom_swatches_39zNia": {
           "type": "custom_swatches",
-          "settings": {
-          }
+          "settings": {}
         },
         "custom_stock_detail_yDWiM6": {
           "type": "custom_stock_detail",
@@ -51,8 +48,7 @@
         },
         "quantity_selector": {
           "type": "quantity_selector",
-          "settings": {
-          }
+          "settings": {}
         },
         "buy_buttons": {
           "type": "buy_buttons",
@@ -63,8 +59,7 @@
         },
         "custom_memo_sample_8GbzFY": {
           "type": "custom_memo_sample",
-          "settings": {
-          }
+          "settings": {}
         }
       },
       "block_order": [
@@ -81,7 +76,7 @@
       "settings": {
         "enable_sticky_info": true,
         "color_scheme": "scheme-1",
-        "media_size": "medium",
+        "media_size": "small",
         "constrain_to_viewport": false,
         "media_fit": "contain",
         "gallery_layout": "thumbnail",
