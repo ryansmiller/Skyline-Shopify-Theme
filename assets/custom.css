@@ -168,7 +168,8 @@ width: 2rem !important;
     'navigation navigation';
     grid-template-columns: auto 1fr;
   }
-  .header__heading {
+  .header__heading,
+  .header__heading-logo-wrapper {
     padding-right: 30px;
   }
 }
