@@ -8,8 +8,8 @@
     }
 
     header .header__menu-item {
-      font-size: 1.6rem;
-      font-weight: 700;
+      font-size: 1.4rem;
+      font-weight: 400;
       color: #000 !important;
     }
 
@@ -49,20 +49,7 @@
         border-radius: 24px;
         background-color: #dfe6e9;
         font-size: 1.4rem;
-        &[aria-expanded="true"] {
-          -webkit-border-top-left-radius: 24px;
-          -webkit-border-top-right-radius: 24px;
-          -webkit-border-bottom-left-radius: 0;
-          -webkit-border-bottom-right-radius: 0;
-          -moz-border-radius-topleft: 24px;
-          -moz-border-radius-topright: 24px;
-          -moz-border-radius-bottomleft: 0;
-          -moz-border-radius-bottomright: 0;
-          border-top-left-radius: 24px;
-          border-top-right-radius: 24px;
-          border-bottom-left-radius: 0;
-          border-bottom-right-radius: 0;
-        }
+        
     }
 
     header .search__input:focus-visible {
@@ -77,8 +64,11 @@
 
 
     header .predictive-search {
-     
-background-color: #dfe6e9;
+     width: 100%;
+     top: 100%;
+     left: 0;
+    background-color: #dfe6e9;
+    border-radius: 24px;
     }
 
     header .predictive-search-results {
@@ -97,8 +87,18 @@ background-color: #dfe6e9;
       }
 
       header .list-menu li:last-child {
-      margin-left: auto;
+       margin-left: auto; 
+      }
+      
+      header .list-menu li:last-child a {
+        padding-right: 0;
+    
+      }
+    
+      .header__icon--cart {
+      padding-right: 5px;
     }
+
     }
 
     header .header__active-menu-item {
