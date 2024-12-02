@@ -309,7 +309,45 @@
   {%- render 'cart-notification', color_scheme: section.settings.color_scheme, desktop_menu_type: section.settings.menu_type_desktop -%}
 {%- endif -%}
 
-{% javascript %}
+
+<script>
+  var targetNodes = document.querySelectorAll('.mega-menu');
+
+  if (targetNodes.length > 0) {
+      console.log('Target nodes found:', targetNodes);
+  
+      targetNodes.forEach(function(targetNode) {
+          // Create and configure the observer for each node
+          var observer = new MutationObserver(function(mutationsList) {
+              mutationsList.forEach(function(mutation) {
+                  if (mutation.type === 'attributes' && mutation.attributeName === 'open') {
+                      var modalOverlay = document.getElementById("modalOverlay");
+  
+                      if (modalOverlay) {
+                          if (targetNode.hasAttribute('open')) {
+                              modalOverlay.classList.add("modal-on");
+                          } else {
+                              modalOverlay.classList.remove("modal-on");
+                          }
+                      } else {
+                          console.log("Modal overlay not found!");
+                      }
+                  }
+              });
+          });
+  
+          observer.observe(targetNode, { attributes: true, attributeFilter: ['open'] });
+      });
+  } else {
+      console.log('No target nodes found. Make sure they exist in the DOM.');
+  }
+  
+
+
+
+</script>
+
+{% javascript %} 
   class StickyHeader extends HTMLElement {
     constructor() {
       super();

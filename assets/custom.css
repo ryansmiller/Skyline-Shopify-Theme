@@ -208,7 +208,8 @@ details[open] > .header__menu-item {
   text-decoration: none !important;
 }
 
-.header__menu-item:hover  {
+.header__menu-item:hover,
+.header__menu-item[aria-expanded='true']  {
   background-color: #eaeaea;
   border-radius: 60px;
 }
@@ -219,5 +220,9 @@ header .header__menu-item {
 }
 
 summary.list-menu__item {
-  padding-right: 1.2rem !important;
+  padding: 8px 16px !important;
   }
+
+.mega-menu[open] .mega-menu__content {
+  z-index:2;
+}
