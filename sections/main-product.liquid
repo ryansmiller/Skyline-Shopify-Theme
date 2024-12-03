@@ -139,7 +139,7 @@
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    const currentUrl = window.location.href;
+    const currentUrl = window.location.pathname;
     const activeLinks = document.querySelectorAll(`#variant-select a[href*="${currentUrl}"]`);
     
     activeLinks.forEach(link => {
@@ -211,7 +211,7 @@
     {% for product in products %}
       <li>
         <a class="variant-swatch" 
-           href="{{ shop.secure_url }}{{ product.url }}" 
+           href="{{ product.url }}" 
            data-tippy-content="{{ product.metafields.custom.mpn }} {{ product.metafields.custom.color }}" 
            aria-label="Check out {{ product.title }}">
           <img src="{{ product.featured_image | image_url: width: 45 }}" 

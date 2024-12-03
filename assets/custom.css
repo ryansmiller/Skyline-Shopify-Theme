@@ -203,7 +203,7 @@ slideshow-component {
 }
 
 .header__menu-item:hover span,
-.header__menu-item a:hover,
+a.header__menu-item:hover,
 details[open] > .header__menu-item {
   text-decoration: none !important;
 }
@@ -219,10 +219,23 @@ header .header__menu-item {
   font-size: 1.5rem !important;
 }
 
-summary.list-menu__item {
+.list-menu--inline {
+  padding-bottom: 10px !important;
+}
+
+summary.list-menu__item,
+a.list-menu__item {
   padding: 8px 16px !important;
+  }
+  summary.list-menu__item {
+    margin-right: 5px;
+  }
+
+  a.list-menu__item {
+    margin-right: -16px;
   }
 
 .mega-menu[open] .mega-menu__content {
   z-index:2;
+  background-color: #eaeaea;
 }
