@@ -24,6 +24,13 @@
           "type": "custom_swatches",
           "settings": {}
         },
+        "variant_picker_jy9Cx3": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
         "custom_stock_detail_yDWiM6": {
           "type": "custom_stock_detail",
           "settings": {
@@ -66,6 +73,7 @@
         "title",
         "custom_price_reviews_nxm7BV",
         "custom_swatches_39zNia",
+        "variant_picker_jy9Cx3",
         "custom_stock_detail_yDWiM6",
         "custom_liquid_beJTqY",
         "shopacado_volume_discounts_discount_table_Bhecb7",
