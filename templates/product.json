@@ -27,8 +27,8 @@
         "variant_picker_jy9Cx3": {
           "type": "variant_picker",
           "settings": {
-            "picker_type": "dropdown",
-            "swatch_shape": "circle"
+            "picker_type": "button",
+            "swatch_shape": "square"
           }
         },
         "custom_stock_detail_yDWiM6": {
