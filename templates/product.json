@@ -24,6 +24,13 @@
           "type": "custom_swatches",
           "settings": {}
         },
+        "variant_picker_jy9Cx3": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "square"
+          }
+        },
         "custom_stock_detail_yDWiM6": {
           "type": "custom_stock_detail",
           "settings": {
@@ -54,14 +61,6 @@
           "type": "custom_memo_sample",
           "settings": {}
         },
-        "variant_picker_jy9Cx3": {
-          "type": "variant_picker",
-          "disabled": true,
-          "settings": {
-            "picker_type": "button",
-            "swatch_shape": "square"
-          }
-        },
         "custom_liquid_beJTqY": {
           "type": "custom_liquid",
           "disabled": true,
@@ -74,12 +73,12 @@
         "title",
         "custom_price_reviews_nxm7BV",
         "custom_swatches_39zNia",
+        "variant_picker_jy9Cx3",
         "custom_stock_detail_yDWiM6",
         "shopacado_volume_discounts_discount_table_Bhecb7",
         "quantity_selector",
         "buy_buttons",
         "custom_memo_sample_8GbzFY",
-        "variant_picker_jy9Cx3",
         "custom_liquid_beJTqY"
       ],
       "settings": {
