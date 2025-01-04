@@ -24,8 +24,24 @@
           "type": "custom_swatches",
           "settings": {}
         },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": false
+          }
+        },
+        "custom_memo_sample_8GbzFY": {
+          "type": "custom_memo_sample",
+          "settings": {}
+        },
         "variant_picker_jy9Cx3": {
           "type": "variant_picker",
+          "disabled": true,
           "settings": {
             "picker_type": "button",
             "swatch_shape": "square"
@@ -49,37 +65,23 @@
         },
         "shopacado_volume_discounts_discount_table_Bhecb7": {
           "type": "shopify://apps/shopacado-discounts/blocks/discount-table/5950831a-4e4e-40a4-82b0-674110b50a14",
+          "disabled": true,
           "settings": {
             "theme_id": "123684323425"
           }
-        },
-        "quantity_selector": {
-          "type": "quantity_selector",
-          "settings": {}
-        },
-        "buy_buttons": {
-          "type": "buy_buttons",
-          "settings": {
-            "show_dynamic_checkout": false,
-            "show_gift_card_recipient": false
-          }
-        },
-        "custom_memo_sample_8GbzFY": {
-          "type": "custom_memo_sample",
-          "settings": {}
         }
       },
       "block_order": [
         "title",
         "custom_price_reviews_nxm7BV",
         "custom_swatches_39zNia",
+        "quantity_selector",
+        "buy_buttons",
+        "custom_memo_sample_8GbzFY",
         "variant_picker_jy9Cx3",
         "custom_stock_detail_yDWiM6",
         "custom_liquid_beJTqY",
-        "shopacado_volume_discounts_discount_table_Bhecb7",
-        "quantity_selector",
-        "buy_buttons",
-        "custom_memo_sample_8GbzFY"
+        "shopacado_volume_discounts_discount_table_Bhecb7"
       ],
       "settings": {
         "enable_sticky_info": true,
