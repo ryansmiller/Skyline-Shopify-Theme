@@ -111,6 +111,11 @@
                     display:flex; 
                     align-items: center;
                   }
+
+                  .block-custom-price-reviews .product-price strong {
+                    color: #e74c3c!important;
+                    font-weight: 700;
+                  }
                   
                   .stamped-product-reviews-badge {
                     display: flex;
@@ -121,7 +126,7 @@
                   {%- endstyle -%}
                   
                   <div class="block-custom-price-reviews" >
-                    <span class="product-price">{{ product.first_available_variant.price | money }} / yard</span>
+                    <span class="product-price"><strong>{{ product.first_available_variant.price | money }}</strong> per yard</span>
                     <span
                     class="stamped-product-reviews-badge stamped-main-badge"
                     data-id="{{ product.id }}"

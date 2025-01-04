@@ -15,7 +15,7 @@
     {{ block.shopify_attributes }}
   >
     {%- for option in product.options_with_values -%}
-      {%- unless option.name == "Unit of Measure" -%}
+      {%- if option.name != "Unit of Measure" and product.type != "Fabric" -%}
       {%- liquid
         assign swatch_count = option.values | map: 'swatch' | compact | size
         assign picker_type = block.settings.picker_type
@@ -86,7 +86,7 @@
           </div>
         </div>
       {%- endif -%}
-      {%- endunless -%}
+    {%- endif -%}
     {%- endfor -%}
 
     <script type="application/json" data-selected-variant>
