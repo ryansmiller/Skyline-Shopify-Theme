@@ -153,6 +153,8 @@
 {% assign collectionPattern = product.metafields.custom.pattern_collection.value.handle %}
 {% assign products = collections[collectionPattern].products | sort_natural: 'title' %}
 
+{% if collectionPattern %}
+
 {%- style -%}
   .block-custom-fabric-color-swatches {
     padding: 0;
@@ -223,6 +225,8 @@
     {% endfor %}
   </ul>
 </div>
+
+{% endif %}
 
               {%- when 'custom_stock_detail' -%}
 
