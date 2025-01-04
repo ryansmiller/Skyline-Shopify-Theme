@@ -105,13 +105,10 @@
                   }
 
                   .block-custom-price-reviews .product-price {
-                    color: #000; 
-                    font-weight: 400; 
-                    font-size: 1.5rem; 
                     display:flex; 
                     align-items: center;
                     line-height: 3rem;
-                    vertical-align: bottom;
+                    
                   }
 
                   .block-custom-price-reviews .product-price strong {
@@ -119,6 +116,13 @@
                     font-weight: 700;
                     font-size: 2.5rem;
                     line-height: 3rem;
+                  }
+
+                  .block-custom-price-reviews .product-price .price-unit {
+                    color: #000;
+                    font-weight: 400;
+                    font-size: 1.5rem;
+                    vertical-align: bottom;
                   }
                   
                   .stamped-product-reviews-badge {
@@ -130,7 +134,7 @@
                   {%- endstyle -%}
                   
                   <div class="block-custom-price-reviews" >
-                    <span class="product-price"><strong>{{ product.first_available_variant.price | money }}</strong>&nbsp;per yard</span>
+                    <span class="product-price"><strong>{{ product.first_available_variant.price | money }}</strong>&nbsp;<span class="price-unit">per yard</span></span>
                     <span
                     class="stamped-product-reviews-badge stamped-main-badge"
                     data-id="{{ product.id }}"
