@@ -90,6 +90,24 @@
               {%- when '@app' -%}
                 {% render block %}
 
+              {%- when 'custom_avail' -%}  
+
+                {%- style -%}
+
+                {%- endstyle -%}
+
+                {% assign productAvailability = product.metafields.custom.product_availability.value %}
+                
+                {%- if productAvailability != "Current" -%}
+
+                  <div class="product-availability">
+
+                    <span>{{ product.availability.custom.product_availability }}</span>
+
+                  </div>
+
+                {%- endif -%}
+
               {%- when 'custom_price_reviews' -%}
 
                 {%- style -%}
@@ -304,6 +322,8 @@
               {%- endstyle -%}
               
               <div class="stock-details">
+
+                
                 <h4>Availability: {{ product.first_available_variant.inventory_quantity }} yards In Stock</h4>
                 <ul>
                   {%- if block.settings.free_shipping -%}
@@ -1059,6 +1079,11 @@
         }
       ]
     },  
+    {
+      "type": "custom_avail",
+      "name": "Custom: Availability",
+      "limit": 1
+    },
     {
       "type": "custom_price_reviews",
       "name": "Custom: Price and Reviews",
