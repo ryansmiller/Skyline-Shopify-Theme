@@ -109,7 +109,7 @@
 
                 {% assign productAvailability = product.metafields.custom.product_availability.value %}
                 
-                {%- if productAvailability != "Current" -%}
+                {%- if productAvailability != "Current" or productAvailability != "" -%}
 
                   <div class="product-availability">
 
