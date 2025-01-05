@@ -12,6 +12,10 @@
     "main": {
       "type": "main-product",
       "blocks": {
+        "custom_avail_YWFWJ4": {
+          "type": "custom_avail",
+          "settings": {}
+        },
         "title": {
           "type": "title",
           "settings": {}
@@ -70,6 +74,7 @@
         }
       },
       "block_order": [
+        "custom_avail_YWFWJ4",
         "title",
         "custom_price_reviews_nxm7BV",
         "custom_swatches_39zNia",
