@@ -342,8 +342,12 @@
               
               <div class="stock-details">
 
+                {% if product.type == "Fabric" or product.type == "Carpet" %}
+                  <h4>Availability: {{ product.first_available_variant.inventory_quantity }} yards In Stock</h4>
+                {% else %}
+                  <h4>Availability: {{ product.first_available_variant.inventory_quantity }} In Stock</h4>
+                {% endif %}
                 
-                <h4>Availability: {{ product.first_available_variant.inventory_quantity }} yards In Stock</h4>
                 <ul>
                   {%- if block.settings.free_shipping -%}
                     <li class="free-shipping">
