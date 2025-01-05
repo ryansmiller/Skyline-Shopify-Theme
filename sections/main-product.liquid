@@ -165,7 +165,6 @@
                   <div class="block-custom-price-reviews" >
 
                     {% for variant in product.variants -%}
-                      {%- capture options -%}
                         {% for option in variant.options -%}
                           {% if option == "Yards" %}
                             <span class="product-price"><strong>{{ product.first_available_variant.price | money }}</strong>&nbsp;<span class="price-unit">per linear yard</span></span>
@@ -173,7 +172,6 @@
                             <span class="product-price"><strong>{{ product.first_available_variant.price | money }}</strong></span>
                           {% endif %}
                         {%- endfor %}
-                      {%- endcapture -%}
                     {%- endfor %}
 
           
