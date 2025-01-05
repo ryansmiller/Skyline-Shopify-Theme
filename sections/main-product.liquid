@@ -163,7 +163,16 @@
                   {%- endstyle -%}
                   
                   <div class="block-custom-price-reviews" >
-                    <span class="product-price"><strong>{{ product.first_available_variant.price | money }}</strong>&nbsp;<span class="price-unit">per yard</span></span>
+
+                    {% for optionValue in product.product_option_value -%}
+                        {% if optionValue = "Yards" %}
+                          <span class="product-price"><strong>{{ product.first_available_variant.price | money }}</strong>&nbsp;<span class="price-unit">per linear yard</span></span>
+                        {% else %}
+                          <span class="product-price"><strong>{{ product.first_available_variant.price | money }}</strong></span>
+                        {% endif %}
+                    {%- endfor %}
+
+          
                     <span
                     class="stamped-product-reviews-badge stamped-main-badge"
                     data-id="{{ product.id }}"
