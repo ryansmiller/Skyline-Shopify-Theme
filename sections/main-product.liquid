@@ -304,7 +304,7 @@
               {%- endstyle -%}
               
               <div class="stock-details">
-                <h4>In Stock: {{ product.first_available_variant.inventory_quantity }} yards</h4>
+                <h4>Availability: {{ product.first_available_variant.inventory_quantity }} yards In Stock</h4>
                 <ul>
                   {%- if block.settings.free_shipping -%}
                     <li class="free-shipping">
