@@ -165,7 +165,7 @@
                   <div class="block-custom-price-reviews" >
 
                     {% for optionValue in product.options_with_values.values -%}
-                        {% if optionValue = "Yards" %}
+                        {% if optionValue == "Yards" %}
                           <span class="product-price"><strong>{{ product.first_available_variant.price | money }}</strong>&nbsp;<span class="price-unit">per linear yard</span></span>
                         {% else %}
                           <span class="product-price"><strong>{{ product.first_available_variant.price | money }}</strong></span>
