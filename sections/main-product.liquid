@@ -164,15 +164,12 @@
                   
                   <div class="block-custom-price-reviews" >
 
-                    {% for variant in product.variants -%}
-                        {% for option in variant.options -%}
-                          {% if option == "Yards" %}
-                            <span class="product-price"><strong>{{ product.first_available_variant.price | money }}</strong>&nbsp;<span class="price-unit">per linear yard</span></span>
-                          {% else %}
-                            <span class="product-price"><strong>{{ product.first_available_variant.price | money }}</strong></span>
-                          {% endif %}
-                        {%- endfor %}
-                    {%- endfor %}
+                    {% if product.type == "Fabric" %}
+                        <span class="product-price"><strong>{{ product.first_available_variant.price | money }}</strong>&nbsp;<span class="price-unit">per linear yard</span></span>
+                    {% else %}
+                        <span class="product-price"><strong>{{ product.first_available_variant.price | money }}</strong></span>
+                    {% endif %}
+                       
 
           
                     <span
