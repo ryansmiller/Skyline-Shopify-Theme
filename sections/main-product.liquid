@@ -164,8 +164,8 @@
                   
                   <div class="block-custom-price-reviews" >
 
-                    {% if product.type == "Fabric" %}
-                        <span class="product-price"><strong>{{ product.first_available_variant.price | money }}</strong>&nbsp;<span class="price-unit">per linear yard</span></span>
+                    {% if product.type == "Fabric" or product.type == "Carpet" %}
+                        <span class="product-price"><strong>{{ product.first_available_variant.price | money }}</strong>&nbsp;<span class="price-unit">per yard</span></span>
                     {% else %}
                         <span class="product-price"><strong>{{ product.first_available_variant.price | money }}</strong></span>
                     {% endif %}
