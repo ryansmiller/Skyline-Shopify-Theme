@@ -199,7 +199,7 @@ slideshow-component {
 }
 
 .header-wrapper--border-bottom {
-  box-shadow: 0 .125rem .5rem rgba(0,0,0,.15)
+  /* box-shadow: 0 .125rem .5rem rgba(0,0,0,.15) */
 }
 
 .header__menu-item:hover span,
