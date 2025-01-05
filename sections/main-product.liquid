@@ -94,6 +94,17 @@
 
                 {%- style -%}
 
+                .product-availability {
+                  margin-top: 0px !important
+                }
+
+                .product-availability span {
+                  padding: 5px 10px;
+                  background-color: #c23616;
+                  color: #fff;
+                  font-size: 1.3rem;
+                }
+
                 {%- endstyle -%}
 
                 {% assign productAvailability = product.metafields.custom.product_availability.value %}
@@ -102,7 +113,7 @@
 
                   <div class="product-availability">
 
-                    <span>{{ product.metafields.custom.product_availability }}</span>
+                    <span>{{ product.metafields.custom.product_availability }} - Last Stock</span>
 
                   </div>
 
