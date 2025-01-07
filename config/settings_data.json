@@ -177,16 +177,16 @@
       },
       "scheme-269f0bd2-789e-48df-8675-697b607b2396": {
         "settings": {
-          "headline": "#f93d3d",
+          "headline": "#000000",
           "text": "#000000",
           "links": "#16abd7",
           "links_on_hover": "#121212",
-          "background": "#fafafa",
+          "background": "#ffffff",
           "background_gradient": "",
-          "button": "#f93d3d",
-          "button_label": "#121212",
-          "secondary_button": "#ffffff",
-          "secondary_button_label": "#fa8c01",
+          "button": "#121212",
+          "button_label": "#ffffff",
+          "secondary_button": "#f1f2f6",
+          "secondary_button_label": "#000000",
           "icons": "#121212"
         }
       },
