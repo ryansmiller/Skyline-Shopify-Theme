@@ -447,7 +447,7 @@
                       <input type="hidden" name="form_type" value="product">
                       <input type="hidden" name="id" value="{{ variant.id }}" />
                       <input type="hidden" min="1" id="quantity" name="quantity" value="1"/>
-                      <input type="submit" value="Add Memo Sample" class="btn button button--full-width button--secondary" />
+                      <input type="submit" value="Add Memo Sample - {{ variant.price | money }}" class="btn button button--full-width button--secondary" />
                     </form>
                   </div>
                 {% endif %}

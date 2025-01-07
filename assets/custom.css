@@ -86,7 +86,7 @@ width: 2rem !important;
 }
 
 .button--secondary {
-  border: var(--buttons-border-width) solid rgb(var(--color-secondary-button-text));
+  border: none !important;
 }
 
 .button--secondary:hover {
@@ -107,6 +107,7 @@ width: 2rem !important;
   box-shadow: none;
   background-color: transparent;
 }
+
 
 
 
@@ -150,7 +151,7 @@ width: 2rem !important;
     font-size: 1.5rem;
   }
   .shopacado-discount-table-block h4 {
-    font-size: 2rem;
+    font-size: 2rem !important;
   }
 }
   
@@ -158,7 +159,12 @@ width: 2rem !important;
   font-weight: 400;
 }
 
-@media screen and (min-width: 990px) {
+@media screen and (min-width: 750px) {
+
+  .shopacado-discount-table-block h4 {
+    font-size: 2rem;
+  }
+
   .shopacado-discount-table {
     font-size: 1.5rem;
   }
