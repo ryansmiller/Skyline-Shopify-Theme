@@ -107,7 +107,7 @@
       "settings": {
         "color_scheme": "scheme-269f0bd2-789e-48df-8675-697b607b2396",
         "table_background_odd": "#ffffff",
-        "table_background_even": "#fafafa",
+        "table_background_even": "#ffffff",
         "padding_top": 96,
         "padding_bottom": 96
       }
