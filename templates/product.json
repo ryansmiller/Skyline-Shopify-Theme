@@ -65,6 +65,15 @@
           "type": "custom_memo_sample",
           "settings": {}
         },
+        "collapsible_tab_j49w4F": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Collapsible row",
+            "icon": "check_mark",
+            "content": "",
+            "page": ""
+          }
+        },
         "custom_liquid_beJTqY": {
           "type": "custom_liquid",
           "disabled": true,
@@ -84,6 +93,7 @@
         "quantity_selector",
         "buy_buttons",
         "custom_memo_sample_8GbzFY",
+        "collapsible_tab_j49w4F",
         "custom_liquid_beJTqY"
       ],
       "settings": {
