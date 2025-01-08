@@ -65,15 +65,6 @@
           "type": "custom_memo_sample",
           "settings": {}
         },
-        "collapsible_tab_j49w4F": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Collapsible row",
-            "icon": "check_mark",
-            "content": "",
-            "page": ""
-          }
-        },
         "custom_liquid_beJTqY": {
           "type": "custom_liquid",
           "disabled": true,
@@ -93,7 +84,6 @@
         "quantity_selector",
         "buy_buttons",
         "custom_memo_sample_8GbzFY",
-        "collapsible_tab_j49w4F",
         "custom_liquid_beJTqY"
       ],
       "settings": {
@@ -115,7 +105,7 @@
     "custom_product_specs_cU3jfk": {
       "type": "custom-product-specs",
       "settings": {
-        "color_scheme": "scheme-269f0bd2-789e-48df-8675-697b607b2396",
+        "color_scheme": "scheme-f27006d7-3830-47f4-9c27-cff0e976d14b",
         "table_background_odd": "#f6f6f6",
         "table_background_even": "#f1f1f1",
         "padding_top": 36,
