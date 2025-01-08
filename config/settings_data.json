@@ -183,7 +183,7 @@
           "links_on_hover": "#121212",
           "background": "#f1f2f6",
           "background_gradient": "",
-          "button": "#121212",
+          "button": "#000000",
           "button_label": "#ffffff",
           "secondary_button": "#f1f2f6",
           "secondary_button_label": "#000000",
