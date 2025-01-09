@@ -24,12 +24,6 @@
           "type": "price",
           "settings": {}
         },
-        "custom_liquid_KGK643": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "<div\n                    class=\"stamped-product-reviews-badge stamped-main-badge\"\n                    data-id=\"{{ product.id }}\"\n                    data-product-sku=\"{{ product.handle }}\"\n                    data-product-title=\"{{product.title}}\"\n                    data-product-type=\"{{product.type}}\">\n                    {{product.metafields.stamped.badge.value}}\n                    </div>"
-          }
-        },
         "custom_price_reviews_nxm7BV": {
           "type": "custom_price_reviews",
           "settings": {}
@@ -87,7 +81,6 @@
         "custom_avail_YWFWJ4",
         "title",
         "price_7HW7Kk",
-        "custom_liquid_KGK643",
         "custom_price_reviews_nxm7BV",
         "custom_swatches_39zNia",
         "variant_picker_jy9Cx3",
