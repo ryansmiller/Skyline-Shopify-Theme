@@ -182,7 +182,7 @@
           "links": "#16abd7",
           "links_on_hover": "#121212",
           "background": "#ffffff",
-          "background_gradient": "",
+          "background_gradient": "linear-gradient(120deg, rgba(255, 255, 255, 1) 16%, rgba(250, 250, 250, 1) 52%, rgba(241, 241, 241, 1) 87%)",
           "button": "#000000",
           "button_label": "#ffffff",
           "secondary_button": "#f1f2f6",
