@@ -250,19 +250,19 @@ header .header__menu-item {
   font-size: 1.5rem !important;
 }
 
-.list-menu--inline {
+header .list-menu--inline {
   padding-bottom: 10px !important;
 }
 
-summary.list-menu__item,
-a.list-menu__item {
+header summary.list-menu__item,
+header a.list-menu__item {
   padding: 8px 16px !important;
   }
-  summary.list-menu__item {
+header  summary.list-menu__item {
     margin-right: 5px;
   }
 
-  a.list-menu__item {
+header a.list-menu__item {
     margin-right: -16px;
   }
 
