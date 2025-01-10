@@ -257,7 +257,7 @@
           "links": "#ffffff",
           "links_on_hover": "#f1f2f6",
           "background": "#121212",
-          "background_gradient": "",
+          "background_gradient": "linear-gradient(180deg, rgba(0, 0, 0, 1), rgba(83, 83, 83, 1) 100%)",
           "button": "#000000",
           "button_label": "#fefefe",
           "secondary_button": "#f1f1f1",
