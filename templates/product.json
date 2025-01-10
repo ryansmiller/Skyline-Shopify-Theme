@@ -20,6 +20,10 @@
           "type": "title",
           "settings": {}
         },
+        "price_7HW7Kk": {
+          "type": "price",
+          "settings": {}
+        },
         "custom_price_reviews_nxm7BV": {
           "type": "custom_price_reviews",
           "settings": {}
@@ -76,6 +80,7 @@
       "block_order": [
         "custom_avail_YWFWJ4",
         "title",
+        "price_7HW7Kk",
         "custom_price_reviews_nxm7BV",
         "custom_swatches_39zNia",
         "variant_picker_jy9Cx3",
