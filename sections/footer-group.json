@@ -54,13 +54,6 @@
             "menu": "footer-important-links"
           }
         },
-        "text_RUmzA4": {
-          "type": "text",
-          "settings": {
-            "heading": "AutoMarinePro.com",
-            "subtext": "<p>130-11 Atlantic Ave Fl 3<br/>Richmond Hill, NY 11418</p><p>718-322-9700</p>"
-          }
-        },
         "link_list_cr6Qi6": {
           "type": "link_list",
           "settings": {
@@ -78,7 +71,6 @@
       },
       "block_order": [
         "link_list_Q7fnXA",
-        "text_RUmzA4",
         "link_list_cr6Qi6",
         "link_list_XDPJGH"
       ],
