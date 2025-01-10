@@ -181,9 +181,9 @@
                     data-variant-id="{{ product.selected_or_first_available_variant.id }}">
 
                     {% if product.type == "Fabric" or product.type == "Carpet" %}
-                        <span class="product-price"><strong><span id="custom-product-price"></span></strong>&nbsp;<span class="price-unit">per yard</span></span>
+                        <span class="product-price"><strong><span id="custom-product-price">{{ product.selected_or_first_available_variant.price | money }}</span></strong>&nbsp;<span class="price-unit">per yard</span></span>
                     {% else %}
-                        <span class="product-price"><strong><span id="custom-product-price"></span></strong></span>
+                        <span class="product-price"><strong><span id="custom-product-price">{{ product.selected_or_first_available_variant.price | money }}</span></strong></span>
                     {% endif %}
                        
 
@@ -376,9 +376,9 @@
               <div class="stock-details">
 
                 {% if product.type == "Fabric" or product.type == "Carpet" %}
-                  <h4><span id="custom-product-quantity"></span> yards In Stock</h4>
+                  <h4><span id="custom-product-quantity">{{ product.selected_or_first_available_variant.inventory_quantity }}</span> yards In Stock</h4>
                 {% else %}
-                  <h4><span id="custom-product-quantity"></span> In Stock</h4>
+                  <h4><span id="custom-product-quantity">{{ product.selected_or_first_available_variant.inventory_quantity }}</span> In Stock</h4>
                 {% endif %}
                 
                 <ul>
