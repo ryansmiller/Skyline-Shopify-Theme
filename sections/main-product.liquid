@@ -171,13 +171,19 @@
                   }
                   
                   {%- endstyle -%}
+
+              
+
                   
-                  <div class="block-custom-price-reviews" >
+                  <div class="block-custom-price-reviews" 
+                    id="custom-price-reviews-{{ section.id }}"
+                    data-section-id="{{ section.id }}"
+                    data-variant-id="{{ product.selected_or_first_available_variant.id }}">
 
                     {% if product.type == "Fabric" or product.type == "Carpet" %}
-                        <span class="product-price"><strong>{{ product.first_available_variant.price | money }}</strong>&nbsp;<span class="price-unit">per yard</span></span>
+                        <span class="product-price"><strong><span id="custom-product-price"></span></strong>&nbsp;<span class="price-unit">per yard</span></span>
                     {% else %}
-                        <span class="product-price"><strong>{{ product.first_available_variant.price | money }}</strong></span>
+                        <span class="product-price"><strong><span id="custom-product-price"></span></strong></span>
                     {% endif %}
                        
 
@@ -366,13 +372,13 @@
                 }
 
               {%- endstyle -%}
-              
+
               <div class="stock-details">
 
                 {% if product.type == "Fabric" or product.type == "Carpet" %}
-                  <h4>{{ product.first_available_variant.inventory_quantity }} yards In Stock</h4>
+                  <h4><span id="custom-product-quantity"></span> yards In Stock</h4>
                 {% else %}
-                  <h4>{{ product.first_available_variant.inventory_quantity }} In Stock</h4>
+                  <h4><span id="custom-product-quantity"></span> In Stock</h4>
                 {% endif %}
                 
                 <ul>
@@ -1087,7 +1093,59 @@
     </script>
   </div>
 </product-info>
+
 <script id="custom-variant-info" type="application/json">
+  [
+    {% for variant in product.variants %}
+      {
+        "id": {{ variant.id }},
+        "price": "{{ variant.price | money }}",
+        "inventory_quantity": {{ variant.inventory_quantity }}
+      }{% if forloop.last == false %}, {% endif %}
+    {% endfor %}
+  ]
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Get the variant data from the JSON script
+    const variantData = JSON.parse(document.getElementById('custom-variant-info').textContent);
+    
+    // Get the elements to update
+    const priceElement = document.getElementById('custom-product-price');
+    const quantityElement = document.getElementById('custom-product-quantity');
+    
+    // Get the input element with name="id"
+    const variantInput = document.querySelector('input[name="id"]');
+    
+    // Function to update price and quantity based on selected variant
+    function updateVariantInfo(variantId) {
+      const selectedVariant = variantData.find(variant => variant.id === parseInt(variantId));
+      
+      if (selectedVariant) {
+        priceElement.textContent = `${selectedVariant.price}`;
+        quantityElement.textContent = `${selectedVariant.inventory_quantity}`;
+      }
+    }
+    
+    // Listen for changes in the variant input
+    variantInput.addEventListener('change', function() {
+      const selectedVariantId = variantInput.value;
+      updateVariantInfo(selectedVariantId);
+    });
+    
+    // Initialize with the current selected variant
+    if (variantInput && variantInput.value) {
+      updateVariantInfo(variantInput.value);
+    }
+  });
+  
+</script>
+
+
+  
+  
+
 
 {% schema %}
 {
