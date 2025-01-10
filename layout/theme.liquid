@@ -269,7 +269,7 @@
     {% comment %} Custom CSS File {% endcomment %}
     {{ 'custom.css' | asset_url | stylesheet_tag }}
 
-    {%-  if settings.font_awesome -%}
+    {%- if settings.font_awesome -%}
       {{ settings.font_awesome }}
     {%- endif -%}
 

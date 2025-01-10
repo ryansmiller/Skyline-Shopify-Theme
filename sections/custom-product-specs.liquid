@@ -144,6 +144,7 @@
 	 background-color:{{ section.settings.table_background_even }};
 }
 
+
 {% endstyle %}
 
 <section 
@@ -168,7 +169,7 @@
       product.metafields.custom.color_family != blank
 %}
   
-<div class="pd-section">
+<div class="pd-section" id="section-product-details">
 
   <h3>Product Details</h3>
   
@@ -233,7 +234,7 @@
       product.metafields.custom.pattern_design != blank 
 %}
 
-<div class="pd-section">
+<div class="pd-section" id="section-categories-collections">
 
 <h3>Categories &amp; Collections</h3>  
   
@@ -428,22 +429,52 @@
       product.metafields.custom.colorfastness_to_artificial_weathering != blank
 %}  
 
-<div class="pd-section performance-specs">
+<div class="pd-section performance-specs" id="section-performance-specs">
 
 <h3>Performance Specs</h3>
 
+
+{% if product.metafields.custom.act_certification_marks != blank %}
+
 <div class="product-metafields">
+
   <span class="mf-key">ACT® Certification Marks:</span>
+  
   <span class="mf-value">
-    <img alt="ACT Registered Certification Mark: Flammability" style="display: inline-block; margin-right: 5px;" src="{{ 'ACT-Flammability.png' | asset_url }}" width="25" height="25" />
-    <img alt="ACT Registered Certification Mark: Wet and Dry Crocking" style="display:inline-block; margin-right: 5px;" src="{{ 'ACT-Crocking.png' | asset_url }}" width="25" height="25" />
-    <img alt="ACT Registered Certification Mark: Colorfastness to Light" style="display:inline-block; margin-right: 5px;" src="{{ 'ACT-Light.png' | asset_url }}" width="25" height="25" />
-    <img alt="ACT Registered Certification Mark: Physical Properties" style="display:inline-block; margin-right: 5px;" src="{{ 'ACT-Physical.png' | asset_url }}" width="25" height="25" />
-    <img alt="ACT Registered Certification Mark: Abraision - Low Traffic" style="display:inline-block; margin-right: 5px;" src="{{ 'ACT-Abrasion-Low.png' | asset_url }}" width="25" height="25" />
-    <img alt="ACT Registered Certification Mark: Abraision - High Traffic" style="display:inline-block; margin-right: 5px;" src="{{ 'ACT-Abrasion-High.png' | asset_url }}" width="25" height="25" />
+
+    {% for marks in product.metafields.custom.act_certification_marks.value %}
+
+    {% if marks == "Flammability" %}
+      <img alt="ACT Registered Certification Mark: Flammability" style="display: inline-block; margin-right: 5px;" src="{{ 'ACT-Flammability.png' | asset_url }}" width="25" height="25" />
+    {% endif %}
+
+    {% if marks == "Crocking" %}
+      <img alt="ACT Registered Certification Mark: Wet and Dry Crocking" style="display:inline-block; margin-right: 5px;" src="{{ 'ACT-Crocking.png' | asset_url }}" width="25" height="25" />
+    {% endif %}
+
+    {% if marks == "Light" %}
+      <img alt="ACT Registered Certification Mark: Colorfastness to Light" style="display:inline-block; margin-right: 5px;" src="{{ 'ACT-Light.png' | asset_url }}" width="25" height="25" />
+    {% endif %}
+
+    {% if marks == "Physical" %}
+      <img alt="ACT Registered Certification Mark: Physical Properties" style="display:inline-block; margin-right: 5px;" src="{{ 'ACT-Physical.png' | asset_url }}" width="25" height="25" />
+    {% endif %}
+
+    {% if marks == "Abrasion - Low" %}        
+      <img alt="ACT Registered Certification Mark: Abraision - Low Traffic" style="display:inline-block; margin-right: 5px;" src="{{ 'ACT-Abrasion-Low.png' | asset_url }}" width="25" height="25" />
+    {% endif %}
+
+    {% if marks == "Abrasion - High" %}            
+      <img alt="ACT Registered Certification Mark: Abraision - High Traffic" style="display:inline-block; margin-right: 5px;" src="{{ 'ACT-Abrasion-High.png' | asset_url }}" width="25" height="25" />
+    {% endif %}  
+
+  {% endfor %}
+  
   </span>
+
 </div>
 
+{% endif %}
 
 {% if product.metafields.custom.abrasion_resistance %}
 
@@ -506,7 +537,7 @@
 
 
 {%- if product.metafields.custom.product_features != blank -%}  
-<div class="pd-section">
+<div class="pd-section" id="section-product-features">
 <h3>Product Features</h3>
   <ul>
     {% for metavalue in product.metafields.custom.product_features.value %}
@@ -517,7 +548,7 @@
 {%- endif -%}  
 
 {%- if product.metafields.custom.specs_flammability != blank -%}
-<div class="pd-section">
+<div class="pd-section" id="section-flammability-specs">
 <h3>Flammability Specs</h3>
   <ul style="margin-bottom: 20px">
     {% for metavalue in product.metafields.custom.specs_flammability.value %}
@@ -529,7 +560,7 @@
 {%- endif -%}
 
 {%- if product.metafields.custom.compliance_and_certifications != blank -%}
-  <div class="pd-section">
+  <div class="pd-section" id="section-compliance-certification">
   <h3>Compliance &amp; Certifications</h3>
     <ul style="margin-bottom: 20px">
       {% for metavalue in product.metafields.custom.compliance_and_certifications.value %}
@@ -537,16 +568,14 @@
       {% endfor %}
     </ul>
   </div>
-  {%- endif -%}
+{%- endif -%}
 
-
-
-
-  <div class="pd-section">
+{%- if product.metafields.custom.care_instructions != blank %}
+  <div class="pd-section" id="section-care-instructions">
     <h3>Care Instructions</h3>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean id dapibus neque. Ut finibus efficitur ultrices. Suspendisse porttitor molestie dolor eget consectetur.</p> 
-    <p>Aliquam vehicula, est consequat venenatis imperdiet, nisl quam imperdiet diam, ut malesuada felis nisi vitae nulla. Maecenas sed neque vel orci ornare consectetur sed sed dolor.</p>
-</div>
+    {{ product.metafields.custom.care_instructions }}
+  </div>
+{%- endif -%}
 
 
 </div>
