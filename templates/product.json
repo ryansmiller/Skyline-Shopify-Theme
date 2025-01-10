@@ -20,10 +20,6 @@
           "type": "title",
           "settings": {}
         },
-        "price_7HW7Kk": {
-          "type": "price",
-          "settings": {}
-        },
         "custom_price_reviews_nxm7BV": {
           "type": "custom_price_reviews",
           "settings": {}
@@ -80,7 +76,6 @@
       "block_order": [
         "custom_avail_YWFWJ4",
         "title",
-        "price_7HW7Kk",
         "custom_price_reviews_nxm7BV",
         "custom_swatches_39zNia",
         "variant_picker_jy9Cx3",
@@ -113,8 +108,8 @@
         "color_scheme": "scheme-269f0bd2-789e-48df-8675-697b607b2396",
         "table_background_odd": "#f7f7f7",
         "table_background_even": "#f1f1f1",
-        "padding_top": 96,
-        "padding_bottom": 96
+        "padding_top": 60,
+        "padding_bottom": 60
       }
     },
     "related-products": {
