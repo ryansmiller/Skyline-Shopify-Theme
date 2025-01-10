@@ -234,6 +234,21 @@
           "secondary_button_label": "#fa8c01",
           "icons": "#ffffff"
         }
+      },
+      "scheme-a6e4bf4a-7d54-4c74-b4f5-7dadadd4b803": {
+        "settings": {
+          "headline": "#121212",
+          "text": "#121212",
+          "links": "#121212",
+          "links_on_hover": "#121212",
+          "background": "#ffffff",
+          "background_gradient": "linear-gradient(303deg, rgba(240, 110, 105, 1), rgba(249, 208, 163, 1) 100%)",
+          "button": "#000000",
+          "button_label": "#fefefe",
+          "secondary_button": "#f1f1f1",
+          "secondary_button_label": "#000000",
+          "icons": "#000000"
+        }
       }
     }
   },
