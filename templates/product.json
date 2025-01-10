@@ -106,7 +106,7 @@
       "type": "custom-product-specs",
       "settings": {
         "color_scheme": "scheme-269f0bd2-789e-48df-8675-697b607b2396",
-        "table_background_odd": "#f7f7f7",
+        "table_background_odd": "#f6f6f6",
         "table_background_even": "#f1f1f1",
         "padding_top": 60,
         "padding_bottom": 60
