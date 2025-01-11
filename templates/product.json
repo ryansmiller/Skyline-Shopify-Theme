@@ -138,12 +138,21 @@
         "padding_top": 0,
         "padding_bottom": 0
       }
+    },
+    "custom_reviews_nCfGb4": {
+      "type": "custom-reviews",
+      "settings": {
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
     "main",
     "custom_product_specs_cU3jfk",
     "related-products",
-    "custom_liquid_xwwVEW"
+    "custom_liquid_xwwVEW",
+    "custom_reviews_nCfGb4"
   ]
 }
