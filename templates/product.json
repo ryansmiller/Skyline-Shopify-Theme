@@ -130,19 +130,10 @@
         "padding_bottom": 36
       }
     },
-    "custom_liquid_xwwVEW": {
-      "type": "custom-liquid",
-      "settings": {
-        "custom_liquid": "<style type=\"text/css\">\n\n#custom-reviews {\npadding-top: 30px;\npadding-bottom: 30px;\nbackground-color: #fafafa;\n}\n\ndiv.stamped-container {\n}\n\n#stamped-main-widget {\nmargin: 1rem 0 !important;\n}\n</style>\n\n<div class=\"page-width\" id=\"custom-reviews\">\n\n<h2 style=\"text-align: center;\">Customer Reviews</h2>\n\n<!--Stamped - Begin Main Widget -->\n<div \nid=\"stamped-main-widget\"   \ndata-product-id=\"{{ product.id }}\"   \ndata-name=\"{{ product.title | escape }}\"   \ndata-url=\"{{ shop.url }}{{ product.url }}\"   \ndata-image-url=\"{{ product.featured_image | product_img_url: \"large\" |replace: '?', '%3F' | replace: '&','%26'}}\" \ndata-description=\"{{ product.description | escape }}\"   \ndata-product-sku=\"{{product.handle}}\" \ndata-product-type=\"{{product.type}}\">    \n</div>\n<!-- Stamped - End Main Widget -->\n\t</div>",
-        "color_scheme": "",
-        "padding_top": 0,
-        "padding_bottom": 0
-      }
-    },
     "custom_reviews_nCfGb4": {
       "type": "custom-reviews",
       "settings": {
-        "color_scheme": "",
+        "color_scheme": "scheme-269f0bd2-789e-48df-8675-697b607b2396",
         "padding_top": 36,
         "padding_bottom": 36
       }
@@ -152,7 +143,6 @@
     "main",
     "custom_product_specs_cU3jfk",
     "related-products",
-    "custom_liquid_xwwVEW",
     "custom_reviews_nCfGb4"
   ]
 }
