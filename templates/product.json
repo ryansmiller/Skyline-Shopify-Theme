@@ -133,7 +133,7 @@
     "custom_liquid_xwwVEW": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "<style type=\"text/css\">\n\ndiv.stamped-container {\nmax-width: 1400px !important;\n}\n\n</style>\n\n<div class=\"page-width\" id=\"custom-reviews\">\n\n<h2 style=\"text-align: center;\">Customer Reviews</h2>\n\n<!--Stamped - Begin Main Widget -->\n<div \nid=\"stamped-main-widget\"   \ndata-product-id=\"{{ product.id }}\"   \ndata-name=\"{{ product.title | escape }}\"   \ndata-url=\"{{ shop.url }}{{ product.url }}\"   \ndata-image-url=\"{{ product.featured_image | product_img_url: \"large\" |replace: '?', '%3F' | replace: '&','%26'}}\" \ndata-description=\"{{ product.description | escape }}\"   \ndata-product-sku=\"{{product.handle}}\" \ndata-product-type=\"{{product.type}}\">    \n</div>\n<!-- Stamped - End Main Widget -->\n\t</div>",
+        "custom_liquid": "<style type=\"text/css\">\n\ndiv.stamped-container {\nmax-width: 1400px !important;\n}\n\n#stamped-main-widget {\nmargin: 1rem 0 !important;\n}\n</style>\n\n<div class=\"page-width\" id=\"custom-reviews\">\n\n<h2 style=\"text-align: center;\">Customer Reviews</h2>\n\n<!--Stamped - Begin Main Widget -->\n<div \nid=\"stamped-main-widget\"   \ndata-product-id=\"{{ product.id }}\"   \ndata-name=\"{{ product.title | escape }}\"   \ndata-url=\"{{ shop.url }}{{ product.url }}\"   \ndata-image-url=\"{{ product.featured_image | product_img_url: \"large\" |replace: '?', '%3F' | replace: '&','%26'}}\" \ndata-description=\"{{ product.description | escape }}\"   \ndata-product-sku=\"{{product.handle}}\" \ndata-product-type=\"{{product.type}}\">    \n</div>\n<!-- Stamped - End Main Widget -->\n\t</div>",
         "color_scheme": "",
         "padding_top": 40,
         "padding_bottom": 52
