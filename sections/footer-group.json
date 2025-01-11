@@ -17,14 +17,14 @@
         "heading_Pb3LNi": {
           "type": "heading",
           "settings": {
-            "heading": "Subscribe to our emails",
+            "heading": "Take an extra 15% off your first order",
             "heading_size": "h1"
           }
         },
         "paragraph_gcXa3g": {
           "type": "paragraph",
           "settings": {
-            "text": "<p>Be the first to know about new collections and exclusive offers.</p>"
+            "text": "<p>Sign up today for exclusive discounts, new product announcements, and more!</p>"
           }
         },
         "email_form_DbHAKb": {
@@ -40,16 +40,7 @@
       "settings": {
         "color_scheme": "scheme-6ab6a568-61b2-42ed-a1c8-3308b49ca08c",
         "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 52
-      }
-    },
-    "custom_liquid_8BjJh4": {
-      "type": "custom-liquid",
-      "settings": {
-        "custom_liquid": "<h2>Whether you're a Pro or You just want to update your <br />Boat, Car, or Home, <br />we've got you covered.</h2>",
-        "color_scheme": "scheme-627fdf7a-5aaf-4c60-8a3b-3ef944eaaec0",
-        "padding_top": 40,
+        "padding_top": 52,
         "padding_bottom": 52
       }
     },
@@ -101,7 +92,6 @@
   },
   "order": [
     "newsletter_czAtKP",
-    "custom_liquid_8BjJh4",
     "footer"
   ]
 }
