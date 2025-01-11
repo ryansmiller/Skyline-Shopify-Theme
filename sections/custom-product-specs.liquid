@@ -2,149 +2,117 @@
 
   .tech-specs {
     font-size: 1.6rem;
-    color: #000000 !important;
+    color: #000 !important;
   }
-
-.pd-section h3 {
-	font-weight: 700;
-	font-size: 1.8rem;
-	margin-top: 0;
-	text-transform: normal;
-    margin-bottom: 15px;
-  color: #e74c3c;
-}
-
-.product-metafields {
-	color: #000000;
-	display: flex;
-	font-size: 1.3rem;
-    padding: 6px 12px;
-}
-
-.product-metafields div {
-	display: block;
-}
-
-.flex-container {
-  display: block;
-}
-
-
-
-@media screen and (min-width: 750px) {
 
   .pd-section h3 {
-    font-size: 2.5rem;
+    font-weight: 700;
+    font-size: 1.8rem;
+    margin: 0 0 15px;
+    color: #e74c3c;
   }
-
-
-  .flex-container {
-  	display: flex;
-  }
-  
-  .pd-left {
-  	max-width: 50% !important;
-       width: calc(50% - var(--grid-desktop-horizontal-spacing) / 2) !important;
-  }
-  
-  .pd-right {
-  	max-width: 50% !important;
-        width: calc(50% - var(--grid-desktop-horizontal-spacing) / 2) !important;
-        padding: 0 0 0 5rem;
-    }
-}
-
-  @media screen and (min-width: 990px) {
- .pd-left {
-  	max-width: 55% !important;
-       width: calc(55% - var(--grid-desktop-horizontal-spacing) / 2) !important;
-  }
-  
-  .pd-right {
-  	max-width: 45% !important;
-        width: calc(45% - var(--grid-desktop-horizontal-spacing) / 2) !important;
-        padding: 0 0 0 5rem;
-    }
-}
- 
-.pd-section {
-	padding-bottom: 40px;
-}
-
-  
-.mf-key {
-	font-weight: bold;
-    color: #293540;
-}
-
-.pd-left .mf-key {
-  	width: 50%;
-      padding-right: 20px;
-  }
-  
-  .pd-left .mf-value {
-  	width: 50%;
-  }  
-
-@media screen and (min-width: 990px) {
 
   .product-metafields {
-	padding: 10px 15px;
-	font-size: 16px;
-
-}
-  
-  .pd-left .mf-key {
-  	width: 30%;
-  }
-  
-  .pd-left .mf-value {
-  	width: 70%;
+    color: #000;
+    display: flex;
+    font-size: 1.3rem;
+    padding: 6px 12px;
   }
 
-  .performance-specs .mf-key {
-    width: 40%;
+  .product-metafields div {
+    display: block;
   }
 
-  .performance-specs .mf-value {
-    width: 60%;
+  .flex-container {
+    display: block;
   }
 
-}
-
-.degree-farenheight {
-	font-family: Helvetica, sans-serif;
-}
-
-.product-specs .grid {
-  column-gap: 0;
-}
-
-{% endstylesheet %}
-  
-{% style %}
-
- .section-{{ section.id }}-padding {
-      padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
-      padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
-}
-
-    @media screen and (min-width: 750px) {
-      .section-{{ section.id }}-padding {
-        padding-top: {{ section.settings.padding_top }}px;
-        padding-bottom: {{ section.settings.padding_bottom }}px;
-      }
+  @media screen and (min-width: 750px) {
+    .pd-section h3 {
+      font-size: 2.5rem;
     }
 
-.pd-left .pd-section > div:nth-of-type(odd) {
-	 background-color:{{ section.settings.table_background_odd }};
-}
+    .flex-container {
+      display: flex;
+    }
 
-.pd-left .pd-section > div:nth-of-type(even) {
-	 background-color:{{ section.settings.table_background_even }};
-}
+    .pd-left,
+    .pd-right {
+      max-width: 50%;
+      width: calc(50% - var(--grid-desktop-horizontal-spacing) / 2) !important;
+    }
 
+    .pd-right {
+      padding-left: 5rem;
+    }
+  }
 
+  @media screen and (min-width: 990px) {
+    .pd-left {
+      max-width: 55%;
+      width: calc(55% - var(--grid-desktop-horizontal-spacing) / 2);
+    }
+
+    .pd-right {
+      max-width: 45%;
+      width: calc(45% - var(--grid-desktop-horizontal-spacing) / 2);
+    }
+
+    .product-metafields {
+      padding: 10px 15px;
+      font-size: 16px;
+    }
+
+    .mf-key {
+      width: 30%;
+    }
+
+    .mf-value {
+      width: 70%;
+    }
+  }
+
+  .pd-section {
+    padding-bottom: 40px;
+  }
+
+  .mf-key {
+    font-weight: bold;
+    color: #293540;
+  }
+
+  .pd-left .mf-key {
+    padding-right: 20px;
+  }
+
+  .degree-fahrenheit {
+    font-family: Helvetica, sans-serif;
+  }
+
+  .product-specs .grid {
+    column-gap: 0;
+  }
+
+{% endstylesheet %}
+
+{% style %}
+  .section-{{ section.id }}-padding {
+    padding: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px 0;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding: {{ section.settings.padding_top }}px 0;
+    }
+  }
+
+  .pd-left .pd-section > div:nth-of-type(odd) {
+    background-color: {{ section.settings.table_background_odd }};
+  }
+
+  .pd-left .pd-section > div:nth-of-type(even) {
+    background-color: {{ section.settings.table_background_even }};
+  }
 {% endstyle %}
 
 <section 
@@ -152,14 +120,9 @@
   class="section-{{ section.id }}-padding tech-specs color-{{ section.settings.color_scheme }} gradient"
   data-section="{{ section.id }}"
 >
-
-<div class="product-specs page-width" >
-
-
-<div class="grid grid--1-col grid--2-col-tablet">
-
-
-<div class="grid__item pd-left ">
+  <div class="product-specs page-width">
+    <div class="grid grid--1-col grid--2-col-tablet">
+      <div class="grid__item pd-left">
 
 
 {% if product.metafields.custom.brand != blank or 
@@ -516,11 +479,11 @@
 
 {% endif %}
 
-{% if product.metafields.custom.colorfastness_to_artificial_weathering %}
+{% if product.metafields.custom.colorfastness_to_weathering %}
 
 <div class="product-metafields">
     <span class="mf-key">Colorfastness to  Weathering:<br /><span style="font-weight: 400; font-size: 1.3rem;";>ISO 105-B04 / WeatherOmeter</span></span> 
-    <span class="mf-value">{{product.metafields.custom.colorfastness_to_artificial_weathering.value}} Hours - Pass</span>
+    <span class="mf-value">{{product.metafields.custom.colorfastness_to_weathering.value}} Hours - Pass</span>
 </div>
 
 {% endif %}
