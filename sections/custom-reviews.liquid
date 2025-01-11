@@ -1,0 +1,102 @@
+{% stylesheet %}
+
+  .custom-product-reviews {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    background-color: #fafafa;
+  }
+
+  .custom-product-reviews h2 {
+    text-align: center;
+  }
+            
+  #stamped-main-widget {
+    margin: 1rem 0 !important;
+  }
+  
+{% endstylesheet %}
+
+{% style %}
+  .section-{{ section.id }}-padding {
+    padding: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px 0;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding: {{ section.settings.padding_top }}px 0;
+    }
+  }
+
+{% endstyle %}
+
+<section 
+  id="Product-Reviews-{{ section.id }}"
+  class="section-{{ section.id }}-padding color-{{ section.settings.color_scheme }} gradient custom-product-reviews"
+  data-section="{{ section.id }}"
+>
+  <div class="page-width">
+    <div class="grid grid--1-col grid--2-col-tablet">
+      <div class="grid__item">
+
+          <h2>Customer Reviews</h2>
+          
+          <!--Stamped - Begin Main Widget -->
+          <div 
+          id="stamped-main-widget"   
+          data-product-id="{{ product.id }}"   
+          data-name="{{ product.title | escape }}"   
+          data-url="{{ shop.url }}{{ product.url }}"   
+          data-image-url="{{ product.featured_image | product_img_url: "large" |replace: '?', '%3F' | replace: '&','%26'}}" 
+          data-description="{{ product.description | escape }}"   
+          data-product-sku="{{product.handle}}" 
+          data-product-type="{{product.type}}">    
+          </div>
+          <!-- Stamped - End Main Widget -->
+
+      </div>
+    </div>
+  </div>
+
+</section>
+
+{% schema %}
+  {
+    "name": "Product Reviews",
+    "tag": "section",
+    "class": "section",
+    "limit": 1,
+    "settings": [
+        {
+          "type": "color_scheme",
+          "id": "color_scheme",
+          "label": "t:sections.all.colors.label",
+          "default": "scheme-1"
+        },
+       
+      {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+    ],
+    "presets": [{
+      "name": "Product Reviews",
+      "category": "Text"
+  }]
+  }
+{% endschema %}
