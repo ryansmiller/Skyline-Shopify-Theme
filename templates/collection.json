@@ -17,29 +17,6 @@
         "color_scheme": "scheme-6ab6a568-61b2-42ed-a1c8-3308b49ca08c"
       }
     },
-    "rich_text_xBhEjy": {
-      "type": "rich-text",
-      "blocks": {
-        "heading_wmUVDm": {
-          "type": "heading",
-          "settings": {
-            "heading": "{{ collection.title }}",
-            "heading_size": "h0"
-          }
-        }
-      },
-      "block_order": [
-        "heading_wmUVDm"
-      ],
-      "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "scheme-6ab6a568-61b2-42ed-a1c8-3308b49ca08c",
-        "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 52
-      }
-    },
     "product-grid": {
       "type": "main-collection-product-grid",
       "settings": {
@@ -93,7 +70,6 @@
   },
   "order": [
     "banner",
-    "rich_text_xBhEjy",
     "product-grid",
     "rich_text_rfCdhd"
   ]
