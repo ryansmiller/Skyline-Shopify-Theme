@@ -280,7 +280,8 @@ quantity-input {
 
 /* Facets */
 
-.facets {
+.facets,
+.facets__summary {
   color: #000 !important;
 }
 
