@@ -274,3 +274,20 @@ header a.list-menu__item {
 quantity-input {
   background-color: #f1f1f1 !important;
 }
+
+
+
+
+/* Facets */
+
+.facets {
+  color: #000 !important;
+}
+
+.facets__summary-label {
+  text-transform: uppercase;
+}
+
+.facets__summary:hover .facets__summary-label {
+  text-decoration: none;
+}
