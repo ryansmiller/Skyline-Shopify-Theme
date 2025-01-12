@@ -16,6 +16,13 @@
           "type": "custom_avail",
           "settings": {}
         },
+        "text_wnLya3": {
+          "type": "text",
+          "settings": {
+            "text": "{{ product.metafields.custom.brand.value }}",
+            "text_style": "body"
+          }
+        },
         "title": {
           "type": "title",
           "settings": {}
@@ -75,6 +82,7 @@
       },
       "block_order": [
         "custom_avail_YWFWJ4",
+        "text_wnLya3",
         "title",
         "custom_price_reviews_nxm7BV",
         "custom_swatches_39zNia",
