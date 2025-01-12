@@ -291,5 +291,5 @@ quantity-input {
 }
 
 .facets__summary:hover .facets__summary-label {
-  text-decoration: none !important;
+  text-decoration: none;
 }
