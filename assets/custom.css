@@ -287,6 +287,7 @@ quantity-input {
 
 .facets__summary-label {
   text-transform: uppercase;
+  font-weight: 700;
 }
 
 .facets__summary:hover .facets__summary-label {
