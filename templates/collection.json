@@ -18,6 +18,38 @@
         "color_scheme": "scheme-269f0bd2-789e-48df-8675-697b607b2396"
       }
     },
+    "collapsible_content_GJCyKB": {
+      "type": "collapsible-content",
+      "blocks": {
+        "collapsible_row_4brNV4": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Learn more about {{ collection.title }}",
+            "icon": "star",
+            "row_content": "{{ collection.description }}",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_row_4brNV4"
+      ],
+      "disabled": true,
+      "settings": {
+        "caption": "",
+        "heading": "{{ collection.title }}",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "layout": "none",
+        "color_scheme": "scheme-269f0bd2-789e-48df-8675-697b607b2396",
+        "container_color_scheme": "scheme-269f0bd2-789e-48df-8675-697b607b2396",
+        "open_first_collapsible_row": false,
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "rich_text_xBhEjy": {
       "type": "rich-text",
       "blocks": {
@@ -90,44 +122,13 @@
         "padding_top": 60,
         "padding_bottom": 60
       }
-    },
-    "collapsible_content_GJCyKB": {
-      "type": "collapsible-content",
-      "blocks": {
-        "collapsible_row_4brNV4": {
-          "type": "collapsible_row",
-          "settings": {
-            "heading": "Learn more about {{ collection.title }}",
-            "icon": "star",
-            "row_content": "{{ collection.description }}",
-            "page": ""
-          }
-        }
-      },
-      "block_order": [
-        "collapsible_row_4brNV4"
-      ],
-      "settings": {
-        "caption": "",
-        "heading": "{{ collection.title }}",
-        "heading_size": "h1",
-        "heading_alignment": "center",
-        "layout": "none",
-        "color_scheme": "",
-        "container_color_scheme": "",
-        "open_first_collapsible_row": false,
-        "image_ratio": "adapt",
-        "desktop_layout": "image_second",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
     }
   },
   "order": [
     "banner",
+    "collapsible_content_GJCyKB",
     "rich_text_xBhEjy",
     "product-grid",
-    "rich_text_rfCdhd",
-    "collapsible_content_GJCyKB"
+    "rich_text_rfCdhd"
   ]
 }
