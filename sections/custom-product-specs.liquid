@@ -133,427 +133,425 @@
       <div class="grid__item pd-left">
 
 
-{% if product.metafields.custom.brand != blank or 
-      product.metafields.custom.pattern_collection != blank or 
-      product.metafields.custom.mpn != blank or 
-      product.metafields.custom.color != blank or 
-      product.metafields.custom.color_family != blank
-%}
-  
-<div class="pd-section" id="section-product-details">
+        {% if product.metafields.custom.brand != blank or 
+              product.metafields.custom.pattern_collection != blank or 
+              product.metafields.custom.mpn != blank or 
+              product.metafields.custom.color != blank or 
+              product.metafields.custom.color_family != blank
+        %}
+          
+        <div class="pd-section" id="section-product-details">
 
-  <h3>Product Details</h3>
-  
-{% if product.metafields.custom.brand %}
+          <h3>Product Details</h3>
+          
+        {% if product.metafields.custom.brand %}
 
-  <div class="product-metafields">
-    <span class="mf-key">Brand:</span> <span class="mf-value"><a href="{{shop.secure_url}}/collections/{{product.metafields.custom.brand | handleize}}">{{product.metafields.custom.brand}}</a></span>
+          <div class="product-metafields">
+            <span class="mf-key">Brand:</span> <span class="mf-value"><a href="{{shop.secure_url}}/collections/{{product.metafields.custom.brand | handleize}}">{{product.metafields.custom.brand}}</a></span>
+          </div>
+
+        {% endif %}
+
+          
+        {% if product.metafields.custom.pattern_collection %}
+
+          <div class="product-metafields">
+            <span class="mf-key">Pattern:</span> <span class="mf-value"><a href="{{product.metafields.custom.pattern_collection.value.url}}">{{product.metafields.custom.pattern}}</a></span>
+          </div>
+
+        {% endif %}
+
+
+        {% if product.metafields.custom.mpn %}
+
+          <div class="product-metafields">
+            <span class="mf-key">MPN:</span> <span class="mf-value">{{product.metafields.custom.mpn}}</span>
+          </div>
+
+        {% endif %}
+
+          
+        {% if product.metafields.custom.color %}
+
+          <div class="product-metafields ">
+            <span class="mf-key">Color:</span><span class="mf-value">{{product.metafields.custom.color}}</span>
+          </div>
+
+        {% endif %}  
+
+          
+        {% if product.metafields.custom.color_family %}
+
+          <div class="product-metafields ">
+            <span class="mf-key">Color Family:</span><span class="mf-value">
+              {% for color_family in product.metafields.custom.color_family.value %}
+                <a href="{{shop.secure_url}}/collections/{{color_family | handleize}}">{{color_family}}</a>{% if forloop.last != true %}, {% endif %}
+              {% endfor %}
+            </span>
+          </div>
+
+        {% endif %}
+
+        </div>
+
+        {% endif %}
+          
+
+        {% if product.type != blank or 
+              product.metafields.custom.product_sub_type != blank or 
+              product.metafields.custom.use_application != blank or 
+              product.metafields.custom.market != blank or 
+              product.metafields.custom.indoor_outdoor != blank or
+              product.metafields.custom.pattern_design != blank 
+        %}
+
+        <div class="pd-section" id="section-categories-collections">
+
+        <h3>Categories &amp; Collections</h3>  
+          
+        {% if product.type %}
+              
+          <div class="product-metafields">
+            <span class="mf-key">Category:</span> <span class="mf-value"><a href="{{shop.secure_url}}/collections/{{product.type | handleize}}">{{product.type}}</a></span>
+          </div>
+
+        {% endif %}
+
+
+        {% if product.metafields.custom.product_sub_type %}
+
+          <div class="product-metafields">
+            <span class="mf-key">Type:</span> <span class="mf-value"><a href="{{shop.secure_url}}/collections/{{product.metafields.custom.product_sub_type | handleize}}">{{product.metafields.custom.product_sub_type}}</a></span>
+          </div>
+
+        {% endif %}
+
+        {% if product.metafields.custom.use_application %}
+
+          <div class="product-metafields">
+            <span class="mf-key">Use:</span> <span class="mf-value">
+              {% for application in product.metafields.custom.use_application.value %}
+                <a href="{{shop.secure_url}}/collections/{{application | handleize}}">{{application}}</a>{% if forloop.last != true %}, {% endif %}
+              {% endfor %}
+            </span>
+          </div>
+
+        {% endif %}
+
+        {% if product.metafields.custom.market %}
+
+          <div class="product-metafields">
+            <span class="mf-key">Markets:</span> <span class="mf-value">
+              {% for market in product.metafields.custom.market.value %}
+                <a href="{{shop.secure_url}}/collections/{{market | handleize}}">{{market}}</a>{% if forloop.last != true %}, {% endif %}
+              {% endfor %}
+            </span>
+          </div>
+
+        {% endif %}
+
+        {% if product.metafields.custom.indoor_outdoor %}
+
+          <div class="product-metafields">
+            <span class="mf-key">Indoor / Outdoor:</span> <span class="mf-value">
+              {% for indoor_outdoor in product.metafields.custom.indoor_outdoor.value %}
+                <a href="{{shop.secure_url}}/collections/{{indoor_outdoor | handleize}}">{{indoor_outdoor}}</a>{% if forloop.last != true %}, {% endif %}
+              {% endfor %}
+            </span>
+          </div>
+
+        {% endif %}
+
+        {% if product.metafields.custom.pattern_design %}
+
+          <div class="product-metafields">
+            <span class="mf-key">Design:</span> <span class="mf-value">
+              {% for design in product.metafields.custom.pattern_design.value %}
+                <a href="{{shop.secure_url}}/collections/{{design | handleize}}">{{design}}</a>{% if forloop.last != true %}, {% endif %}
+              {% endfor %}
+            </span>
+          </div>
+
+        {% endif %}
+
+        {% if product.metafields.custom.collections %}
+
+          <div class="product-metafields">
+            <span class="mf-key">Collections:</span> <span class="mf-value">
+              {% for collection in product.metafields.custom.collections.value %}
+                <a href="{{shop.secure_url}}/collections/{{collection | handleize}}">{{collection}}</a>{% if forloop.last != true %}, {% endif %}
+              {% endfor %}
+            </span>
+          </div>
+
+        {% endif %}
+
+
+
+        </div>
+
+        {% endif %}
+          
+
+        {% if product.metafields.custom.content != blank or 
+              product.metafields.custom.finish != blank or 
+              product.metafields.custom.backing != blank or 
+              product.metafields.custom.weight != blank or 
+              product.metafields.custom.width != blank or
+              product.metafields.custom.thickness != blank or
+              product.metafields.custom.railroaded != blank or
+              product.metafields.custom.repeat_vertical != blank or
+              product.metafields.custom.repeat_horizontal != blank or
+              product.metafields.custom.roll_size != blank
+        %}
+
+        <div class="pd-section">
+
+        <h3>Composition &amp; Dimensions</h3>
+
+        {% if product.metafields.custom.content %}
+
+          <div class="product-metafields">
+            <span class="mf-key">Content:</span> <span class="mf-value">{{product.metafields.custom.content}}</span>
+          </div>
+
+        {% endif %}
+
+        {% if product.metafields.custom.finish %}
+
+          <div class="product-metafields">
+            <span class="mf-key">Finish / Topcoat:</span> <span class="mf-value">{{product.metafields.custom.finish}}</span>
+          </div>
+
+        {% endif %}
+
+        {% if product.metafields.custom.backing %}
+
+          <div class="product-metafields">
+            <span class="mf-key">Backing:</span> <span class="mf-value">{{product.metafields.custom.backing}}</span>
+          </div>
+
+        {% endif %}
+
+        {% if product.metafields.custom.weight %}
+
+          <div class="product-metafields">
+            <span class="mf-key">Weight:</span> <span class="mf-value">{{product.metafields.custom.weight.value}}{% if product.type == 'Fabric' %} / linear yd{% endif %}</span>
+          </div>
+
+        {% endif %}
+
+        {% if product.metafields.custom.width %}
+
+          <div class="product-metafields">
+            <span class="mf-key">Width:</span> <span class="mf-value">{{product.metafields.custom.width.value}}</span>
+          </div>
+
+        {% endif %}
+
+        {% if product.metafields.custom.thickness %}
+
+        <div class="product-metafields">
+            <span class="mf-key">Thickness:</span> <span class="mf-value">{{product.metafields.custom.thickness.value}}</span>
+        </div>
+
+        {% endif %}
+
+        {% if product.metafields.custom.railroaded == true %}
+
+        <div class="product-metafields">
+            <span class="mf-key">Railroaded:</span> <span class="mf-value">Yes</span>
+        </div>
+
+        {% endif %}
+
+        {% if product.metafields.custom.repeat_vertical %}
+
+        <div class="product-metafields">
+            <span class="mf-key">Repeat - Vertical:</span> <span class="mf-value">{{product.metafields.custom.repeat_vertical.value}}</span>
+        </div>
+
+        {% endif %}
+
+        {% if product.metafields.custom.repeat_horizontal %}
+
+        <div class="product-metafields">
+            <span class="mf-key">Repeat - Horizontal:</span> <span class="mf-value">{{product.metafields.custom.repeat_horizontal.value}}</span>
+        </div>
+
+        {% endif %}
+
+        {% if product.metafields.custom.roll_size %}
+
+        <div class="product-metafields">
+            <span class="mf-key">Roll Size:</span> <span class="mf-value">{{product.metafields.custom.roll_size.value}}</span>
+        </div>
+
+        {% endif %}
+
+        </div>
+          
+        {% endif %}
+
+        {% if product.metafields.custom.abrasion_resistance != blank or 
+              product.metafields.custom.cold_crack != blank or 
+              product.metafields.custom.colorfastness_to_uv != blank or 
+              product.metafields.custom.colorfastness_to_light != blank or 
+              product.metafields.custom.colorfastness_to_artificial_weathering != blank
+        %}  
+
+        <div class="pd-section performance-specs" id="section-performance-specs">
+
+        <h3>Performance Specs</h3>
+
+
+        {% if product.metafields.custom.act_certification_marks != blank %}
+
+        <div class="product-metafields">
+
+          <span class="mf-key">ACT® Certification Marks:</span>
+          
+          <span class="mf-value">
+
+            {% for marks in product.metafields.custom.act_certification_marks.value %}
+
+            {% if marks == "Flammability" %}
+              <img alt="ACT Registered Certification Mark: Flammability" style="display: inline-block; margin-right: 5px;" src="{{ 'ACT-Flammability.png' | asset_url }}" width="20" height="20" />
+            {% endif %}
+
+            {% if marks == "Crocking" %}
+              <img alt="ACT Registered Certification Mark: Wet and Dry Crocking" style="display:inline-block; margin-right: 5px;" src="{{ 'ACT-Crocking.png' | asset_url }}" width="20" height="20" />
+            {% endif %}
+
+            {% if marks == "Light" %}
+              <img alt="ACT Registered Certification Mark: Colorfastness to Light" style="display:inline-block; margin-right: 5px;" src="{{ 'ACT-Light.png' | asset_url }}" width="20" height="20" />
+            {% endif %}
+
+            {% if marks == "Physical" %}
+              <img alt="ACT Registered Certification Mark: Physical Properties" style="display:inline-block; margin-right: 5px;" src="{{ 'ACT-Physical.png' | asset_url }}" width="20" height="20" />
+            {% endif %}
+
+            {% if marks == "Abrasion - Low" %}        
+              <img alt="ACT Registered Certification Mark: Abraision - Low Traffic" style="display:inline-block; margin-right: 5px;" src="{{ 'ACT-Abrasion-Low.png' | asset_url }}" width="20" height="20" />
+            {% endif %}
+
+            {% if marks == "Abrasion - High" %}            
+              <img alt="ACT Registered Certification Mark: Abraision - High Traffic" style="display:inline-block; margin-right: 5px;" src="{{ 'ACT-Abrasion-High.png' | asset_url }}" width="20" height="20" />
+            {% endif %}  
+
+          {% endfor %}
+          
+          </span>
+
+        </div>
+
+        {% endif %}
+
+        {% if product.metafields.custom.abrasion_resistance %}
+
+        <div class="product-metafields">
+            <span class="mf-key">Abrasion Resistance:<br /><span style="font-weight: 400; font-size: 1.3rem;";>ASTM D4157 / CFFA-1a</span></span> <span class="mf-value" id="abrasion-resistance">{{product.metafields.custom.abrasion_resistance}} double rubs</span>
+            <script type="text/javascript">
+              var num = {{product.metafields.custom.abrasion_resistance}};
+              var result = num.toLocaleString();
+              document.getElementById("abrasion-resistance").innerHTML = result + '+ double rubs';
+            </script>
+        </div>
+
+        {% endif %}
+
+        {% if product.metafields.custom.cold_crack %}
+
+        <div class="product-metafields">
+            <span class="mf-key">Cold Crack Resistance:<br /><span style="font-weight: 400; font-size: 1.3rem;";>CFFA-6a</span></span> 
+            <span class="mf-value">{{product.metafields.custom.cold_crack.value}}<span class="degree-farenheight">&#x2109;</span></span>
+        </div>
+
+        {% endif %}
+
+        {% if product.metafields.custom.colorfastness_to_uv %}
+
+        <div class="product-metafields">
+            <span class="mf-key">Colorfastness to UV:<br /><span style="font-weight: 400; font-size: 1.3rem;";>ASTM D-4329 / CFFA-2 c2</span></span> 
+            <span class="mf-value">{{product.metafields.custom.colorfastness_to_uv.value}} Hours - Pass</span>
+        </div>
+
+        {% endif %}
+
+        {% if product.metafields.custom.colorfastness_to_light %}
+
+        <div class="product-metafields">
+            <span class="mf-key">Colorfastness to Light:</span> 
+            <span class="mf-value">{{product.metafields.custom.colorfastness_to_light.value}} Hours - Pass</span>
+        </div>
+
+        {% endif %}
+
+        {% if product.metafields.custom.colorfastness_to_artificial_weathering %}
+
+        <div class="product-metafields">
+            <span class="mf-key">Colorfastness to  Weathering:<br /><span style="font-weight: 400; font-size: 1.3rem;";>ISO 105-B04 / WeatherOmeter</span></span> 
+            <span class="mf-value">{{product.metafields.custom.colorfastness_to_artificial_weathering.value}} Hours - Pass</span>
+        </div>
+
+        {% endif %}
+
+        </div>
+
+        {% endif %}
+
+          
+
+        </div>
+
+        <div class="grid__item pd-right ">
+
+
+        {%- if product.metafields.custom.product_features != blank -%}  
+        <div class="pd-section" id="section-product-features">
+        <h3>Product Features</h3>
+          <ul>
+            {% for metavalue in product.metafields.custom.product_features.value %}
+                <li>{{metavalue}}</li>
+            {% endfor %}
+          </ul>
+        </div>
+        {%- endif -%}  
+
+        {%- if product.metafields.custom.specs_flammability != blank -%}
+        <div class="pd-section" id="section-flammability-specs">
+        <h3>Flammability Specs</h3>
+          <ul style="margin-bottom: 20px">
+            {% for metavalue in product.metafields.custom.specs_flammability.value %}
+              <li>{{metavalue}}</li>
+            {% endfor %}
+          </ul>
+          <p>"Flammability" and any corresponding data refer to the typical performance in the tests indicated and should not be construed to imply the behavior of this or any other material under actual fire conditions.</p>
+        </div>
+        {%- endif -%}
+
+        {%- if product.metafields.custom.compliance_and_certifications != blank -%}
+          <div class="pd-section" id="section-compliance-certification">
+          <h3>Compliance &amp; Certifications</h3>
+            <ul style="margin-bottom: 20px">
+              {% for metavalue in product.metafields.custom.compliance_and_certifications.value %}
+                <li>{{metavalue}}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        {%- endif -%}
+
+        {%- if product.metafields.custom.care_instructions != blank %}
+          <div class="pd-section" id="section-care-instructions">
+            <h3>Care Instructions</h3>
+            {{ product.metafields.custom.care_instructions }}
+          </div>
+        {%- endif -%}
+
+
+      </div>
+    </div>
   </div>
-
-{% endif %}
-
-  
-{% if product.metafields.custom.pattern_collection %}
-
-  <div class="product-metafields">
-    <span class="mf-key">Pattern:</span> <span class="mf-value"><a href="{{product.metafields.custom.pattern_collection.value.url}}">{{product.metafields.custom.pattern}}</a></span>
-  </div>
-
-{% endif %}
-
-
-{% if product.metafields.custom.mpn %}
-
-  <div class="product-metafields">
-    <span class="mf-key">MPN:</span> <span class="mf-value">{{product.metafields.custom.mpn}}</span>
-  </div>
-
-{% endif %}
-
-  
-{% if product.metafields.custom.color %}
-
-  <div class="product-metafields ">
-    <span class="mf-key">Color:</span><span class="mf-value">{{product.metafields.custom.color}}</span>
-  </div>
-
-{% endif %}  
-
-  
-{% if product.metafields.custom.color_family %}
-
-  <div class="product-metafields ">
-    <span class="mf-key">Color Family:</span><span class="mf-value">
-  		{% for color_family in product.metafields.custom.color_family.value %}
-  			<a href="{{shop.secure_url}}/collections/{{color_family | handleize}}">{{color_family}}</a>{% if forloop.last != true %}, {% endif %}
-  		{% endfor %}
-  	</span>
-  </div>
-
-{% endif %}
-
-</div>
-
-{% endif %}
-  
-
-{% if product.type != blank or 
-      product.metafields.custom.product_sub_type != blank or 
-      product.metafields.custom.use_application != blank or 
-      product.metafields.custom.market != blank or 
-      product.metafields.custom.indoor_outdoor != blank or
-      product.metafields.custom.pattern_design != blank 
-%}
-
-<div class="pd-section" id="section-categories-collections">
-
-<h3>Categories &amp; Collections</h3>  
-  
-{% if product.type %}
-      
-  <div class="product-metafields">
-  	<span class="mf-key">Category:</span> <span class="mf-value"><a href="{{shop.secure_url}}/collections/{{product.type | handleize}}">{{product.type}}</a></span>
-  </div>
-
-{% endif %}
-
-
-{% if product.metafields.custom.product_sub_type %}
-
-  <div class="product-metafields">
-    <span class="mf-key">Type:</span> <span class="mf-value"><a href="{{shop.secure_url}}/collections/{{product.metafields.custom.product_sub_type | handleize}}">{{product.metafields.custom.product_sub_type}}</a></span>
-  </div>
-
-{% endif %}
-
-{% if product.metafields.custom.use_application %}
-
-  <div class="product-metafields">
-  	<span class="mf-key">Use:</span> <span class="mf-value">
-  		{% for application in product.metafields.custom.use_application.value %}
-  			<a href="{{shop.secure_url}}/collections/{{application | handleize}}">{{application}}</a>{% if forloop.last != true %}, {% endif %}
-  		{% endfor %}
-  	</span>
-  </div>
-
-{% endif %}
-
-{% if product.metafields.custom.market %}
-
-  <div class="product-metafields">
-  	<span class="mf-key">Markets:</span> <span class="mf-value">
-  		{% for market in product.metafields.custom.market.value %}
-  			<a href="{{shop.secure_url}}/collections/{{market | handleize}}">{{market}}</a>{% if forloop.last != true %}, {% endif %}
-  		{% endfor %}
-  	</span>
-  </div>
-
-{% endif %}
-
-{% if product.metafields.custom.indoor_outdoor %}
-
-  <div class="product-metafields">
-  	<span class="mf-key">Indoor / Outdoor:</span> <span class="mf-value">
-  		{% for indoor_outdoor in product.metafields.custom.indoor_outdoor.value %}
-  			<a href="{{shop.secure_url}}/collections/{{indoor_outdoor | handleize}}">{{indoor_outdoor}}</a>{% if forloop.last != true %}, {% endif %}
-  		{% endfor %}
-  	</span>
-  </div>
-
-{% endif %}
-
-{% if product.metafields.custom.pattern_design %}
-
-  <div class="product-metafields">
-  	<span class="mf-key">Design:</span> <span class="mf-value">
-  		{% for design in product.metafields.custom.pattern_design.value %}
-  			<a href="{{shop.secure_url}}/collections/{{design | handleize}}">{{design}}</a>{% if forloop.last != true %}, {% endif %}
-  		{% endfor %}
-  	</span>
-  </div>
-
-{% endif %}
-
-{% if product.metafields.custom.collections %}
-
-  <div class="product-metafields">
-  	<span class="mf-key">Collections:</span> <span class="mf-value">
-  		{% for collection in product.metafields.custom.collections.value %}
-  			<a href="{{shop.secure_url}}/collections/{{collection | handleize}}">{{collection}}</a>{% if forloop.last != true %}, {% endif %}
-  		{% endfor %}
-  	</span>
-  </div>
-
-{% endif %}
-
-
-
-</div>
-
-{% endif %}
-  
-
-{% if product.metafields.custom.content != blank or 
-      product.metafields.custom.finish != blank or 
-      product.metafields.custom.backing != blank or 
-      product.metafields.custom.weight != blank or 
-      product.metafields.custom.width != blank or
-      product.metafields.custom.thickness != blank or
-      product.metafields.custom.railroaded != blank or
-      product.metafields.custom.repeat_vertical != blank or
-      product.metafields.custom.repeat_horizontal != blank or
-      product.metafields.custom.roll_size != blank
-%}
-
-<div class="pd-section">
-
-<h3>Composition &amp; Dimensions</h3>
-
-{% if product.metafields.custom.content %}
-
-	<div class="product-metafields">
-		<span class="mf-key">Content:</span> <span class="mf-value">{{product.metafields.custom.content}}</span>
-	</div>
-
-{% endif %}
-
-{% if product.metafields.custom.finish %}
-
-	<div class="product-metafields">
-		<span class="mf-key">Finish / Topcoat:</span> <span class="mf-value">{{product.metafields.custom.finish}}</span>
-	</div>
-
-{% endif %}
-
-{% if product.metafields.custom.backing %}
-
-	<div class="product-metafields">
-		<span class="mf-key">Backing:</span> <span class="mf-value">{{product.metafields.custom.backing}}</span>
-	</div>
-
-{% endif %}
-
-{% if product.metafields.custom.weight %}
-
-	<div class="product-metafields">
-		<span class="mf-key">Weight:</span> <span class="mf-value">{{product.metafields.custom.weight.value}}{% if product.type == 'Fabric' %} / linear yd{% endif %}</span>
-	</div>
-
-{% endif %}
-
-{% if product.metafields.custom.width %}
-
-	<div class="product-metafields">
-		<span class="mf-key">Width:</span> <span class="mf-value">{{product.metafields.custom.width.value}}</span>
-	</div>
-
-{% endif %}
-
-{% if product.metafields.custom.thickness %}
-
-<div class="product-metafields">
-    <span class="mf-key">Thickness:</span> <span class="mf-value">{{product.metafields.custom.thickness.value}}</span>
-</div>
-
-{% endif %}
-
-{% if product.metafields.custom.railroaded == true %}
-
-<div class="product-metafields">
-    <span class="mf-key">Railroaded:</span> <span class="mf-value">Yes</span>
-</div>
-
-{% endif %}
-
-{% if product.metafields.custom.repeat_vertical %}
-
-<div class="product-metafields">
-    <span class="mf-key">Repeat - Vertical:</span> <span class="mf-value">{{product.metafields.custom.repeat_vertical.value}}</span>
-</div>
-
-{% endif %}
-
-{% if product.metafields.custom.repeat_horizontal %}
-
-<div class="product-metafields">
-    <span class="mf-key">Repeat - Horizontal:</span> <span class="mf-value">{{product.metafields.custom.repeat_horizontal.value}}</span>
-</div>
-
-{% endif %}
-
-{% if product.metafields.custom.roll_size %}
-
-<div class="product-metafields">
-    <span class="mf-key">Roll Size:</span> <span class="mf-value">{{product.metafields.custom.roll_size.value}}</span>
-</div>
-
-{% endif %}
-
-</div>
-  
-{% endif %}
-
-{% if product.metafields.custom.abrasion_resistance != blank or 
-      product.metafields.custom.cold_crack != blank or 
-      product.metafields.custom.colorfastness_to_uv != blank or 
-      product.metafields.custom.colorfastness_to_light != blank or 
-      product.metafields.custom.colorfastness_to_artificial_weathering != blank
-%}  
-
-<div class="pd-section performance-specs" id="section-performance-specs">
-
-<h3>Performance Specs</h3>
-
-
-{% if product.metafields.custom.act_certification_marks != blank %}
-
-<div class="product-metafields">
-
-  <span class="mf-key">ACT® Certification Marks:</span>
-  
-  <span class="mf-value">
-
-    {% for marks in product.metafields.custom.act_certification_marks.value %}
-
-    {% if marks == "Flammability" %}
-      <img alt="ACT Registered Certification Mark: Flammability" style="display: inline-block; margin-right: 5px;" src="{{ 'ACT-Flammability.png' | asset_url }}" width="20" height="20" />
-    {% endif %}
-
-    {% if marks == "Crocking" %}
-      <img alt="ACT Registered Certification Mark: Wet and Dry Crocking" style="display:inline-block; margin-right: 5px;" src="{{ 'ACT-Crocking.png' | asset_url }}" width="20" height="20" />
-    {% endif %}
-
-    {% if marks == "Light" %}
-      <img alt="ACT Registered Certification Mark: Colorfastness to Light" style="display:inline-block; margin-right: 5px;" src="{{ 'ACT-Light.png' | asset_url }}" width="20" height="20" />
-    {% endif %}
-
-    {% if marks == "Physical" %}
-      <img alt="ACT Registered Certification Mark: Physical Properties" style="display:inline-block; margin-right: 5px;" src="{{ 'ACT-Physical.png' | asset_url }}" width="20" height="20" />
-    {% endif %}
-
-    {% if marks == "Abrasion - Low" %}        
-      <img alt="ACT Registered Certification Mark: Abraision - Low Traffic" style="display:inline-block; margin-right: 5px;" src="{{ 'ACT-Abrasion-Low.png' | asset_url }}" width="20" height="20" />
-    {% endif %}
-
-    {% if marks == "Abrasion - High" %}            
-      <img alt="ACT Registered Certification Mark: Abraision - High Traffic" style="display:inline-block; margin-right: 5px;" src="{{ 'ACT-Abrasion-High.png' | asset_url }}" width="20" height="20" />
-    {% endif %}  
-
-  {% endfor %}
-  
-  </span>
-
-</div>
-
-{% endif %}
-
-{% if product.metafields.custom.abrasion_resistance %}
-
-<div class="product-metafields">
-    <span class="mf-key">Abrasion Resistance:<br /><span style="font-weight: 400; font-size: 1.3rem;";>ASTM D4157 / CFFA-1a</span></span> <span class="mf-value" id="abrasion-resistance">{{product.metafields.custom.abrasion_resistance}} double rubs</span>
-    <script type="text/javascript">
-      var num = {{product.metafields.custom.abrasion_resistance}};
-      var result = num.toLocaleString();
-      document.getElementById("abrasion-resistance").innerHTML = result + '+ double rubs';
-    </script>
-</div>
-
-{% endif %}
-
-{% if product.metafields.custom.cold_crack %}
-
-<div class="product-metafields">
-    <span class="mf-key">Cold Crack Resistance:<br /><span style="font-weight: 400; font-size: 1.3rem;";>CFFA-6a</span></span> 
-    <span class="mf-value">{{product.metafields.custom.cold_crack.value}}<span class="degree-farenheight">&#x2109;</span></span>
-</div>
-
-{% endif %}
-
-{% if product.metafields.custom.colorfastness_to_uv %}
-
-<div class="product-metafields">
-    <span class="mf-key">Colorfastness to UV:<br /><span style="font-weight: 400; font-size: 1.3rem;";>ASTM D-4329 / CFFA-2 c2</span></span> 
-    <span class="mf-value">{{product.metafields.custom.colorfastness_to_uv.value}} Hours - Pass</span>
-</div>
-
-{% endif %}
-
-{% if product.metafields.custom.colorfastness_to_light %}
-
-<div class="product-metafields">
-    <span class="mf-key">Colorfastness to Light:</span> 
-    <span class="mf-value">{{product.metafields.custom.colorfastness_to_light.value}} Hours - Pass</span>
-</div>
-
-{% endif %}
-
-{% if product.metafields.custom.colorfastness_to_artificial_weathering %}
-
-<div class="product-metafields">
-    <span class="mf-key">Colorfastness to  Weathering:<br /><span style="font-weight: 400; font-size: 1.3rem;";>ISO 105-B04 / WeatherOmeter</span></span> 
-    <span class="mf-value">{{product.metafields.custom.colorfastness_to_artificial_weathering.value}} Hours - Pass</span>
-</div>
-
-{% endif %}
-
-</div>
-
-{% endif %}
-
-  
-
-</div>
-
-<div class="grid__item pd-right ">
-
-
-{%- if product.metafields.custom.product_features != blank -%}  
-<div class="pd-section" id="section-product-features">
-<h3>Product Features</h3>
-  <ul>
-    {% for metavalue in product.metafields.custom.product_features.value %}
-        <li>{{metavalue}}</li>
-    {% endfor %}
-  </ul>
-</div>
-{%- endif -%}  
-
-{%- if product.metafields.custom.specs_flammability != blank -%}
-<div class="pd-section" id="section-flammability-specs">
-<h3>Flammability Specs</h3>
-  <ul style="margin-bottom: 20px">
-    {% for metavalue in product.metafields.custom.specs_flammability.value %}
-      <li>{{metavalue}}</li>
-    {% endfor %}
-  </ul>
-  <p>"Flammability" and any corresponding data refer to the typical performance in the tests indicated and should not be construed to imply the behavior of this or any other material under actual fire conditions.</p>
-</div>
-{%- endif -%}
-
-{%- if product.metafields.custom.compliance_and_certifications != blank -%}
-  <div class="pd-section" id="section-compliance-certification">
-  <h3>Compliance &amp; Certifications</h3>
-    <ul style="margin-bottom: 20px">
-      {% for metavalue in product.metafields.custom.compliance_and_certifications.value %}
-        <li>{{metavalue}}</li>
-      {% endfor %}
-    </ul>
-  </div>
-{%- endif -%}
-
-{%- if product.metafields.custom.care_instructions != blank %}
-  <div class="pd-section" id="section-care-instructions">
-    <h3>Care Instructions</h3>
-    {{ product.metafields.custom.care_instructions }}
-  </div>
-{%- endif -%}
-
-
-</div>
-
-</div>
-
-</div>
 
 </section>
 
