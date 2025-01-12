@@ -25,7 +25,7 @@
           "type": "collapsible_row",
           "settings": {
             "heading": "Learn more about {{ collection.title }}",
-            "icon": "star",
+            "icon": "none",
             "row_content": "{{ collection.description }}",
             "page": ""
           }
