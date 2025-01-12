@@ -34,7 +34,6 @@
       "block_order": [
         "collapsible_row_4brNV4"
       ],
-      "disabled": true,
       "settings": {
         "caption": "",
         "heading": "{{ collection.title }}",
@@ -64,6 +63,7 @@
       "block_order": [
         "heading_wmUVDm"
       ],
+      "disabled": true,
       "settings": {
         "desktop_content_position": "center",
         "content_alignment": "center",
