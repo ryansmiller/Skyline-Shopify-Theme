@@ -22,6 +22,7 @@
         },
         "text_wnLya3": {
           "type": "text",
+          "disabled": true,
           "settings": {
             "text": "{{ product.metafields.custom.brand.value }}",
             "text_style": "body"
@@ -29,6 +30,7 @@
         },
         "title": {
           "type": "title",
+          "disabled": true,
           "settings": {}
         },
         "custom_price_reviews_nxm7BV": {
