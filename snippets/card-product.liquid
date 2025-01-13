@@ -145,8 +145,8 @@
       </div>
       <div class="card__content">
         <div class="card__information">
-          {%- if product.metafields.custom.brand -%}
-            <div class="custom-product-card__brand">{{product.metafields.custom.brand}}</div>
+          {%- if card_product.metafields.custom.brand -%}
+            <div class="custom-product-card__brand">{{card_product.metafields.custom.brand}}</div>
           {% endif %}
           <h3
             class="card__heading{% if card_product.featured_media or settings.card_style == 'standard' %} h5{% endif %}"
