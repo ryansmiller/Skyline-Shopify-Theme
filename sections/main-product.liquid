@@ -121,7 +121,7 @@
 
                   <h1>
                     {%- if product.metafields.custom.brand -%}
-                      <div class="custom-product-title__brand">{{ product.metafields.custom.brand }}</div>
+                      <div class="custom-product-title__brand"><a href="{{shop.secure_url}}/collections/{{product.metafields.custom.brand | handleize}}">{{product.metafields.custom.brand}}</a></div>
                     {%- endif -%}
                     
                       <div class="custom-product-title__pattern">{%- if product.metafields.custom.pattern -%}{{ product.metafields.custom.pattern }} {%- endif -%}{{ product.metafields.custom.short_description }}</div>
