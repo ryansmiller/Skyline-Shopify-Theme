@@ -1,3 +1,8 @@
+body, html {
+  text-rendering: optimizelegibility;
+}
+
+
 /* Base Edits */
 
 
@@ -280,6 +285,12 @@ quantity-input {
 
 /* Facets */
 
+@media screen and (min-width: 750px) {
+  .facets-vertical .facets-wrapper {
+    padding-right: 6rem !important;
+  }
+}
+
 .facets,
 .facets__summary {
   color: #000 !important;
@@ -292,4 +303,24 @@ quantity-input {
 
 .facets__summary:hover .facets__summary-label {
   text-decoration: none;
+}
+
+
+/* Card = Product */
+
+.custom-product-card__brand {
+  text-transform: uppercase;
+  font-size: 1.2rem;
+}
+
+.card .full-unstyled-link {
+  font-size: 16px;
+  line-height: 2.8rem;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 0px;
+}
+
+.custom-product-card__color {
+  font-weight: 400;
 }

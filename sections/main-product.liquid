@@ -99,19 +99,28 @@
                 }
                 
                 .custom-product-title__brand {
-                  font-size: 1.6rem;
+                  font-size: 1.4rem;
                   font-weight: 400;
+                  padding-bottom: 5px;
+                  text-transform: uppercase;
+                }
+
+                .custom-product-title__brand a:link,
+                .custom-product-title__brand a:visited {
+                  color: #6a6a6a;
+                  text-decoration: none;
                 }
 
                 .custom-product-title__pattern {
-                  font-size: 2.5rem;
+                  font-size: 3.3rem;
                   font-weight: 700;
+                  padding-bottom: 5px;
                 }
 
                 .custom-product-title__color {
                   font-size: 2rem;
-                  font-weight: 700;
-                  color: green;
+                  font-weight: 400;
+                  color: #000;
                 }
 
                 {%- endstyle -%}
@@ -121,7 +130,7 @@
 
                   <h1>
                     {%- if product.metafields.custom.brand -%}
-                      <div class="custom-product-title__brand"><a href="{{shop.secure_url}}/collections/{{product.metafields.custom.brand | handleize}}">{{product.metafields.custom.brand}}</a></div>
+                      <div class="custom-product-title__brand"><a href="/collections/{{product.metafields.custom.brand | handleize}}">{{product.metafields.custom.brand}}</a></div>
                     {%- endif -%}
                     
                       <div class="custom-product-title__pattern">{%- if product.metafields.custom.pattern -%}{{ product.metafields.custom.pattern }} {%- endif -%}{{ product.metafields.custom.short_description }}</div>
@@ -325,7 +334,11 @@
 
                 <div class="block-custom-fabric-color-swatches">
                   <div class="swatch-color-name">
+                    {%  comment %}
                     <strong>Color:</strong> {{ product.metafields.custom.mpn }} {{ product.metafields.custom.color }}
+                    {%  endcomment %}
+
+                    <span>Colors available in {{ product.metafields.custom.pattern }}:</span>
                   </div>
 
                   <ul id="variant-select">

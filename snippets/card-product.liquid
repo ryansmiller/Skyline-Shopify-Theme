@@ -160,7 +160,8 @@
               class="full-unstyled-link"
               aria-labelledby="CardLink-{{ section_id }}-{{ card_product.id }} Badge-{{ section_id }}-{{ card_product.id }}"
             >
-              {{ card_product.title | escape }}
+              <div class="custom-product-card__pattern">{{ card_product.metafields.custom.pattern }} {{ card_product.metafields.custom.short_description }}</div>
+              <div class="custom-product-card__color">{{ card_product.metafields.custom.mpn }} {{ card_product.metafields.custom.color }}</div>
             </a>
           </h3>
           <div class="card-information">

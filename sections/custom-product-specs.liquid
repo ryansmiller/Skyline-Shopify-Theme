@@ -155,7 +155,7 @@
         {% if product.metafields.custom.brand %}
 
           <div class="product-metafields">
-            <span class="mf-key">Brand:</span> <span class="mf-value"><a href="{{shop.secure_url}}/collections/{{product.metafields.custom.brand | handleize}}">{{product.metafields.custom.brand}}</a></span>
+            <span class="mf-key">Brand:</span> <span class="mf-value"><a href="/collections/{{product.metafields.custom.brand | handleize}}">{{product.metafields.custom.brand}}</a></span>
           </div>
 
         {% endif %}
@@ -193,7 +193,7 @@
           <div class="product-metafields ">
             <span class="mf-key">Color Family:</span><span class="mf-value">
               {% for color_family in product.metafields.custom.color_family.value %}
-                <a href="{{shop.secure_url}}/collections/{{color_family | handleize}}">{{color_family}}</a>{% if forloop.last != true %}, {% endif %}
+                <a href="/collections/{{color_family | handleize}}">{{color_family}}</a>{% if forloop.last != true %}, {% endif %}
               {% endfor %}
             </span>
           </div>
@@ -220,7 +220,7 @@
         {% if product.type %}
               
           <div class="product-metafields">
-            <span class="mf-key">Category:</span> <span class="mf-value"><a href="{{shop.secure_url}}/collections/{{product.type | handleize}}">{{product.type}}</a></span>
+            <span class="mf-key">Category:</span> <span class="mf-value"><a href="/collections/{{product.type | handleize}}">{{product.type}}</a></span>
           </div>
 
         {% endif %}
@@ -229,7 +229,7 @@
         {% if product.metafields.custom.product_sub_type %}
 
           <div class="product-metafields">
-            <span class="mf-key">Type:</span> <span class="mf-value"><a href="{{shop.secure_url}}/collections/{{product.metafields.custom.product_sub_type | handleize}}">{{product.metafields.custom.product_sub_type}}</a></span>
+            <span class="mf-key">Type:</span> <span class="mf-value"><a href="/collections/{{product.metafields.custom.product_sub_type | handleize}}">{{product.metafields.custom.product_sub_type}}</a></span>
           </div>
 
         {% endif %}
@@ -239,7 +239,7 @@
           <div class="product-metafields">
             <span class="mf-key">Use:</span> <span class="mf-value">
               {% for application in product.metafields.custom.use_application.value %}
-                <a href="{{shop.secure_url}}/collections/{{application | handleize}}">{{application}}</a>{% if forloop.last != true %}, {% endif %}
+                <a href="/collections/{{application | handleize}}">{{application}}</a>{% if forloop.last != true %}, {% endif %}
               {% endfor %}
             </span>
           </div>
@@ -251,7 +251,7 @@
           <div class="product-metafields">
             <span class="mf-key">Markets:</span> <span class="mf-value">
               {% for market in product.metafields.custom.market.value %}
-                <a href="{{shop.secure_url}}/collections/{{market | handleize}}">{{market}}</a>{% if forloop.last != true %}, {% endif %}
+                <a href="/collections/{{market | handleize}}">{{market}}</a>{% if forloop.last != true %}, {% endif %}
               {% endfor %}
             </span>
           </div>
@@ -263,7 +263,7 @@
           <div class="product-metafields">
             <span class="mf-key">Indoor / Outdoor:</span> <span class="mf-value">
               {% for indoor_outdoor in product.metafields.custom.indoor_outdoor.value %}
-                <a href="{{shop.secure_url}}/collections/{{indoor_outdoor | handleize}}">{{indoor_outdoor}}</a>{% if forloop.last != true %}, {% endif %}
+                <a href="/collections/{{indoor_outdoor | handleize}}">{{indoor_outdoor}}</a>{% if forloop.last != true %}, {% endif %}
               {% endfor %}
             </span>
           </div>
@@ -275,7 +275,7 @@
           <div class="product-metafields">
             <span class="mf-key">Design:</span> <span class="mf-value">
               {% for design in product.metafields.custom.pattern_design.value %}
-                <a href="{{shop.secure_url}}/collections/{{design | handleize}}">{{design}}</a>{% if forloop.last != true %}, {% endif %}
+                <a href="/collections/{{design | handleize}}">{{design}}</a>{% if forloop.last != true %}, {% endif %}
               {% endfor %}
             </span>
           </div>
@@ -287,7 +287,7 @@
           <div class="product-metafields">
             <span class="mf-key">Collections:</span> <span class="mf-value">
               {% for collection in product.metafields.custom.collections.value %}
-                <a href="{{shop.secure_url}}/collections/{{collection | handleize}}">{{collection}}</a>{% if forloop.last != true %}, {% endif %}
+                <a href="/collections/{{collection | handleize}}">{{collection}}</a>{% if forloop.last != true %}, {% endif %}
               {% endfor %}
             </span>
           </div>
