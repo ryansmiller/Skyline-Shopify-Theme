@@ -392,7 +392,8 @@
             region: 'region_code',
             city: 'city',
             zip: 'postal',
-            deliveryDate: 'deliveryDate'
+            deliveryDate: 'deliveryDate',
+            moreDeliveryDate: 'moreDeliveryDate'
         };
     
         // Function to fetch IP data
@@ -491,15 +492,19 @@
         const FedExDeliveryDate = sessionStorage.getItem(sessionKeys.deliveryDate);
         if (!FedExDeliveryDate) {
             const deliveryDate = await fetchFedExDeliveryDate();
+            const moreDeliveryDate = DateTime.local(deliveryDate).plus({ weeks: 2 }).toISODate();
             if (deliveryDate) {
                 sessionStorage.setItem(sessionKeys.deliveryDate, deliveryDate);
+                sessionStorage.setItem(sessionKeys.moreDeliveryDate, moreDeliveryDate)
             }
         }
     
         const dd = DateTime.fromISO(sessionStorage.getItem(sessionKeys.deliveryDate));
+        const dd2 = DateTime.fromISO(sessionStorage.getItem(sessionKeys.moreDeliveryDate));
         if (dd.isValid) {
             document.getElementById("dateInStock").innerHTML = dd.toFormat('cccc, LLLL d');
             document.getElementById("shipLocation").innerHTML = `going to ${sessionStorage.getItem(sessionKeys.city)}, ${sessionStorage.getItem(sessionKeys.region)}`;
+            document.getElementById("dateMillStock").innerHTML = dd2.toFormat('cccc, LLLL d');
         }
     });
     
