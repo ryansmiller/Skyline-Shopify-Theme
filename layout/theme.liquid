@@ -500,7 +500,7 @@
         const dd2 = DateTime.fromISO(sessionStorage.getItem(sessionKeys.deliveryDate)).plus({ weeks: 2 });
         if (dd.isValid) {
             document.getElementById("dateInStock").innerHTML = dd.toFormat('cccc, LLLL d');
-            document.getElementById("shipLocation").innerHTML = `going to ${sessionStorage.getItem(sessionKeys.city)}, ${sessionStorage.getItem(sessionKeys.region)}`;
+            document.getElementByClassName("shipLocation").innerHTML = `going to ${sessionStorage.getItem(sessionKeys.city)}, ${sessionStorage.getItem(sessionKeys.region)}`;
             document.getElementById("dateMillStock").innerHTML = dd2.toFormat('cccc, LLLL d');
         }
     });
