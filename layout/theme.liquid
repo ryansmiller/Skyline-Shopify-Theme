@@ -420,6 +420,11 @@
                 console.log(data.postal);
             }
         }
+
+        if (typeof luxon === 'undefined') {
+          console.error('Luxon library is not loaded');
+          return;
+      }
     
         // Start Luxon
         const DateTime = luxon.DateTime;
