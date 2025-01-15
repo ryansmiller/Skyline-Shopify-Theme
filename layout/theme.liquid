@@ -381,12 +381,11 @@
     {%- endif -%}
 
 
-    <script src="{{ 'luxon.min.js' | asset_url }}"></script>
-    <script src="{{ 'luxon-business-days.min.js' | asset_url }}"></script>
+    <script src="{{ 'luxon.min.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'luxon-business-days.min.js' | asset_url }}" defer="defer"></script>
     
     <script type="text/javascript">
-    
-      (async () => {
+      document.addEventListener('DOMContentLoaded', async () => {
         const sessionKeys = {
             ip: 'ipaddress',
             country: 'country',
@@ -421,11 +420,12 @@
                 console.log(data.postal);
             }
         }
-
+    
+        // Check if Luxon is loaded
         if (typeof luxon === 'undefined') {
-          console.error('Luxon library is not loaded');
-          return;
-      }
+            console.error('Luxon library is not loaded');
+            return;
+        }
     
         // Start Luxon
         const DateTime = luxon.DateTime;
@@ -501,7 +501,8 @@
             document.getElementById("dateInStock").innerHTML = dd.toFormat('cccc, LLLL d');
             document.getElementById("shipLocation").innerHTML = `going to ${sessionStorage.getItem(sessionKeys.city)}, ${sessionStorage.getItem(sessionKeys.region)}`;
         }
-    })();
+    });
+    
     
     
     </script>
