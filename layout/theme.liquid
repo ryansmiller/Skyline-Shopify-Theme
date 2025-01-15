@@ -392,8 +392,7 @@
             region: 'region_code',
             city: 'city',
             zip: 'postal',
-            deliveryDate: 'deliveryDate',
-            moreDeliveryDate: 'moreDeliveryDate'
+            deliveryDate: 'deliveryDate'
         };
     
         // Function to fetch IP data
@@ -492,15 +491,13 @@
         const FedExDeliveryDate = sessionStorage.getItem(sessionKeys.deliveryDate);
         if (!FedExDeliveryDate) {
             const deliveryDate = await fetchFedExDeliveryDate();
-            const moreDeliveryDate = DateTime.local(deliveryDate).plus({ weeks: 2 }).toISODate();
             if (deliveryDate) {
                 sessionStorage.setItem(sessionKeys.deliveryDate, deliveryDate);
-                sessionStorage.setItem(sessionKeys.moreDeliveryDate, moreDeliveryDate)
             }
         }
     
         const dd = DateTime.fromISO(sessionStorage.getItem(sessionKeys.deliveryDate));
-        const dd2 = DateTime.fromISO(sessionStorage.getItem(sessionKeys.moreDeliveryDate));
+        const dd2 = DateTime.fromISO(sessionStorage.getItem(sessionKeys.deliveryDate)).plus({ weeks: 2 });
         if (dd.isValid) {
             document.getElementById("dateInStock").innerHTML = dd.toFormat('cccc, LLLL d');
             document.getElementById("shipLocation").innerHTML = `going to ${sessionStorage.getItem(sessionKeys.city)}, ${sessionStorage.getItem(sessionKeys.region)}`;
