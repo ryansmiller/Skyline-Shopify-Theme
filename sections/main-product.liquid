@@ -368,9 +368,6 @@
 
                 <div class="block-custom-fabric-color-swatches">
                   <div class="swatch-color-name">
-                    {% comment %}
-                    <strong>Color:</strong> {{ product.metafields.custom.mpn }} {{ product.metafields.custom.color }}
-                    {% endcomment %}
 
                     Colors available in {{ product.metafields.custom.pattern }}:
                     
@@ -474,8 +471,6 @@
               {%- endstyle -%}
 
               <div class="stock-details">
-
-                
 
                 {% if product.type == "Fabric" or product.type == "Carpet" %}
                   <h4 class="custom-product-quantity-block"><span id="custom-product-quantity">{{ product.selected_or_first_available_variant.inventory_quantity }}</span> yards in stock</h4>
