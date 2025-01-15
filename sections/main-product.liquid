@@ -96,6 +96,8 @@
 
                 .custom-product-title h1 {
                   margin: 0;
+                  padding-bottom: 10px;
+                  border-bottom: 1px solid #eaeaea;
                 }
                 
                 .custom-product-title__brand {
@@ -107,18 +109,18 @@
 
                 .custom-product-title__brand a:link,
                 .custom-product-title__brand a:visited {
-                  color: #515151;
+                  color: #313131;
                   text-decoration: none;
                 }
 
                 .custom-product-title__pattern {
-                  font-size: 3.3rem;
+                  font-size: 3rem;
                   font-weight: 700;
                   padding-bottom: 10px;
                 }
 
                 .custom-product-title__color {
-                  font-size: 2.2rem;
+                  font-size: 2.4rem;
                   font-weight: 700;
                   color: rgb(22, 81, 150);
                 }
@@ -334,10 +336,11 @@
 
                 <div class="block-custom-fabric-color-swatches">
                   <div class="swatch-color-name">
-                    
+                    {% comment %}
                     <strong>Color:</strong> {{ product.metafields.custom.mpn }} {{ product.metafields.custom.color }}
-                    
+                    {% endcomment %}
 
+                    Colorways available in {{ product.metafields.custom.pattern }}:
                     
                   </div>
 
