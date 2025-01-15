@@ -341,3 +341,10 @@ quantity-input {
   font-size: 1.5rem
 }
 
+.price {
+  letter-spacing: 0 !important;
+}
+
+.card .price {
+  font-weight: 700;
+}
