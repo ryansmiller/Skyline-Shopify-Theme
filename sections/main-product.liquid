@@ -94,29 +94,33 @@
 
                 {%- style -%}
 
-                .custom-product-title h1 {
-                  margin: 0;
-                  padding-bottom: 10px;
+                .custom-product-title {
+                  margin: 0 0 20px 0 !important;
+                  padding-bottom: 20px;
                   border-bottom: 1px solid #eaeaea;
+                }
+
+                .custom-product-title h1 {
+                  margin: 0 !important;
+                }
+
+                .custom-product-title__brand a:link,
+                .custom-product-title__brand a:visited {
+                  color: #111;
+                  text-decoration: none;
                 }
                 
                 .custom-product-title__brand {
                   font-size: 1.4rem;
                   font-weight: 400;
-                  padding-bottom: 10px;
+                  padding-bottom: 5px;
                   text-transform: uppercase;
-                }
-
-                .custom-product-title__brand a:link,
-                .custom-product-title__brand a:visited {
-                  color: #313131;
-                  text-decoration: none;
                 }
 
                 .custom-product-title__pattern {
                   font-size: 3rem;
                   font-weight: 700;
-                  padding-bottom: 10px;
+                  padding-bottom: 5px;
                 }
 
                 .custom-product-title__color {
@@ -171,6 +175,34 @@
                   </div>
 
                 {%- endif -%}
+
+              {%- when 'custom_price' -%}
+
+                {%- style -%}
+
+                  .custom-price-block {
+                    color: #000;
+                    line-height: 2.3rem;
+                    margin: 0;
+                    padding-bottom: 20px;
+                    border-bottom: 1px solid #eaeaea;
+                  }
+
+                  #custom-product-price {
+                    font-size: 2.3rem;
+                  }
+
+                {%- endstyle -%}
+
+                <div class="custom-price-block">
+
+                  {% if product.type == "Fabric" or product.type == "Carpet" %}
+                    <span class="product-price"><strong><span id="custom-product-price">{{ product.selected_or_first_available_variant.price | money }}</span></strong>&nbsp;<span class="price-unit">per yard</span></span>
+                {% else %}
+                    <span class="product-price"><strong><span id="custom-product-price">{{ product.selected_or_first_available_variant.price | money }}</span></strong></span>
+                {% endif %}
+
+                </div>
 
               {%- when 'custom_price_reviews' -%}
 
@@ -279,7 +311,7 @@
 
                 {%- style -%}
                   .block-custom-fabric-color-swatches {
-                    padding: 0;
+                    
                   }
 
                   .swatch-color-name {
@@ -340,7 +372,7 @@
                     <strong>Color:</strong> {{ product.metafields.custom.mpn }} {{ product.metafields.custom.color }}
                     {% endcomment %}
 
-                    Colorways available in {{ product.metafields.custom.pattern }}:
+                    Colors available in {{ product.metafields.custom.pattern }}:
                     
                   </div>
 
@@ -368,22 +400,26 @@
                 
 
                 {%- style -%}
+
                 .stock-details {
                   background-color: {{ block.settings.background_color }};
                   color: #000;
-                  padding: 20px 20px 10px;
+
+                 padding: 20px 25px;
                   border-radius: 8px;
+                  margin-bottom: 20px;
                 }
               
                 
               
-                .stock-details h4 {
+                .custom-product-quantity-block {
                   color: {{ block.settings.headline_color }};
                   line-height: 2rem;
                   font-size: 1.8rem;
-                  padding: 5px 0 25px 0;
+                 
                   margin: 0;
-                  font-weight: 700;
+                  padding-bottom: 20px;
+                  
                 }
               
                 .stock-details ul {
@@ -399,6 +435,10 @@
                   padding-bottom: 15px;
                   font-size: 1.5rem !important;
                   line-height: 2.2rem;
+                }
+
+                .stock-details li:last-child {
+                  padding-bottom: 0;
                 }
               
                 .stock-details li picture {
@@ -422,10 +462,10 @@
 
                 @media screen and (min-width: 750px) {
                   .stock-details {
-                    padding: 20px 30px 10px 25px;
+                    /* padding: 20px 30px 10px 25px; */
                   }
 
-                  .stock-details h4 {
+                  .custom-product-quantity-block {
                     font-size: 2rem;
                   }
 
@@ -435,10 +475,12 @@
 
               <div class="stock-details">
 
+                
+
                 {% if product.type == "Fabric" or product.type == "Carpet" %}
-                  <h4><span id="custom-product-quantity">{{ product.selected_or_first_available_variant.inventory_quantity }}</span> yards In Stock</h4>
+                  <h4 class="custom-product-quantity-block"><span id="custom-product-quantity">{{ product.selected_or_first_available_variant.inventory_quantity }}</span> yards in stock</h4>
                 {% else %}
-                  <h4><span id="custom-product-quantity">{{ product.selected_or_first_available_variant.inventory_quantity }}</span> In Stock</h4>
+                  <h4 class="custom-product-quantity-block"><span id="custom-product-quantity">{{ product.selected_or_first_available_variant.inventory_quantity }}</span> in stock</h4>
                 {% endif %}
                 
                 <ul>
@@ -472,7 +514,7 @@
                         <i class="fa-solid fa-boxes-stacked"></i>
                       </picture>
                       <div class="stock-details-content">
-                        <strong><a href="#">MORE Stock Available</a></strong>. Buy now and receive your order within 2 to 3 weeks.
+                        <strong><a href="#">MORE Available</a></strong>. Buy now and receive your order within 2 to 3 weeks.
                       </div>
                     </li>
                   {%- endif -%}
@@ -1251,6 +1293,11 @@
     {
       "type": "custom_title",
       "name": "Custom: Title",
+      "limit": 1
+    },
+    {
+      "type": "custom_price",
+      "name": "Custom: Price",
       "limit": 1
     },
     {
