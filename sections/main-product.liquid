@@ -496,8 +496,7 @@
                     </li>
                   {%- endif -%}
               
-                  {%- for variant in product.variants -%}
-                    {%- if variant.option1 == 'Yards' and variant.available -%}
+                  
                       <li class="fast-delivery">
                         <picture>
                           <i class="fa-solid fa-bolt"></i>
@@ -506,8 +505,7 @@
                           <strong><a href="#">FAST Delivery</a></strong> by <strong><span id="dateInStock"></span></strong> <span id="shipLocation"></span>
                         </div>
                       </li>
-                    {%- endif -%}
-                  {%- endfor -%}
+                    
               
                   {%- if product.metafields.custom.product_availability != "Discontinued" -%}
                     <li class="more-stock-available">
