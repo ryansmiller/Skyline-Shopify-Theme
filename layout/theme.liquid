@@ -497,7 +497,7 @@
         }
     
         const dd = DateTime.fromISO(sessionStorage.getItem(sessionKeys.deliveryDate));
-        const dd2 = DateTime.fromISO(sessionStorage.getItem(sessionKeys.deliveryDate)).plus({ weeks: 3 });
+        const dd2 = DateTime.fromISO(sessionStorage.getItem(sessionKeys.deliveryDate)).plus({ weeks: 2 });
         if (dd.isValid) {
             document.getElementById("dateInStock").innerHTML = dd.toFormat('cccc, LLLL d');
             document.getElementById("shipLocation").innerHTML = `to <strong>${sessionStorage.getItem(sessionKeys.city)}, ${sessionStorage.getItem(sessionKeys.region)}</strong>`;
