@@ -526,11 +526,11 @@
         </div>
         {%- endif -%}  
 
-        {%- if product.metafields.custom.specs_flammability != blank -%}
+        {%- if product.metafields.custom.flammability_specs != blank -%}
         <div class="pd-section" id="section-flammability-specs">
         <h3>Flammability Specs</h3>
           <ul style="margin-bottom: 20px">
-            {% for metavalue in product.metafields.custom.specs_flammability.value %}
+            {% for metavalue in product.metafields.custom.flammability_specs.value %}
               <li>{{metavalue}}</li>
             {% endfor %}
           </ul>
