@@ -144,7 +144,7 @@
         {% if product.metafields.custom.brand != blank or 
               product.metafields.custom.pattern_collection != blank or 
               product.metafields.custom.mpn != blank or 
-              product.metafields.custom.color != blank or 
+              product.metafields.custom.color_name != blank or 
               product.metafields.custom.color_family != blank
         %}
           
@@ -179,10 +179,10 @@
         {% endif %}
 
           
-        {% if product.metafields.custom.color %}
+        {% if product.metafields.custom.color_name %}
 
           <div class="product-metafields ">
-            <span class="mf-key">Color:</span><span class="mf-value">{{product.metafields.custom.color}}</span>
+            <span class="mf-key">Color:</span><span class="mf-value">{{product.metafields.custom.color_name}}</span>
           </div>
 
         {% endif %}  
