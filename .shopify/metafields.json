@@ -412,6 +412,17 @@
       }
     }
   ],
-  "variant": [],
+  "variant": [
+    {
+      "key": "mpn",
+      "namespace": "custom",
+      "name": "MPN",
+      "description": "",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    }
+  ],
   "shop": []
 }

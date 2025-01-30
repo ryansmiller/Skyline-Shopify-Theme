@@ -139,10 +139,10 @@
                       <div class="custom-product-title__brand"><a href="/collections/{{product.metafields.custom.brand | handleize}}">{{product.metafields.custom.brand}}</a></div>
                     {%- endif -%}
                     
-                      <div class="custom-product-title__pattern">{%- if product.metafields.custom.pattern -%}{{ product.metafields.custom.pattern }} {%- endif -%}{{ product.metafields.custom.short_description }}</div>
+                      <div class="custom-product-title__pattern">{%- if product.metafields.custom.pattern -%}{{ product.metafields.custom.pattern }} {%- endif -%}{{ product.metafields.descriptors.subtitle }}</div>
                     
-                    {%- if product.metafields.custom.color -%}
-                      <div class="custom-product-title__color">{{ product.metafields.custom.mpn }} {{ product.metafields.custom.color }}</div>
+                    {%- if product.metafields.custom.color_name -%}
+                      <div class="custom-product-title__color">{{ product.metafields.custom.mpn }} {{ product.metafields.custom.color_name }}</div>
                     {%- endif -%} 
 
                 </div>
@@ -376,7 +376,7 @@
                       <li>
                         <a class="variant-swatch" 
                           href="{{ product.url }}" 
-                          data-tippy-content="{{ product.metafields.custom.mpn }} {{ product.metafields.custom.color }}" 
+                          data-tippy-content="{{ product.metafields.custom.mpn }} {{ product.metafields.custom.color_name }}" 
                           aria-label="Check out {{ product.title }}">
                           <img src="{{ product.featured_image | image_url: width: 45 }}" 
                               width="45" 
