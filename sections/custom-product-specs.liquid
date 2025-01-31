@@ -515,13 +515,17 @@
         <div class="grid__item pd-right ">
 
 
-        {%- if product.metafields.custom.product_features != blank -%}  
+        {%- if product.metafields.custom.product_features != blank or 
+            if product.metafields.custom.custom_product_features != blank -%}  
         <div class="pd-section" id="section-product-features">
         <h3>Product Features</h3>
           <ul>
             {% for metavalue in product.metafields.custom.product_features.value %}
                 <li>{{metavalue}}</li>
             {% endfor %}
+            {% for metavalue in product.metafields.custom.custom_product_featues.value %}
+                <li>{{ metavalue }}</li>
+              {% endfor %}
           </ul>
         </div>
         {%- endif -%}  
