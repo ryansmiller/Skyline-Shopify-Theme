@@ -204,7 +204,9 @@
 
           <div class="product-metafields ">
             <span class="mf-key">Book:</span><span class="mf-value">
-              <a href="/collections/{{product.metafields.custom.book | handleize}}">{{product.metafields.custom.book}}</a>
+              {% for book in product.metafields.custom.book.value %}
+                <a href="/collections/{{book | handleize}}">{{book}}</a>{% if forloop.last != true %}, {% endif %}
+              {% endfor %}
             </span>
           </div>
 
