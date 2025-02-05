@@ -332,7 +332,11 @@
         {% if product.metafields.custom.content %}
 
           <div class="product-metafields">
-            <span class="mf-key">Content:</span> <span class="mf-value">{{product.metafields.custom.content}}</span>
+            <span class="mf-key">Content:</span> <span class="mf-value">
+            {% for content in product.metafields.custom.content.value %}
+              {{content}}{% if forloop.last != true %}, {% endif %}
+            {% endfor %}
+          </span>
           </div>
 
         {% endif %}
@@ -348,7 +352,11 @@
         {% if product.metafields.custom.backing %}
 
           <div class="product-metafields">
-            <span class="mf-key">Backing:</span> <span class="mf-value">{{product.metafields.custom.backing}}</span>
+            <span class="mf-key">Content:</span> <span class="mf-value">
+              {% for backing in product.metafields.custom.backing.value %}
+                {{backing}}{% if forloop.last != true %}, {% endif %}
+              {% endfor %}
+            </span>
           </div>
 
         {% endif %}
