@@ -341,13 +341,13 @@
 
         {% endif %}
 
-        {% if product.metafields.custom.weight %}
+
 
           <div class="product-metafields">
-            <span class="mf-key">Weight:</span> <span class="mf-value">{{product.metafields.custom.weight.value}}{% if product.type == 'Fabric' %} / linear yd{% endif %}</span>
+            <span class="mf-key">Weight:</span> <span class="mf-value">{%- assign variant = product.variants.first -%}{{ variant.weight | weight_with_unit }}{% if product.type == 'Fabric' %} / linear yd{% endif %}</span>
           </div>
 
-        {% endif %}
+
 
         {% if product.metafields.custom.width %}
 
