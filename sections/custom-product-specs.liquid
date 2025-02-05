@@ -200,6 +200,16 @@
 
         {% endif %}
 
+        {% if product.metafields.custom.book %}
+
+          <div class="product-metafields ">
+            <span class="mf-key">Book:</span><span class="mf-value">
+              <a href="/collections/{{product.metafields.custom.book | handleize}}">{{product.metafields.custom.book}}</a>
+            </span>
+          </div>
+
+        {% endif %}
+
         </div>
 
         {% endif %}
