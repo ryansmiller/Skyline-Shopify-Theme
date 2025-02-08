@@ -547,6 +547,8 @@
             
                 </script>
 
+
+                {% comment %}
                 {% for variant in product.variants %}
                   {% if variant.option1 == 'Memo Sample' %}
                     <div class="custom-memo-sample-button">
@@ -559,6 +561,18 @@
                   </div>
                 {% endif %}
               {% endfor %}
+               {% endcomment %}
+
+               <div class="custom-memo-sample-button">
+                <form id="memo-sample-button" method="post" action="/cart/add" accept-charset="UTF-8" class="form" enctype="multipart/form-data" novalidate="novalidate" data-type="add-to-cart-form">
+                  <input type="hidden" name="form_type" value="product">
+                  <input type="hidden" name="id" value="9639310917939" />
+                  <input type="hidden" min="1" id="quantity" name="quantity" value="1"/>
+                  <input type="submit" value="Add Memo Sample - {{ variant.price | money }}" class="btn button button--full-width button--secondary" />
+                </form>
+              </div>
+
+
 
               {%- when 'text' -%}
                 <p
