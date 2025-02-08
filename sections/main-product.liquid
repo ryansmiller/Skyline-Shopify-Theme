@@ -563,16 +563,18 @@
               {% endfor %}
                {% endcomment %}
 
-
+                {% for variant in product.metafields.custom.memo_sample_variant %}
               
                <div class="custom-memo-sample-button">
                 <form id="memo-sample-button" method="post" action="/cart/add" accept-charset="UTF-8" class="form" enctype="multipart/form-data" novalidate="novalidate" data-type="add-to-cart-form">
                   <input type="hidden" name="form_type" value="product">
-                  <input type="hidden" name="id" value="{{product.metafields.custom.memo_sample_variant.id}}" />
+                  <input type="hidden" name="id" value="{{variant.id}}" />
                   <input type="hidden" min="1" id="quantity" name="quantity" value="1"/>
-                  <input type="submit" value="Add Memo Sample - {{ vproduct.metafields.custom.memo_sample_variant.price | money }}" class="btn button button--full-width button--secondary" />
+                  <input type="submit" value="Add Memo Sample - {{ variant.price | money }}" class="btn button button--full-width button--secondary" />
                 </form>
               </div>
+
+            {% endfor %}
 
 
 
