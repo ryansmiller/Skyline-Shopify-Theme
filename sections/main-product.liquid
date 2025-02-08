@@ -563,7 +563,11 @@
               {% endfor %}
                {% endcomment %}
 
-                {% for variant in product.metafields.custom.memo_sample_variant %}
+              {{  product.metafields.custom.memo_sample_variant }}
+
+              {{  product.metafields.custom.memo_sample_variant.id }}
+
+              {{  product.metafields.custom.memo_sample_variant.title }}
               
                <div class="custom-memo-sample-button">
                 <form id="memo-sample-button" method="post" action="/cart/add" accept-charset="UTF-8" class="form" enctype="multipart/form-data" novalidate="novalidate" data-type="add-to-cart-form">
@@ -574,7 +578,7 @@
                 </form>
               </div>
 
-            {% endfor %}
+          
 
 
 
