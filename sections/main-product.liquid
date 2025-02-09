@@ -563,14 +563,18 @@
               {% endfor %}
                {% endcomment %}
 
-              {%  assign memosamplevariant = product.metafields.custom.memo_sample_product.selected_or_first_available_variant.value  %}
+              {%  assign memo_sample_product = product.metafields.custom.memo_sample_product  %}
+
+              {%  assign memo_sample_variant = memo_sample_product.selected_or_first_available_variant.value %}
+
+              <div>{{ memo_sample_variant }}</div>
               
                <div class="custom-memo-sample-button">
                 <form id="memo-sample-button" method="post" action="/cart/add" accept-charset="UTF-8" class="form" enctype="multipart/form-data" novalidate="novalidate" data-type="add-to-cart-form">
                   <input type="hidden" name="form_type" value="product">
-                  <input type="hidden" name="id" value="{{memosamplevariant.id}}" />
+                  <input type="hidden" name="id" value="{{memo_sample_variant.id}}" />
                   <input type="hidden" min="1" id="quantity" name="quantity" value="1"/>
-                  <input type="submit" value="Add Memo Sample - {{ memosamplevariant.price | money }}" class="btn button button--full-width button--secondary" />
+                  <input type="submit" value="Add Memo Sample - {{ memo_sample_variant.price | money }}" class="btn button button--full-width button--secondary" />
                 </form>
               </div>
 
