@@ -563,7 +563,7 @@
               {% endfor %}
                {% endcomment %}
 
-              {%  assign memo_sample_product = product.metafields.custom.memo_sample_product  %}
+              {%  assign memo_sample_product = product.metafields.custom.memo_sample_product.id  %}
 
               {%  assign memo_sample_variant = memo_sample_product.selected_or_first_available_variant %}
 
