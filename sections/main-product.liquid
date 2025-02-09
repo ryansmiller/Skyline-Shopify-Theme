@@ -565,9 +565,11 @@
 
               {%  assign memo_sample_product = product.metafields.custom.memo_sample_product  %}
 
-              {%  assign memo_sample_variant = memo_sample_product.selected_or_first_available_variant.value %}
+              {%  assign memo_sample_variant = memo_sample_product.selected_or_first_available_variant %}
 
               <div>{{ memo_sample_product }}</div>
+
+              <div>{{ memo_sample_variant }}</div>
               
                <div class="custom-memo-sample-button">
                 <form id="memo-sample-button" method="post" action="/cart/add" accept-charset="UTF-8" class="form" enctype="multipart/form-data" novalidate="novalidate" data-type="add-to-cart-form">
