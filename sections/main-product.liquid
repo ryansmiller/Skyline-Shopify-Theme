@@ -139,7 +139,7 @@
                       <div class="custom-product-title__brand"><a href="/collections/{{product.metafields.custom.brand | handleize}}">{{product.metafields.custom.brand}}</a></div>
                     {%- endif -%}
                     
-                      <div class="custom-product-title__pattern">{%- if product.metafields.custom.pattern -%}{{ product.metafields.custom.pattern }} {%- endif -%}{{ product.metafields.descriptors.subtitle }}</div>
+                      <div class="custom-product-title__pattern">{%- if product.metafields.custom.pattern -%}{{ product.metafields.custom.pattern }} {%- endif -%}{{ product.metafields.custom.product_subtitle }}</div>
                     
                     {%- if product.metafields.custom.color_name -%}
                       <div class="custom-product-title__color">{{ product.metafields.custom.mpn }} {{ product.metafields.custom.color_name }}</div>
@@ -564,8 +564,6 @@
                {% endcomment %}
 
               {%  assign memo_sample_product = product.metafields.custom.memo_sample_product.value  %}
-
-              <div>{{ memo_sample_product.title }}></div>
 
                <div class="custom-memo-sample-button">
                 <form id="memo-sample-button" method="post" action="/cart/add" accept-charset="UTF-8" class="form" enctype="multipart/form-data" novalidate="novalidate" data-type="add-to-cart-form">
