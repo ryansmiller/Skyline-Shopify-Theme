@@ -132,7 +132,15 @@
                 {%- endstyle -%}
 
 
+                 
+
                 <div class="custom-product-title">
+
+                  {%  if product.type == 'Memo Sample' %}
+
+                    <div class="custom-product-title__memo-sample">{{ product.title }}</div>
+
+                  {% else %} 
 
                   <h1>
                     {%- if product.metafields.custom.brand -%}
@@ -145,7 +153,11 @@
                       <div class="custom-product-title__color">{{ product.metafields.custom.mpn }} {{ product.metafields.custom.color_name }}</div>
                     {%- endif -%} 
 
+                  {% endif %}
+
                 </div>
+
+                
 
               {%- when 'custom_avail' -%}  
 
