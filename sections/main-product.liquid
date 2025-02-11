@@ -565,6 +565,8 @@
 
               {%  assign memo_sample_product = product.metafields.custom.memo_sample_product.value  %}
 
+              {% if memo_sample_product %}
+
                <div class="custom-memo-sample-button">
                 <form id="memo-sample-button" method="post" action="/cart/add" accept-charset="UTF-8" class="form" enctype="multipart/form-data" novalidate="novalidate" data-type="add-to-cart-form">
                   <input type="hidden" name="form_type" value="product">
@@ -574,7 +576,7 @@
                 </form>
               </div>
          
-          
+            {% endif %}
 
 
 
