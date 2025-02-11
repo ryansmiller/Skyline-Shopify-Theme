@@ -313,9 +313,9 @@
         {% endif %}
           
 
-        {% if product.metafields.custom.content != blank or 
-              product.metafields.custom.finish != blank or 
-              product.metafields.custom.backing != blank or 
+        {% if product.metafields.custom.content_description != blank or 
+              product.metafields.custom.finish_description != blank or 
+              product.metafields.custom.backing_description != blank or 
               product.metafields.custom.weight != blank or 
               product.metafields.custom.width != blank or
               product.metafields.custom.thickness != blank or
@@ -329,11 +329,11 @@
 
         <h3>Composition &amp; Dimensions</h3>
 
-        {% if product.metafields.custom.content %}
+        {% if product.metafields.custom.content_description %}
 
           <div class="product-metafields">
             <span class="mf-key">Content:</span> <span class="mf-value">
-            {% for content in product.metafields.custom.content.value %}
+            {% for content in product.metafields.custom.content_description.value %}
               {{content}}{% if forloop.last != true %}, {% endif %}
             {% endfor %}
           </span>
@@ -341,19 +341,23 @@
 
         {% endif %}
 
-        {% if product.metafields.custom.finish %}
+        {% if product.metafields.custom.finish_description %}
 
           <div class="product-metafields">
-            <span class="mf-key">Finish / Topcoat:</span> <span class="mf-value">{{product.metafields.custom.finish}}</span>
+            <span class="mf-key">Finish:</span> <span class="mf-value">
+            {% for finish in product.metafields.custom.finish_description.value %}
+              {{finish}}{% if forloop.last != true %}, {% endif %}
+            {% endfor %}
+          </span>
           </div>
 
         {% endif %}
 
-        {% if product.metafields.custom.backing %}
+        {% if product.metafields.custom.backing_description %}
 
           <div class="product-metafields">
-            <span class="mf-key">Content:</span> <span class="mf-value">
-              {% for backing in product.metafields.custom.backing.value %}
+            <span class="mf-key">Backing:</span> <span class="mf-value">
+              {% for backing in product.metafields.custom.backing_description.value %}
                 {{backing}}{% if forloop.last != true %}, {% endif %}
               {% endfor %}
             </span>
