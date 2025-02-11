@@ -265,11 +265,9 @@
                     data-section-id="{{ section.id }}"
                     data-variant-id="{{ product.selected_or_first_available_variant.id }}">
 
-                    {% if product.type == "Fabric" or product.type == "Carpet" %}
-                        <span class="product-price"><strong><span id="custom-product-price">{{ product.selected_or_first_available_variant.price | money }}</span></strong>&nbsp;<span class="price-unit">per yard</span></span>
-                    {% else %}
-                        <span class="product-price"><strong><span id="custom-product-price">{{ product.selected_or_first_available_variant.price | money }}</span></strong></span>
-                    {% endif %}
+                    
+                        <span class="product-price"><strong><span id="custom-product-price">{{ product.selected_or_first_available_variant.price | money }}</span></strong>&nbsp;<span class="price-unit">/ {{ product.metafields.custom.unit_of_sale }}</span></span>
+                   
                        
 
           
