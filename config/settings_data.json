@@ -143,6 +143,15 @@
       }
     },
     "content_for_index": [],
+    "blocks": {
+      "5460929749692845798": {
+        "type": "shopify://apps/shopacado-discounts/blocks/enable/5950831a-4e4e-40a4-82b0-674110b50a14",
+        "disabled": false,
+        "settings": {
+          "theme_id": ""
+        }
+      }
+    },
     "color_schemes": {
       "scheme-1": {
         "settings": {
