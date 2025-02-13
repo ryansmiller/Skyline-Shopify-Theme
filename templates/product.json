@@ -57,10 +57,10 @@
             "icon_color": "#fa8c01"
           }
         },
-        "shopacado_volume_discounts_discount_table_Bhecb7": {
+        "shopacado_discounts_discount_table_Fb7CFp": {
           "type": "shopify://apps/shopacado-discounts/blocks/discount-table/5950831a-4e4e-40a4-82b0-674110b50a14",
           "settings": {
-            "theme_id": "123684323425"
+            "theme_id": ""
           }
         },
         "quantity_selector": {
@@ -95,7 +95,7 @@
         "custom_swatches_39zNia",
         "variant_picker_jy9Cx3",
         "custom_stock_detail_yDWiM6",
-        "shopacado_volume_discounts_discount_table_Bhecb7",
+        "shopacado_discounts_discount_table_Fb7CFp",
         "quantity_selector",
         "buy_buttons",
         "custom_memo_sample_8GbzFY",
