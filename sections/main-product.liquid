@@ -132,7 +132,7 @@
                 .custom-product-title__memo-sample {
                   color: #000 !important;
                   font-size: 2rem !important;
-                  font-weight: 700 !important;
+                  font-weight: 700;
                 }
 
 
@@ -490,15 +490,20 @@
               <div class="stock-details">
 
 
+                {% if product.available == true %}
 
-                {% if product.selected_or_first_available_variant.inventory_quantity == 0 %}
-                  <h4 class="custom-product-quantity-block">Stocked at Mill</h4>
-                {% else %}  
-                  {% if product.type == "Fabric" or product.type == "Carpet" %}
-                    <h4 class="custom-product-quantity-block"><span id="custom-product-quantity">{{ product.selected_or_first_available_variant.inventory_quantity }}</span> yards in stock</h4>
-                  {% else %}
-                    <h4 class="custom-product-quantity-block"><span id="custom-product-quantity">{{ product.selected_or_first_available_variant.inventory_quantity }}</span> in stock</h4>
+                  {% if product.selected_or_first_available_variant.inventory_quantity == 0 %}
+                    <h4 class="custom-product-quantity-block">Stocked at Mill</h4>
+                  {% else %}  
+                    {% if product.type == "Fabric" or product.type == "Carpet" %}
+                      <h4 class="custom-product-quantity-block"><span id="custom-product-quantity">{{ product.selected_or_first_available_variant.inventory_quantity }}</span> yards in stock</h4>
+                    {% else %}
+                      <h4 class="custom-product-quantity-block"><span id="custom-product-quantity">{{ product.selected_or_first_available_variant.inventory_quantity }}</span> in stock</h4>
+                    {% endif %}
                   {% endif %}
+                
+                {% else %}
+                  <h4 class="custom-product-quantity-block">Discontinued - No Stock Available</h4>
                 {% endif %}
                 
                 <ul>
