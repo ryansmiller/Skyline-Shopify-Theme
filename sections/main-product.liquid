@@ -585,6 +585,8 @@
               {% endfor %}
                {% endcomment %}
 
+               {% if product.available == true %}
+
               {%  assign memo_sample_product = product.metafields.custom.memo_sample_product.value  %}
 
               {% if memo_sample_product %}
@@ -600,7 +602,7 @@
          
             {% endif %}
 
-
+          {% endif %}
 
               {%- when 'text' -%}
                 <p
