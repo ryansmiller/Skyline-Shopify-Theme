@@ -393,8 +393,8 @@
                     
                  
 
-                    {% paginate products by 50 %}
-                    {% for product in products %}
+                    {% paginate collections[collectionPattern].products by 50 %}
+                    {% for product in collections[collectionPattern].products %}
                       <li>
                         <a class="variant-swatch" 
                           href="{{ product.url }}" 
@@ -408,7 +408,7 @@
                       </li>
                     {% endfor %}
 
-                    {{- paginate | default_pagination }}
+                    {{ paginate | default_pagination }}
 
                   {% endpaginate %}
 
