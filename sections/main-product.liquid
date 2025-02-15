@@ -320,7 +320,7 @@
                 </script>
 
                 {% assign collectionPattern = product.metafields.custom.pattern_collection.value.handle %}
-                {% assign products = collections[collectionPattern].products | sort_natural: 'title' %}
+                
                 
 
                 {% if collectionPattern %}
@@ -392,9 +392,10 @@
                   <ul id="variant-select">
                     
                  
+                    {% assign product_array = collections[collectionPattern].products | sort_natural: 'title' %}
 
-                    {% paginate collections[collectionPattern].products by 50 %}
-                    {% for product in collections[collectionPattern].products %}
+                    {% paginate product_array by 50 %}
+                    {% for product in product_array %}
                       <li>
                         <a class="variant-swatch" 
                           href="{{ product.url }}" 
