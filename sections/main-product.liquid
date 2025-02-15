@@ -325,222 +325,153 @@
 
                 {% if collectionPattern %}
 
-                {%- style -%}
-                  .block-custom-fabric-color-swatches {
-                    
-                  }
+  
 
-                  .swatch-color-name {
-                    color: #000; 
-                    font-size: 1.4rem; 
-                    padding-bottom: 20px;
-                  }
+                  {%- style -%}
+  .block-custom-fabric-color-swatches {}
 
-                  #variant-select {
-                    position: relative;
-                    list-style: none;
-                    margin: 0;
-                    padding: 0 0 15px 0;
-                    width: 100%;
-                    display: grid;
-                    grid-template-columns: repeat(auto-fill, minmax(45px, 1fr));
-                    gap: 10px;
-                  }
+  .swatch-color-name {
+    color: #000;
+    font-size: 1.4rem;
+    padding-bottom: 20px;
+  }
 
-                  #variant-select a {
-                    width: 45px;
-                    height: 45px;
-                    display: block;
-                    border-radius: 5px;
-                    background-color: #fff;
-                    transition: transform 0.25s;
-                    position: relative;
-                  }
+  #variant-select {
+    position: relative;
+    list-style: none;
+    margin: 0;
+    padding: 0 0 15px 0;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(45px, 1fr));
+    gap: 10px;
+  }
 
-                  #variant-select .active {
-                    filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.25));
-                  }
+  #variant-select a {
+    width: 45px;
+    height: 45px;
+    display: block;
+    border-radius: 5px;
+    background-color: #fff;
+    transition: transform 0.25s;
+    position: relative;
+  }
 
-                  #variant-select img {
-                    border-radius: 5px;
-                    max-width: 100%;
-                    max-height: 100%;
-                    display: block;
-                  }
+  #variant-select .active {
+    filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.25));
+  }
 
-                  #variant-select .active img,
-                  #variant-select img:hover {
-                    transform: scale(0.85);
-                  }
+  #variant-select img {
+    border-radius: 5px;
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+  }
 
-                  @media screen and (min-width: 750px) {
-                    .swatch-color-name {
-                      font-size: 1.6rem;
-                    }
-                  }
+  #variant-select .active img,
+  #variant-select img:hover {
+    transform: scale(0.85);
+  }
 
-                  #product-list {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
+  @media screen and (min-width: 750px) {
+    .swatch-color-name {
+      font-size: 1.6rem;
+    }
+  }
+{%- endstyle -%}
 
-#infinite-scroll-trigger {
-  background: red;
-  height: 20px;
-}
+<div class="block-custom-fabric-color-swatches">
+  <div class="swatch-color-name">
+    Colors available in {{ product.metafields.custom.pattern }}:
+  </div>
 
+  <ul id="variant-select" data-collection-handle="{{ collections[collectionPattern].handle }}"></ul>
 
+  <div id="loading-message" style="padding: 10px; display: none;">
+    Loading colors...
+  </div>
+</div>
 
-                {%- endstyle -%}
-
-                <div class="block-custom-fabric-color-swatches">
-                  <div class="swatch-color-name">
-
-                    Colors available in {{ product.metafields.custom.pattern }}:
-                    
-                  </div>
-
-                  <div id="infinite-scroll-trigger"
-                    data-next-page="2"
-                    >
-                  </div>
-
-                  {% paginate collections[collectionPattern].products by 50 %}
-                    <ul id="variant-select" data-collection-handle="{{ collections[collectionPattern].handle }}">
-                      {% for product in collections[collectionPattern].products %}
-                        <li class="product-item"
-                            data-title="{{ product.title | escape }}"
-                            data-url="{{ product.url }}"
-                            data-image="{{ product.featured_image | image_url: width: 45 }}"
-                            data-mpn="{{ product.metafields.custom.mpn }}"
-                            data-color-name="{{ product.metafields.custom.color_name }}">
-                          <a class="variant-swatch"
-                            href="{{ product.url }}"
-                            data-tippy-content="{{ product.metafields.custom.mpn }} {{ product.metafields.custom.color_name }}"
-                            aria-label="Check out {{ product.title }}">
-                            <img src="{{ product.featured_image | image_url: width: 45 }}"
-                                width="45"
-                                height="45"
-                                alt="Image of {{ product.title }}" />
-                          </a>
-                        </li>
-                      {% endfor %}
-                    </ul>
-                  
-                    
-                  {% endpaginate %}
                   
                     
                     <script>
 
                       document.addEventListener('DOMContentLoaded', function () {
                         const productList = document.getElementById('variant-select');
-
-                        const trigger = document.getElementById('infinite-scroll-trigger');
-                        let isLoading = false;
+                        const loadingMessage = document.getElementById('loading-message');
                       
-                        if (!trigger || !productList) return;
+                        if (!productList) return;
                       
                         const collectionHandle = productList.getAttribute('data-collection-handle');
                       
-                        const loadProducts = () => {
-                          if (isLoading) return;
+                        // Helper: Render a product into the grid
+                        function renderProduct(product) {
+                          const li = document.createElement('li');
+                          li.classList.add('product-item');
                       
-                          let nextPage = parseInt(trigger.getAttribute('data-next-page'), 10);
+                          li.innerHTML = `
+                            <a class="variant-swatch"
+                               href="${product.url}"
+                               data-tippy-content="${product.metafields.custom?.mpn || ''} ${product.metafields.custom?.color_name || ''}"
+                               aria-label="Check out ${product.title}">
+                              <img src="${product.featured_image?.src.replace(/(\.jpg|\.png|\.gif|\.jpeg)(\?.*)?$/, '_45x$1') || ''}"
+                                   width="45"
+                                   height="45"
+                                   alt="Image of ${product.title}" />
+                            </a>
+                          `;
                       
-                          isLoading = true;
+                          productList.appendChild(li);
                       
-                          fetch(`/collections/${collectionHandle}/products.json?limit=50&page=${nextPage}`)
-                            .then((response) => response.json())
-                            .then((data) => {
-                              if (data.products.length > 0) {
-                                data.products.forEach((product) => {
-                                  const li = document.createElement('li');
-                                  li.classList.add('product-item');
-                                  li.setAttribute('data-title', product.title);
-                                  li.setAttribute('data-url', product.url);
-                                  li.setAttribute('data-image', product.featured_image.src.replace(/(\.jpg|\.png|\.gif|\.jpeg)(\?.*)?$/, '_45x$1'));
-                                  li.setAttribute('data-mpn', product.metafields.custom?.mpn || '');
-                                  li.setAttribute('data-color-name', product.metafields.custom?.color_name || '');
-                      
-                                  li.innerHTML = `
-                                    <a class="variant-swatch"
-                                      href="${product.url}"
-                                      data-tippy-content="${product.metafields.custom?.mpn || ''} ${product.metafields.custom?.color_name || ''}"
-                                      aria-label="Check out ${product.title}">
-                                      <img src="${product.featured_image.src.replace(/(\.jpg|\.png|\.gif|\.jpeg)(\?.*)?$/, '_45x$1')}"
-                                          width="45"
-                                          height="45"
-                                          alt="Image of ${product.title}" />
-                                    </a>
-                                  `;
-                                  productList.appendChild(li);
-                                });
-                      
-                                trigger.setAttribute('data-next-page', nextPage + 1);
-                      
-                                // Re-initialize tooltips (Tippy.js)
-                                tippy('.variant-swatch', {
-                                  allowHTML: true,
-                                  theme: 'light-border',
-                                });
-                      
-                                // Sort the entire list alphabetically after adding new products
-                                sortProducts();
-                      
-                                isLoading = false;
-                              } else {
-                                // No more products - stop observing
-                                observer.disconnect();
-                                trigger.remove();
-                              }
-                            })
-                            .catch((error) => {
-                              console.error('Failed to load more products:', error);
-                              isLoading = false;
-                            });
-                        };
-                      
-                        // Intersection Observer for Infinite Scroll
-                        const observer = new IntersectionObserver(
-                          (entries) => {
-                            entries.forEach((entry) => {
-                              if (entry.isIntersecting && !isLoading) {
-                                loadProducts();
-                              }
-                            });
-                          },
-                          { rootMargin: '100px' }
-                        );
-                      
-                        observer.observe(trigger);
-                      
-                        // Initialize tooltips for the first batch (rendered by Liquid)
-                        tippy('.variant-swatch', {
-                          allowHTML: true,
-                          theme: 'light-border',
-                        });
-                      
-                        // Function to sort products naturally by title
-                        function sortProducts() {
-                          const productItems = Array.from(productList.querySelectorAll('.product-item'));
-                      
-                          productItems.sort((a, b) => {
-                            const titleA = a.getAttribute('data-title').toLowerCase();
-                            const titleB = b.getAttribute('data-title').toLowerCase();
-                            return titleA.localeCompare(titleB, undefined, { numeric: true });
+                          // Initialize Tippy for this individual item
+                          tippy(li.querySelector('.variant-swatch'), {
+                            allowHTML: true,
+                            theme: 'light-border',
                           });
-                      
-                          // Reorder DOM based on sorted items
-                          productItems.forEach((item) => productList.appendChild(item));
                         }
                       
-                        // Initial sort in case the first batch is not sorted from Liquid
-                        sortProducts();
+                        // Load products using Shopify's AJAX API
+                        async function loadAllProducts() {
+                          loadingMessage.style.display = 'block';
+                      
+                          let allProducts = [];
+                          let page = 1;
+                          let hasMoreProducts = true;
+                      
+                          try {
+                            while (hasMoreProducts) {
+                              const response = await fetch(`/collections/${collectionHandle}/products.json?limit=50&page=${page}`);
+                              const data = await response.json();
+                      
+                              if (data.products.length > 0) {
+                                allProducts = allProducts.concat(data.products);
+                                page++;
+                              } else {
+                                hasMoreProducts = false;
+                              }
+                      
+                              // Shopify AJAX API has a hard limit of 250 products
+                              if (allProducts.length >= 250) {
+                                hasMoreProducts = false;
+                              }
+                            }
+                      
+                            // ✅ Sort products alphabetically by title (A to Z)
+                            allProducts.sort((a, b) => a.title.localeCompare(b.title, undefined, { numeric: true }));
+                      
+                            // Render all products into the grid
+                            allProducts.forEach(renderProduct);
+                          } catch (error) {
+                            console.error('Failed to load products:', error);
+                          } finally {
+                            loadingMessage.style.display = 'none';
+                          }
+                        }
+                      
+                        // Load all products on page load
+                        loadAllProducts();
                       });
+                      
                       
 
                     </script>
