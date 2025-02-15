@@ -389,12 +389,9 @@
                     
                   </div>
 
-              
-                    
-                 
-                    
 
                     {% paginate collections[collectionPattern].products by 50 %}
+                      
                       <ul id="product-list">
                         {% for product in collections[collectionPattern].products | sort_natural: 'title' %}
                           <li>
