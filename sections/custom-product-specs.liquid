@@ -274,6 +274,19 @@
 
         {% endif %}
 
+        {% if product.metafields.custom.design %}
+
+          <div class="product-metafields">
+            <span class="mf-key">Design:</span> <span class="mf-value">
+              {% for design in product.metafields.custom.design.value %}
+                <a href="/collections/{{design | handleize}}">{{design}}</a>{% if forloop.last != true %}, {% endif %}
+              {% endfor %}
+            </span>
+          </div>
+
+        {% endif %}
+
+
         {% if product.metafields.custom.indoor_outdoor %}
 
           <div class="product-metafields">
@@ -286,18 +299,7 @@
 
         {% endif %}
 
-        {% if product.metafields.custom.fabric_design %}
-
-          <div class="product-metafields">
-            <span class="mf-key">Design:</span> <span class="mf-value">
-              {% for design in product.metafields.custom.fabric_design.value %}
-                <a href="/collections/{{design | handleize}}">{{design}}</a>{% if forloop.last != true %}, {% endif %}
-              {% endfor %}
-            </span>
-          </div>
-
-        {% endif %}
-
+        
         {% if product.metafields.custom.collections %}
 
           <div class="product-metafields">
