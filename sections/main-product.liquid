@@ -399,7 +399,7 @@
 
 
                   {% paginate collections[collectionPattern].products by 50 %}
-                    <ul id="product-list" data-collection-handle="{{ collections[collectionPattern].handle }}">
+                    <ul id="variant-select" data-collection-handle="{{ collections[collectionPattern].handle }}">
                       {% for product in collections[collectionPattern].products %}
                         <li class="product-item"
                             data-title="{{ product.title | escape }}"
