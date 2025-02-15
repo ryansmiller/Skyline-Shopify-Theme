@@ -320,7 +320,7 @@
                 </script>
 
                 {% assign collectionPattern = product.metafields.custom.pattern_collection.value.handle %}
-                {% assign products = collections[collectionPattern].products[0] | sort_natural: 'title' %}
+                {% assign products = collections[collectionPattern].products | sort_natural: 'title' %}
 
                 {% if collectionPattern %}
 
@@ -402,6 +402,20 @@
                         </a>
                       </li>
                     {% endfor %}
+                    {% for product in products offset:50 %}
+                      <li>
+                        <a class="variant-swatch" 
+                          href="{{ product.url }}" 
+                          data-tippy-content="{{ product.metafields.custom.mpn }} {{ product.metafields.custom.color_name }}" 
+                          aria-label="Check out {{ product.title }}">
+                          <img src="{{ product.featured_image | image_url: width: 45 }}" 
+                              width="45" 
+                              height="45" 
+                              alt="Image of {{ product.title }}" />
+                        </a>
+                      </li>
+                    {% endfor %}
+
                   </ul>
                 </div>
 
