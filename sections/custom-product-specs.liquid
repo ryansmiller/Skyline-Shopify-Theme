@@ -420,7 +420,7 @@
         {% if product.metafields.custom.roll_size %}
 
         <div class="product-metafields">
-            <span class="mf-key">Roll Size:</span> <span class="mf-value">{{product.metafields.custom.roll_size.value}}</span>
+            <span class="mf-key">Roll Size:</span> <span class="mf-value">{{product.metafields.custom.roll_size.value}} {{product.metafields.custom.unit_of_sale.value}}s</span>
         </div>
 
         {% endif %}
