@@ -320,7 +320,7 @@
                 </script>
 
                 {% assign collectionPattern = product.metafields.custom.pattern_collection.value.handle %}
-                {% assign products = collections[collectionPattern].products | sort_natural: 'title' %}
+                {% assign products = collections[collectionPattern].products[0] | sort_natural: 'title' %}
 
                 {% if collectionPattern %}
 
