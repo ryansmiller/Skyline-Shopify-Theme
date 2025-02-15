@@ -320,7 +320,8 @@
                 </script>
 
                 {% assign collectionPattern = product.metafields.custom.pattern_collection.value.handle %}
-                {% assign products = collections[collectionPattern].products | sort_natural: 'title' %}
+                {% assign products = collections[collectionPattern].products | sort_natural: 'title', limit: 50 %}
+                {% assign products2 = collections[collectionPattern].products | sort_natural: 'title', offset: 50 %}
 
                 {% if collectionPattern %}
 
@@ -402,7 +403,7 @@
                         </a>
                       </li>
                     {% endfor %}
-                    {% for product in products offset:50 %}
+                    {% for product in products2 %}
                       <li>
                         <a class="variant-swatch" 
                           href="{{ product.url }}" 
