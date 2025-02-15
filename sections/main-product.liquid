@@ -389,33 +389,116 @@
                     
                   </div>
 
-                  <ul id="variant-select">
+              
                     
                  
-                    {% assign product_array = collections[collectionPattern].products | sort_natural: 'title' %}
+                    
 
-                    {% paginate product_array by 50 %}
-                    {% for product in product_array %}
-                      <li>
-                        <a class="variant-swatch" 
-                          href="{{ product.url }}" 
-                          data-tippy-content="{{ product.metafields.custom.mpn }} {{ product.metafields.custom.color_name }}" 
-                          aria-label="Check out {{ product.title }}">
-                          <img src="{{ product.featured_image | image_url: width: 45 }}" 
-                              width="45" 
-                              height="45" 
-                              alt="Image of {{ product.title }}" />
-                        </a>
-                      </li>
-                    {% endfor %}
+                    {% paginate collections[collectionPattern].products by 50 %}
+                      <ul id="product-list">
+                        {% for product in collections[collectionPattern].products | sort_natural: 'title' %}
+                          <li>
+                            <a class="variant-swatch"
+                              href="{{ product.url }}"
+                              data-tippy-content="{{ product.metafields.custom.mpn }} {{ product.metafields.custom.color_name }}"
+                              aria-label="Check out {{ product.title }}">
+                              <img src="{{ product.featured_image | image_url: width: 45 }}"
+                                  width="45"
+                                  height="45"
+                                  alt="Image of {{ product.title }}" />
+                            </a>
+                          </li>
+                        {% endfor %}
+                      </ul>
+                    
+                      <div id="infinite-scroll-trigger"
+                        data-collection-handle="{{ collection.handle }}"
+                        data-next-page="2"
+                        style="height: 1px; background: transparent;">
+                      </div>
+                    {% endpaginate %}
+                    
+                    <script>
 
-                    {{ paginate | default_pagination }}
+                      document.addEventListener('DOMContentLoaded', function () {
+                        const productList = document.getElementById('product-list');
+                        const trigger = document.getElementById('infinite-scroll-trigger');
+                        let isLoading = false;
+                      
+                        if (!trigger) return;
+                      
+                        const loadProducts = () => {
+                          if (isLoading) return;
+                      
+                          const collectionHandle = trigger.getAttribute('data-collection-handle');
+                          let nextPage = parseInt(trigger.getAttribute('data-next-page'), 10);
+                      
+                          isLoading = true;
+                      
+                          fetch(`/collections/${collectionHandle}/products.json?limit=50&page=${nextPage}`)
+                            .then((response) => response.json())
+                            .then((data) => {
+                              if (data.products.length > 0) {
+                                data.products.forEach((product) => {
+                                  const productHTML = `
+                                    <li>
+                                      <a class="variant-swatch"
+                                        href="${product.url}"
+                                        data-tippy-content="${product.metafields.custom?.mpn || ''} ${product.metafields.custom?.color_name || ''}"
+                                        aria-label="Check out ${product.title}">
+                                        <img src="${product.featured_image.src.replace(/(\.jpg|\.png|\.gif|\.jpeg)(\?.*)?$/, '_45x$1')}"
+                                            width="45"
+                                            height="45"
+                                            alt="Image of ${product.title}" />
+                                      </a>
+                                    </li>
+                                  `;
+                                  productList.insertAdjacentHTML('beforeend', productHTML);
+                                });
+                      
+                                // Re-initialize Tippy.js for new elements
+                                tippy('.variant-swatch', {
+                                  allowHTML: true,
+                                  theme: 'light-border',
+                                });
+                      
+                                trigger.setAttribute('data-next-page', nextPage + 1);
+                                isLoading = false;
+                              } else {
+                                observer.disconnect();
+                                trigger.remove();
+                              }
+                            })
+                            .catch((error) => {
+                              console.error('Failed to load more products:', error);
+                              isLoading = false;
+                            });
+                        };
+                      
+                        // Intersection Observer for Infinite Scroll
+                        const observer = new IntersectionObserver(
+                          (entries) => {
+                            entries.forEach((entry) => {
+                              if (entry.isIntersecting && !isLoading) {
+                                loadProducts();
+                              }
+                            });
+                          },
+                          { rootMargin: '100px' }
+                        );
+                      
+                        observer.observe(trigger);
+                      
+                        // Initialize Tippy.js for initial elements
+                        tippy('.variant-swatch', {
+                          allowHTML: true,
+                          theme: 'light-border',
+                        });
+                      });
 
-                  {% endpaginate %}
+                    </script>
 
                   
-
-                  </ul>
                 </div>
 
                 {% endif %}
