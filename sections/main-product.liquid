@@ -320,8 +320,8 @@
                 </script>
 
                 {% assign collectionPattern = product.metafields.custom.pattern_collection.value.handle %}
-                {% assign products = collections[collectionPattern].products | sort_natural: 'title', limit: 50 %}
-                {% assign products2 = collections[collectionPattern].products | sort_natural: 'title', offset: 50 %}
+                {% assign products = collections[collectionPattern].products | sort_natural: 'title' %}
+                
 
                 {% if collectionPattern %}
 
@@ -390,6 +390,10 @@
                   </div>
 
                   <ul id="variant-select">
+                    
+                 
+
+                    {% paginate products by 50 %}
                     {% for product in products %}
                       <li>
                         <a class="variant-swatch" 
@@ -403,19 +407,12 @@
                         </a>
                       </li>
                     {% endfor %}
-                    {% for product in products2 %}
-                      <li>
-                        <a class="variant-swatch" 
-                          href="{{ product.url }}" 
-                          data-tippy-content="{{ product.metafields.custom.mpn }} {{ product.metafields.custom.color_name }}" 
-                          aria-label="Check out {{ product.title }}">
-                          <img src="{{ product.featured_image | image_url: width: 45 }}" 
-                              width="45" 
-                              height="45" 
-                              alt="Image of {{ product.title }}" />
-                        </a>
-                      </li>
-                    {% endfor %}
+
+                    {{- paginate | default_pagination }}
+
+                  {% endpaginate %}
+
+                  
 
                   </ul>
                 </div>
