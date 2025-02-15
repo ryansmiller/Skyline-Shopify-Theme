@@ -241,9 +241,11 @@
         {% if product.metafields.custom.fabric_type %}
 
           <div class="product-metafields">
+            <span class="mf-key">Type:</span> 
             {% for type in product.metafields.custom.fabric_type.value %}
-            <span class="mf-key">Type:</span> <span class="mf-value"><a href="/collections/{{product.metafields.custom.fabric_type | handleize}}">{{product.metafields.custom.fabric_type}}</a></span>
+            <span class="mf-value"><a href="/collections/{{type | handleize}}">{{type}}</a>{% if forloop.last != true %}, {% endif %}
             {% endfor %}
+          </span>
           </div>
 
         {% endif %}
