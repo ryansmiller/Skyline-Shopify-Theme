@@ -390,30 +390,34 @@
                   </div>
 
 
-                    {% paginate collections[collectionPattern].products by 50 %}
-                      
-                      <ul id="product-list">
-                        {% for product in collections[collectionPattern].products | sort_natural: 'title' %}
-                          <li>
-                            <a class="variant-swatch"
-                              href="{{ product.url }}"
-                              data-tippy-content="{{ product.metafields.custom.mpn }} {{ product.metafields.custom.color_name }}"
-                              aria-label="Check out {{ product.title }}">
-                              <img src="{{ product.featured_image | image_url: width: 45 }}"
-                                  width="45"
-                                  height="45"
-                                  alt="Image of {{ product.title }}" />
-                            </a>
-                          </li>
-                        {% endfor %}
-                      </ul>
-                    
-                      <div id="infinite-scroll-trigger"
-                        data-collection-handle="{{ collection.handle }}"
-                        data-next-page="2"
-                        style="height: 1px; background: transparent;">
-                      </div>
-                    {% endpaginate %}
+                  {% paginate collections[collectionPattern].products by 50 %}
+                    <ul id="product-list" data-collection-handle="{{ collections[collectionPattern].handle }}">
+                      {% for product in collections[collectionPattern].products %}
+                        <li class="product-item"
+                            data-title="{{ product.title | escape }}"
+                            data-url="{{ product.url }}"
+                            data-image="{{ product.featured_image | image_url: width: 45 }}"
+                            data-mpn="{{ product.metafields.custom.mpn }}"
+                            data-color-name="{{ product.metafields.custom.color_name }}">
+                          <a class="variant-swatch"
+                            href="{{ product.url }}"
+                            data-tippy-content="{{ product.metafields.custom.mpn }} {{ product.metafields.custom.color_name }}"
+                            aria-label="Check out {{ product.title }}">
+                            <img src="{{ product.featured_image | image_url: width: 45 }}"
+                                width="45"
+                                height="45"
+                                alt="Image of {{ product.title }}" />
+                          </a>
+                        </li>
+                      {% endfor %}
+                    </ul>
+                  
+                    <div id="infinite-scroll-trigger"
+                      data-next-page="2"
+                      style="height: 1px; background: transparent;">
+                    </div>
+                  {% endpaginate %}
+                  
                     
                     <script>
 
@@ -422,12 +426,13 @@
                         const trigger = document.getElementById('infinite-scroll-trigger');
                         let isLoading = false;
                       
-                        if (!trigger) return;
+                        if (!trigger || !productList) return;
+                      
+                        const collectionHandle = productList.getAttribute('data-collection-handle');
                       
                         const loadProducts = () => {
                           if (isLoading) return;
                       
-                          const collectionHandle = trigger.getAttribute('data-collection-handle');
                           let nextPage = parseInt(trigger.getAttribute('data-next-page'), 10);
                       
                           isLoading = true;
@@ -437,31 +442,42 @@
                             .then((data) => {
                               if (data.products.length > 0) {
                                 data.products.forEach((product) => {
-                                  const productHTML = `
-                                    <li>
-                                      <a class="variant-swatch"
-                                        href="${product.url}"
-                                        data-tippy-content="${product.metafields.custom?.mpn || ''} ${product.metafields.custom?.color_name || ''}"
-                                        aria-label="Check out ${product.title}">
-                                        <img src="${product.featured_image.src.replace(/(\.jpg|\.png|\.gif|\.jpeg)(\?.*)?$/, '_45x$1')}"
-                                            width="45"
-                                            height="45"
-                                            alt="Image of ${product.title}" />
-                                      </a>
-                                    </li>
+                                  const li = document.createElement('li');
+                                  li.classList.add('product-item');
+                                  li.setAttribute('data-title', product.title);
+                                  li.setAttribute('data-url', product.url);
+                                  li.setAttribute('data-image', product.featured_image.src.replace(/(\.jpg|\.png|\.gif|\.jpeg)(\?.*)?$/, '_45x$1'));
+                                  li.setAttribute('data-mpn', product.metafields.custom?.mpn || '');
+                                  li.setAttribute('data-color-name', product.metafields.custom?.color_name || '');
+                      
+                                  li.innerHTML = `
+                                    <a class="variant-swatch"
+                                      href="${product.url}"
+                                      data-tippy-content="${product.metafields.custom?.mpn || ''} ${product.metafields.custom?.color_name || ''}"
+                                      aria-label="Check out ${product.title}">
+                                      <img src="${product.featured_image.src.replace(/(\.jpg|\.png|\.gif|\.jpeg)(\?.*)?$/, '_45x$1')}"
+                                          width="45"
+                                          height="45"
+                                          alt="Image of ${product.title}" />
+                                    </a>
                                   `;
-                                  productList.insertAdjacentHTML('beforeend', productHTML);
+                                  productList.appendChild(li);
                                 });
                       
-                                // Re-initialize Tippy.js for new elements
+                                trigger.setAttribute('data-next-page', nextPage + 1);
+                      
+                                // Re-initialize tooltips (Tippy.js)
                                 tippy('.variant-swatch', {
                                   allowHTML: true,
                                   theme: 'light-border',
                                 });
                       
-                                trigger.setAttribute('data-next-page', nextPage + 1);
+                                // Sort the entire list alphabetically after adding new products
+                                sortProducts();
+                      
                                 isLoading = false;
                               } else {
+                                // No more products - stop observing
                                 observer.disconnect();
                                 trigger.remove();
                               }
@@ -486,12 +502,30 @@
                       
                         observer.observe(trigger);
                       
-                        // Initialize Tippy.js for initial elements
+                        // Initialize tooltips for the first batch (rendered by Liquid)
                         tippy('.variant-swatch', {
                           allowHTML: true,
                           theme: 'light-border',
                         });
+                      
+                        // Function to sort products naturally by title
+                        function sortProducts() {
+                          const productItems = Array.from(productList.querySelectorAll('.product-item'));
+                      
+                          productItems.sort((a, b) => {
+                            const titleA = a.getAttribute('data-title').toLowerCase();
+                            const titleB = b.getAttribute('data-title').toLowerCase();
+                            return titleA.localeCompare(titleB, undefined, { numeric: true });
+                          });
+                      
+                          // Reorder DOM based on sorted items
+                          productItems.forEach((item) => productList.appendChild(item));
+                        }
+                      
+                        // Initial sort in case the first batch is not sorted from Liquid
+                        sortProducts();
                       });
+                      
 
                     </script>
 
