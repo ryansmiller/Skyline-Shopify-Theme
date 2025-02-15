@@ -404,74 +404,126 @@
                       
                         const collectionHandle = productList.getAttribute('data-collection-handle');
                       
-                        // Helper: Render a product into the grid
-                        function renderProduct(product) {
-                          const li = document.createElement('li');
-                          li.classList.add('product-item');
-                      
-                          li.innerHTML = `
-                            <a class="variant-swatch"
-                               href="${product.url}"
-                               data-tippy-content="${product.metafields.custom?.mpn || ''} ${product.metafields.custom?.color_name || ''}"
-                               aria-label="Check out ${product.title}">
-                              <img src="${product.featured_image?.src.replace(/(\.jpg|\.png|\.gif|\.jpeg)(\?.*)?$/, '_45x$1') || ''}"
-                                   width="45"
-                                   height="45"
-                                   alt="Image of ${product.title}" />
-                            </a>
-                          `;
-                      
-                          productList.appendChild(li);
-                      
-                          // Initialize Tippy for this individual item
-                          tippy(li.querySelector('.variant-swatch'), {
-                            allowHTML: true,
-                            theme: 'light-border',
-                          });
-                        }
-                      
-                        // Load products using Shopify's AJAX API
-                        async function loadAllProducts() {
-                          loadingMessage.style.display = 'block';
-                      
-                          let allProducts = [];
-                          let page = 1;
-                          let hasMoreProducts = true;
-                      
-                          try {
-                            while (hasMoreProducts) {
-                              const response = await fetch(`/collections/${collectionHandle}/products.json?limit=50&page=${page}`);
-                              const data = await response.json();
-                      
-                              if (data.products.length > 0) {
-                                allProducts = allProducts.concat(data.products);
-                                page++;
-                              } else {
-                                hasMoreProducts = false;
-                              }
-                      
-                              // Shopify AJAX API has a hard limit of 250 products
-                              if (allProducts.length >= 250) {
-                                hasMoreProducts = false;
-                              }
-                            }
-                      
-                            // ✅ Sort products alphabetically by title (A to Z)
-                            allProducts.sort((a, b) => a.title.localeCompare(b.title, undefined, { numeric: true }));
-                      
-                            // Render all products into the grid
-                            allProducts.forEach(renderProduct);
-                          } catch (error) {
-                            console.error('Failed to load products:', error);
-                          } finally {
-                            loadingMessage.style.display = 'none';
+                        // Replace with your Storefront API Access Token
+                        const STOREFRONT_ACCESS_TOKEN = '4ca569a631262cdcfc89c013dbec84e2';
+                        const STOREFRONT_API_URL = `https://auto-marine-pro.myshopify.com/api/2024-01/graphql.json`;
+                        
+                          let cursor = null;
+                          let hasNextPage = true;
+                        
+                          // Helper: Render a product into the grid
+                          function renderProduct(product) {
+                            const mpn = product.mpn?.value || '';
+                            const colorName = product.color_name?.value || '';
+                        
+                            const li = document.createElement('li');
+                            li.classList.add('product-item');
+                        
+                            li.innerHTML = `
+                              <a class="variant-swatch"
+                                 href="${product.onlineStoreUrl || '#'}"
+                                 data-tippy-content="${mpn} ${colorName}"
+                                 aria-label="Check out ${product.title}">
+                                <img src="${product.featuredImage?.url || ''}"
+                                     width="45"
+                                     height="45"
+                                     alt="Image of ${product.title}" />
+                              </a>
+                            `;
+                        
+                            productList.appendChild(li);
+                        
+                            // Initialize Tippy for this individual item
+                            tippy(li.querySelector('.variant-swatch'), {
+                              allowHTML: true,
+                              theme: 'light-border',
+                            });
                           }
-                        }
-                      
-                        // Load all products on page load
-                        loadAllProducts();
-                      });
-                      
+                        
+                          async function loadProducts() {
+                            if (!hasNextPage) return;
+                        
+                            loadingMessage.style.display = 'block';
+                        
+                            const query = `
+                              query getProducts($handle: String!, $cursor: String) {
+                                collectionByHandle(handle: $handle) {
+                                  products(first: 50, after: $cursor) {
+                                    edges {
+                                      cursor
+                                      node {
+                                        id
+                                        title
+                                        handle
+                                        onlineStoreUrl
+                                        featuredImage {
+                                          url
+                                        }
+                                        mpn: metafield(namespace: "custom", key: "mpn") {
+                                          value
+                                        }
+                                        color_name: metafield(namespace: "custom", key: "color_name") {
+                                          value
+                                        }
+                                      }
+                                    }
+                                    pageInfo {
+                                      hasNextPage
+                                    }
+                                  }
+                                }
+                              }
+                            `;
+                        
+                            const variables = {
+                              handle: collectionHandle,
+                              cursor: cursor,
+                            };
+                        
+                            try {
+                              const response = await fetch(STOREFRONT_API_URL, {
+                                method: 'POST',
+                                headers: {
+                                  'Content-Type': 'application/json',
+                                  'X-Shopify-Storefront-Access-Token': STOREFRONT_ACCESS_TOKEN,
+                                },
+                                body: JSON.stringify({ query, variables }),
+                              });
+                        
+                              const result = await response.json();
+                        
+                              if (result.errors) {
+                                console.error('GraphQL Errors:', result.errors);
+                                loadingMessage.textContent = 'Failed to load colors.';
+                                return;
+                              }
+                        
+                              const productsData = result.data.collectionByHandle.products;
+                              const products = productsData.edges;
+                        
+                              products.forEach(({ node: product }) => renderProduct(product));
+                        
+                              hasNextPage = productsData.pageInfo.hasNextPage;
+                        
+                              // Set cursor for the next page
+                              if (hasNextPage) {
+                                cursor = products[products.length - 1].cursor;
+                                loadProducts(); // Auto-load the next page
+                              } else {
+                                loadingMessage.textContent = 'All colors loaded!';
+                              }
+                            } catch (error) {
+                              console.error('Failed to load products:', error);
+                              loadingMessage.textContent = 'Failed to load colors.';
+                            } finally {
+                              loadingMessage.style.display = 'none';
+                            }
+                          }
+                        
+                          // Start loading products on page load
+                          loadProducts();
+                        });
+                        
                       
 
                     </script>
