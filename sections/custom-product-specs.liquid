@@ -238,10 +238,10 @@
         {% endif %}
 
 
-        {% if product.metafields.custom.product_sub_type %}
+        {% if product.metafields.custom.fabric_type %}
 
           <div class="product-metafields">
-            <span class="mf-key">Type:</span> <span class="mf-value"><a href="/collections/{{product.metafields.custom.product_sub_type | handleize}}">{{product.metafields.custom.product_sub_type}}</a></span>
+            <span class="mf-key">Type:</span> <span class="mf-value"><a href="/collections/{{product.metafields.custom.fabric_type | handleize}}">{{product.metafields.custom.fabric_type}}</a></span>
           </div>
 
         {% endif %}
@@ -282,11 +282,11 @@
 
         {% endif %}
 
-        {% if product.metafields.custom.pattern_design %}
+        {% if product.metafields.custom.fabric_design %}
 
           <div class="product-metafields">
             <span class="mf-key">Design:</span> <span class="mf-value">
-              {% for design in product.metafields.custom.pattern_design.value %}
+              {% for design in product.metafields.custom.fabric_design.value %}
                 <a href="/collections/{{design | handleize}}">{{design}}</a>{% if forloop.last != true %}, {% endif %}
               {% endfor %}
             </span>
