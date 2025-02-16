@@ -404,125 +404,128 @@
                       
                         const collectionHandle = productList.getAttribute('data-collection-handle');
                       
-                        // Replace with your Storefront API Access Token
                         const STOREFRONT_ACCESS_TOKEN = '4ca569a631262cdcfc89c013dbec84e2';
-                        const STOREFRONT_API_URL = `https://auto-marine-pro.myshopify.com/api/2024-01/graphql.json`;
-                        
-                          let cursor = null;
-                          let hasNextPage = true;
-                        
-                          // Helper: Render a product into the grid
-                          function renderProduct(product) {
-                            const mpn = product.mpn?.value || '';
-                            const colorName = product.color_name?.value || '';
-                        
-                            const li = document.createElement('li');
-                            li.classList.add('product-item');
-                        
-                            li.innerHTML = `
-                              <a class="variant-swatch"
-                                 href="${product.onlineStoreUrl || '#'}"
-                                 data-tippy-content="${mpn} ${colorName}"
-                                 aria-label="Check out ${product.title}">
-                                <img src="${product.featuredImage?.url || ''}"
-                                     width="45"
-                                     height="45"
-                                     alt="Image of ${product.title}" />
-                              </a>
-                            `;
-                        
-                            productList.appendChild(li);
-                        
-                            // Initialize Tippy for this individual item
-                            tippy(li.querySelector('.variant-swatch'), {
-                              allowHTML: true,
-                              theme: 'light-border',
-                            });
-                          }
-                        
-                          async function loadProducts() {
-                            if (!hasNextPage) return;
-                        
-                            loadingMessage.style.display = 'block';
-                        
-                            const query = `
-                              query getProducts($handle: String!, $cursor: String) {
-                                collectionByHandle(handle: $handle) {
-                                  products(first: 50, after: $cursor) {
-                                    edges {
-                                      cursor
-                                      node {
-                                        id
-                                        title
-                                        handle
-                                        onlineStoreUrl
-                                        featuredImage {
-                                          url
-                                        }
-                                        mpnField: metafield(namespace: "custom", key: "mpn") {
-                                          value
-                                        }
-                                        colorNameField: metafield(namespace: "custom", key: "color_name") {
-                                          value
-                                        }
+                        const STOREFRONT_API_URL = `https://auto-marine-pro}/api/2024-01/graphql.json`;
+                      
+                        let cursor = null;
+                        let hasNextPage = true;
+                      
+                        async function loadProducts() {
+                          if (!hasNextPage) return;
+                      
+                          loadingMessage.style.display = 'block';
+                      
+                          const query = `
+                            query getProducts($handle: String!, $cursor: String) {
+                              collectionByHandle(handle: $handle) {
+                                products(first: 50, after: $cursor) {
+                                  edges {
+                                    cursor
+                                    node {
+                                      id
+                                      title
+                                      onlineStoreUrl
+                                      featuredImage {
+                                        url
+                                      }
+                                      mpnField: metafield(namespace: "custom", key: "mpn") {
+                                        value
+                                      }
+                                      colorNameField: metafield(namespace: "custom", key: "color_name") {
+                                        value
                                       }
                                     }
-                                    pageInfo {
-                                      hasNextPage
-                                    }
+                                  }
+                                  pageInfo {
+                                    hasNextPage
                                   }
                                 }
                               }
-                            `;
-                        
-                            const variables = {
-                              handle: collectionHandle,
-                              cursor: cursor,
-                            };
-                        
-                            try {
-                              const response = await fetch(STOREFRONT_API_URL, {
-                                method: 'POST',
-                                headers: {
-                                  'Content-Type': 'application/json',
-                                  'X-Shopify-Storefront-Access-Token': STOREFRONT_ACCESS_TOKEN,
-                                },
-                                body: JSON.stringify({ query, variables }),
-                              });
-                        
-                              const result = await response.json();
-                        
-                              if (result.errors) {
-                                console.error('GraphQL Errors:', result.errors);
-                                loadingMessage.textContent = 'Failed to load colors.';
-                                return;
-                              }
-                        
-                              const productsData = result.data.collectionByHandle.products;
-                              const products = productsData.edges;
-                        
-                              products.forEach(({ node: product }) => renderProduct(product));
-                        
-                              hasNextPage = productsData.pageInfo.hasNextPage;
-                        
-                              // Set cursor for the next page
-                              if (hasNextPage) {
-                                cursor = products[products.length - 1].cursor;
-                                loadProducts(); // Auto-load the next page
-                              } else {
-                                loadingMessage.textContent = 'All colors loaded!';
-                              }
-                            } catch (error) {
-                              console.error('Failed to load products:', error);
-                              loadingMessage.textContent = 'Failed to load colors.';
-                            } finally {
-                              loadingMessage.style.display = 'none';
                             }
+                          `;
+                      
+                          const variables = {
+                            handle: collectionHandle,
+                            cursor: cursor,
+                          };
+                      
+                          try {
+                            const response = await fetch(STOREFRONT_API_URL, {
+                              method: 'POST',
+                              headers: {
+                                'Content-Type': 'application/json',
+                                'X-Shopify-Storefront-Access-Token': STOREFRONT_ACCESS_TOKEN,
+                              },
+                              body: JSON.stringify({ query, variables }),
+                            });
+                      
+                            const result = await response.json();
+                      
+                            if (result.errors) {
+                              console.error('GraphQL Errors:', result.errors);
+                              loadingMessage.textContent = 'Failed to load products (GraphQL error).';
+                              return;
+                            }
+                      
+                            const productsData = result.data.collectionByHandle?.products;
+                      
+                            if (!productsData) {
+                              console.error('No products found or invalid handle:', result);
+                              loadingMessage.textContent = 'No products found for this collection.';
+                              return;
+                            }
+                      
+                            const products = productsData.edges;
+                            const fragment = document.createDocumentFragment();
+                      
+                            products.forEach(({ node: product }) => {
+                              const mpn = product.mpnField?.value || '';
+                              const colorName = product.colorNameField?.value || '';
+                      
+                              const li = document.createElement('li');
+                              li.classList.add('product-item');
+                      
+                              li.innerHTML = `
+                                <a class="variant-swatch"
+                                   href="${product.onlineStoreUrl || '#'}"
+                                   data-tippy-content="MPN: ${mpn}, Color: ${colorName}"
+                                   aria-label="Check out ${product.title}">
+                                  <img src="${product.featuredImage?.url || ''}"
+                                       width="45"
+                                       height="45"
+                                       alt="Image of ${product.title}" />
+                                </a>
+                              `;
+                      
+                              const swatchElement = li.querySelector('.variant-swatch');
+                              tippy(swatchElement, {
+                                allowHTML: true,
+                                theme: 'light-border',
+                              });
+                      
+                              fragment.appendChild(li);
+                            });
+                      
+                            productList.appendChild(fragment);
+                      
+                            hasNextPage = productsData.pageInfo.hasNextPage;
+                            if (hasNextPage) {
+                              cursor = products[products.length - 1].cursor;
+                              loadProducts(); // Auto-load next page
+                            } else {
+                              loadingMessage.textContent = 'All colors loaded!';
+                            }
+                          } catch (error) {
+                            console.error('Failed to load products:', error);
+                            loadingMessage.textContent = 'Failed to load products (Network error).';
+                          } finally {
+                            loadingMessage.style.display = 'none';
                           }
-                        
-                          // Start loading products on page load
-                          loadProducts();
-                        });
+                        }
+                      
+                        loadProducts();
+                      });
+                      
                         
                       
 
