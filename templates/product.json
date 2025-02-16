@@ -63,6 +63,10 @@
             "theme_id": "175723512115"
           }
         },
+        "hulk_discounts_offer_table_block_EriGh4": {
+          "type": "shopify://apps/hulk-discounts/blocks/offer_table_block/25745434-52e7-4378-88f1-890df18a0110",
+          "settings": {}
+        },
         "quantity_selector": {
           "type": "quantity_selector",
           "settings": {}
@@ -96,6 +100,7 @@
         "variant_picker_jy9Cx3",
         "custom_stock_detail_yDWiM6",
         "shopacado_discounts_discount_table_Fb7CFp",
+        "hulk_discounts_offer_table_block_EriGh4",
         "quantity_selector",
         "buy_buttons",
         "custom_memo_sample_8GbzFY",
