@@ -429,7 +429,7 @@
                             const query = `
                               query getProducts($handle: String!, $cursor: String) {
                                 collectionByHandle(handle: $handle) {
-                                  products(first: 50, after: $cursor) {
+                                  products(first: 50, after: $cursor, sortKey: TITLE, reverse: false) {
                                     edges {
                                       cursor
                                       node {
@@ -502,7 +502,7 @@
                                 li.innerHTML = `
                                   <a class="variant-swatch"
                                      href="${product.onlineStoreUrl || '#'}"
-                                     data-tippy-content="MPN: ${mpn}, Color: ${colorName}"
+                                     data-tippy-content="${mpn} ${colorName}"
                                      aria-label="Check out ${product.title}">
                                     <img src="${product.featuredImage?.url || ''}"
                                          width="45"
