@@ -358,6 +358,16 @@
                         font-size: 1.6rem;
                       }
                     }
+
+                    .lazy-image {
+                      opacity: 0;
+                      transition: opacity 0.5s ease-in-out;
+                    }
+
+                    .lazy-image.loaded {
+                      opacity: 1;
+                    }
+
                     {%- endstyle -%}
                   
                     <div class="block-custom-fabric-color-swatches">
@@ -379,25 +389,21 @@
                       document.addEventListener('DOMContentLoaded', function () {
                         const productList = document.getElementById('variant-select');
                         const loadingMessage = document.getElementById('loading-message');
-                  
+                      
                         if (!productList) return;
-                  
+                      
                         const collectionHandle = productList.getAttribute('data-collection-handle');
-                        const currentUrl = window.location.pathname;
-                        const activeLinks = productList.querySelectorAll(`a[href*="${currentUrl}"]`);
-                        activeLinks.forEach(link => link.classList.add('active'));
-                  
                         const STOREFRONT_ACCESS_TOKEN = '4ca569a631262cdcfc89c013dbec84e2';
                         const STOREFRONT_API_URL = 'https://auto-marine-pro.myshopify.com/api/2024-01/graphql.json';
-                  
+                      
                         let cursor = null;
                         let hasNextPage = true;
-                  
+                      
                         async function loadProducts() {
                           if (!hasNextPage) return;
-                  
+                      
                           loadingMessage.style.display = 'block';
-                  
+                      
                           const query = `
                             query getProducts($handle: String!, $cursor: String) {
                               collectionByHandle(handle: $handle) {
@@ -426,9 +432,9 @@
                               }
                             }
                           `;
-                  
+                      
                           const variables = { handle: collectionHandle, cursor };
-                  
+                      
                           try {
                             const response = await fetch(STOREFRONT_API_URL, {
                               method: 'POST',
@@ -438,59 +444,81 @@
                               },
                               body: JSON.stringify({ query, variables }),
                             });
-                  
+                      
                             const result = await response.json();
-                  
+                      
                             if (result.errors) {
                               console.error('GraphQL Errors:', result.errors);
                               loadingMessage.textContent = 'Failed to load products (GraphQL error).';
                               return;
                             }
-                  
+                      
                             const productsData = result.data.collectionByHandle?.products;
-                  
+                      
                             if (!productsData) {
                               console.error('No products found or invalid handle:', result);
                               loadingMessage.textContent = 'No products found for this collection.';
                               return;
                             }
-                  
+                      
                             const products = productsData.edges;
                             const fragment = document.createDocumentFragment();
                             const tippyElements = [];
-                  
+                      
                             products.forEach(({ node: product }) => {
                               const mpn = product.mpnField?.value || '';
                               const colorName = product.colorNameField?.value || '';
-                  
+                      
                               const li = document.createElement('li');
                               li.classList.add('product-item');
-                  
+                      
                               li.innerHTML = `
                                 <a class="variant-swatch"
                                    href="${product.onlineStoreUrl || '#'}"
                                    data-tippy-content="${mpn} ${colorName}"
                                    aria-label="Check out ${product.title}">
-                                  <img src="${product.featuredImage?.url || ''}"
-                                       loading="lazy"
+                                  <img data-src="${product.featuredImage?.url || ''}"
+                                       class="lazy-image"
                                        width="45"
                                        height="45"
                                        alt="Image of ${product.title}" />
                                 </a>
                               `;
-                  
-                              const swatch = li.querySelector('.variant-swatch');
-                              tippyElements.push(swatch);
+                      
+                              const swatchElement = li.querySelector('.variant-swatch');
+                              tippyElements.push(swatchElement);
+                      
                               fragment.appendChild(li);
                             });
-                  
+                      
                             productList.appendChild(fragment);
-                  
+                      
                             tippy(tippyElements, {
                               allowHTML: true,
                               theme: 'light-border',
                             });
-                  
+                      
+                            const lazyImages = Array.from(productList.querySelectorAll('.lazy-image'));
+                      
+                            async function loadImagesSequentially(images) {
+                              for (const img of images) {
+                                await new Promise((resolve) => {
+                                  img.src = img.dataset.src;
+                                  img.onload = () => {
+                                    img.classList.add('loaded');
+                                    resolve();
+                                  };
+                                  img.onerror = () => {
+                                    console.error('Image failed to load:', img.dataset.src);
+                                    resolve(); // Continue to the next image even if one fails
+                                  };
+                                });
+                              }
+                            }
+                      
+                            // Start loading images in sequence (cascade)
+                            loadImagesSequentially(lazyImages);
+                      
                             hasNextPage = productsData.pageInfo.hasNextPage;
                             if (hasNextPage) {
                               cursor = products[products.length - 1].cursor;
@@ -505,9 +533,10 @@
                             loadingMessage.style.display = 'none';
                           }
                         }
-                  
+                      
                         loadProducts();
                       });
+                      
                     </script>
                   {% endif %}
                   
