@@ -144,17 +144,17 @@
     },
     "content_for_index": [],
     "blocks": {
-      "5460929749692845798": {
-        "type": "shopify://apps/shopacado-discounts/blocks/enable/5950831a-4e4e-40a4-82b0-674110b50a14",
-        "disabled": false,
-        "settings": {
-          "theme_id": "175723512115"
-        }
-      },
       "558381514691908246": {
         "type": "shopify://apps/hulk-discounts/blocks/app-embed/25745434-52e7-4378-88f1-890df18a0110",
         "disabled": false,
         "settings": {}
+      },
+      "5460929749692845798": {
+        "type": "shopify://apps/shopacado-discounts/blocks/enable/5950831a-4e4e-40a4-82b0-674110b50a14",
+        "disabled": true,
+        "settings": {
+          "theme_id": "175723512115"
+        }
       }
     },
     "color_schemes": {
