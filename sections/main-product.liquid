@@ -386,6 +386,7 @@
                     <script src="https://unpkg.com/tippy.js@6" defer></script>
                   
                     <script>
+                      
                       document.addEventListener('DOMContentLoaded', function () {
                         const productList = document.getElementById('variant-select');
                         const loadingMessage = document.getElementById('loading-message');
@@ -464,6 +465,7 @@
                             const products = productsData.edges;
                             const fragment = document.createDocumentFragment();
                             const tippyElements = [];
+                            const lazyImages = [];
                       
                             products.forEach(({ node: product }) => {
                               const mpn = product.mpnField?.value || '';
@@ -477,8 +479,7 @@
                                    href="${product.onlineStoreUrl || '#'}"
                                    data-tippy-content="${mpn} ${colorName}"
                                    aria-label="Check out ${product.title}">
-                                  <img src="${product.featuredImage?.transformedSrc || ''}"
-                                       loading="lazy"
+                                  <img data-src="${product.featuredImage?.transformedSrc || ''}"
                                        class="lazy-image"
                                        width="45"
                                        height="45"
@@ -489,22 +490,36 @@
                               const swatchElement = li.querySelector('.variant-swatch');
                               tippyElements.push(swatchElement);
                       
-                              // Fade-in on image load
                               const imgElement = li.querySelector('.lazy-image');
-                              imgElement.addEventListener('load', () => {
-                                imgElement.classList.add('loaded');
-                              });
+                              lazyImages.push(imgElement);
                       
                               fragment.appendChild(li);
                             });
                       
                             productList.appendChild(fragment);
                       
-                            // Initialize Tippy tooltips after batch rendering
                             tippy(tippyElements, {
                               allowHTML: true,
                               theme: 'light-border',
                             });
+                      
+                            // Intersection Observer for Lazy Loading Fallback
+                            const observer = new IntersectionObserver(
+                              (entries, observer) => {
+                                entries.forEach((entry) => {
+                                  if (entry.isIntersecting) {
+                                    const img = entry.target;
+                                    img.src = img.dataset.src;
+                                    img.onload = () => img.classList.add('loaded');
+                                    img.removeAttribute('data-src');
+                                    observer.unobserve(img);
+                                  }
+                                });
+                              },
+                              { rootMargin: '100px' }
+                            );
+                      
+                            lazyImages.forEach((img) => observer.observe(img));
                       
                             hasNextPage = productsData.pageInfo.hasNextPage;
                             if (hasNextPage) {
@@ -523,7 +538,6 @@
                       
                         loadProducts();
                       });
-                      
                       
                       
                     </script>
