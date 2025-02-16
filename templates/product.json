@@ -64,6 +64,28 @@
             "theme_id": "175723512115"
           }
         },
+        "discount_depot_volume_table_3BVeWx": {
+          "type": "shopify://apps/discount-depot/blocks/volume_table/a6a1cffd-79d9-44d8-8e7a-94438b99a5db",
+          "settings": {
+            "border_color": "#cccccc",
+            "Roundness": 0,
+            "borderless": false,
+            "header_background_color": "#000000",
+            "header_font_color": "#FFFFFF",
+            "cell_padding": 14,
+            "body_background_color": "#FFFFFF",
+            "body_font_color": "#555555",
+            "background_highlight": "#E5E5E5",
+            "spend_label": "Spend",
+            "quantity_label": "Buy",
+            "show_savings_column": true,
+            "savings_label": "Get",
+            "off_text_fixed": "off",
+            "off_text_percentage": "off",
+            "show_prices_column": false,
+            "price_label": "Price"
+          }
+        },
         "hulk_discounts_offer_table_block_EriGh4": {
           "type": "shopify://apps/hulk-discounts/blocks/offer_table_block/25745434-52e7-4378-88f1-890df18a0110",
           "settings": {}
@@ -101,6 +123,7 @@
         "variant_picker_jy9Cx3",
         "custom_stock_detail_yDWiM6",
         "shopacado_discounts_discount_table_Fb7CFp",
+        "discount_depot_volume_table_3BVeWx",
         "hulk_discounts_offer_table_block_EriGh4",
         "quantity_selector",
         "buy_buttons",

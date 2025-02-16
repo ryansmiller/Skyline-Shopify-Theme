@@ -155,6 +155,11 @@
         "settings": {
           "theme_id": "175723512115"
         }
+      },
+      "6091580277106134563": {
+        "type": "shopify://apps/discount-depot/blocks/embeded_product_discount/a6a1cffd-79d9-44d8-8e7a-94438b99a5db",
+        "disabled": false,
+        "settings": {}
       }
     },
     "color_schemes": {
