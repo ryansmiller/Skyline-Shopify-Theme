@@ -59,6 +59,7 @@
         },
         "shopacado_discounts_discount_table_Fb7CFp": {
           "type": "shopify://apps/shopacado-discounts/blocks/discount-table/5950831a-4e4e-40a4-82b0-674110b50a14",
+          "disabled": true,
           "settings": {
             "theme_id": "175723512115"
           }
