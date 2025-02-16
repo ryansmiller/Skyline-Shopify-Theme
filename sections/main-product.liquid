@@ -415,7 +415,7 @@
                                       title
                                       onlineStoreUrl
                                       featuredImage {
-                                        url
+                                        transformedSrc(maxWidth: 45, maxHeight: 45, crop: CENTER)
                                       }
                                       mpnField: metafield(namespace: "custom", key: "mpn") {
                                         value
@@ -464,6 +464,7 @@
                             const products = productsData.edges;
                             const fragment = document.createDocumentFragment();
                             const tippyElements = [];
+                            const imageElements = [];
                       
                             products.forEach(({ node: product }) => {
                               const mpn = product.mpnField?.value || '';
@@ -477,8 +478,8 @@
                                    href="${product.onlineStoreUrl || '#'}"
                                    data-tippy-content="${mpn} ${colorName}"
                                    aria-label="Check out ${product.title}">
-                                  <img data-src="${product.featuredImage?.url || ''}"
-                                       class="lazy-image"
+                                  <img data-src="${product.featuredImage?.transformedSrc || ''}"
+                                       class="sequential-image"
                                        width="45"
                                        height="45"
                                        alt="Image of ${product.title}" />
@@ -487,6 +488,9 @@
                       
                               const swatchElement = li.querySelector('.variant-swatch');
                               tippyElements.push(swatchElement);
+                      
+                              const imgElement = li.querySelector('img');
+                              imageElements.push(imgElement);
                       
                               fragment.appendChild(li);
                             });
@@ -498,8 +502,7 @@
                               theme: 'light-border',
                             });
                       
-                            const lazyImages = Array.from(productList.querySelectorAll('.lazy-image'));
-                      
+                            // Sequential image loading with fade-in
                             async function loadImagesSequentially(images) {
                               for (const img of images) {
                                 await new Promise((resolve) => {
@@ -510,14 +513,13 @@
                                   };
                                   img.onerror = () => {
                                     console.error('Image failed to load:', img.dataset.src);
-                                    resolve(); // Continue to the next image even if one fails
+                                    resolve(); // Continue loading other images even if one fails
                                   };
                                 });
                               }
                             }
                       
-                            // Start loading images in sequence (cascade)
-                            loadImagesSequentially(lazyImages);
+                            loadImagesSequentially(imageElements);
                       
                             hasNextPage = productsData.pageInfo.hasNextPage;
                             if (hasNextPage) {
@@ -536,6 +538,7 @@
                       
                         loadProducts();
                       });
+                      
                       
                     </script>
                   {% endif %}
