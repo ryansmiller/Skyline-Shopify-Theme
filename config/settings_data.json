@@ -159,11 +159,6 @@
           "using_translated_handles": false,
           "custom_script_and_style": "<script></script>\n<style></style>"
         }
-      },
-      "558381514691908246": {
-        "type": "shopify://apps/hulk-discounts/blocks/app-embed/25745434-52e7-4378-88f1-890df18a0110",
-        "disabled": true,
-        "settings": {}
       }
     },
     "color_schemes": {
