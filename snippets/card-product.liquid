@@ -163,7 +163,7 @@
               <div class="custom-product-card__color">{{ card_product.metafields.custom.mpn }} {{ card_product.metafields.custom.color }}</div>
             {% endcomment %}
 
-              {{ card_product.title }}
+            {{ card_product.title | escape }}
 
             </a>
           </h3>
