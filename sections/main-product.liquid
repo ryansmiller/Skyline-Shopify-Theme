@@ -464,7 +464,6 @@
                             const products = productsData.edges;
                             const fragment = document.createDocumentFragment();
                             const tippyElements = [];
-                            const imageElements = [];
                       
                             products.forEach(({ node: product }) => {
                               const mpn = product.mpnField?.value || '';
@@ -478,8 +477,9 @@
                                    href="${product.onlineStoreUrl || '#'}"
                                    data-tippy-content="${mpn} ${colorName}"
                                    aria-label="Check out ${product.title}">
-                                  <img data-src="${product.featuredImage?.transformedSrc || ''}"
-                                       class="sequential-image"
+                                  <img src="${product.featuredImage?.transformedSrc || ''}"
+                                       loading="lazy"
+                                       class="lazy-image"
                                        width="45"
                                        height="45"
                                        alt="Image of ${product.title}" />
@@ -489,37 +489,22 @@
                               const swatchElement = li.querySelector('.variant-swatch');
                               tippyElements.push(swatchElement);
                       
-                              const imgElement = li.querySelector('img');
-                              imageElements.push(imgElement);
+                              // Fade-in on image load
+                              const imgElement = li.querySelector('.lazy-image');
+                              imgElement.addEventListener('load', () => {
+                                imgElement.classList.add('loaded');
+                              });
                       
                               fragment.appendChild(li);
                             });
                       
                             productList.appendChild(fragment);
                       
+                            // Initialize Tippy tooltips after batch rendering
                             tippy(tippyElements, {
                               allowHTML: true,
                               theme: 'light-border',
                             });
-                      
-                            // Sequential image loading with fade-in
-                            async function loadImagesSequentially(images) {
-                              for (const img of images) {
-                                await new Promise((resolve) => {
-                                  img.src = img.dataset.src;
-                                  img.onload = () => {
-                                    img.classList.add('loaded');
-                                    resolve();
-                                  };
-                                  img.onerror = () => {
-                                    console.error('Image failed to load:', img.dataset.src);
-                                    resolve(); // Continue loading other images even if one fails
-                                  };
-                                });
-                              }
-                            }
-                      
-                            loadImagesSequentially(imageElements);
                       
                             hasNextPage = productsData.pageInfo.hasNextPage;
                             if (hasNextPage) {
@@ -538,6 +523,7 @@
                       
                         loadProducts();
                       });
+                      
                       
                       
                     </script>
