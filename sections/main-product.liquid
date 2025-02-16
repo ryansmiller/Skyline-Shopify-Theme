@@ -635,10 +635,10 @@
                   {% if product.selected_or_first_available_variant.inventory_quantity == 0 %}
                     <h4 class="custom-product-quantity-block">Stocked at Mill</h4>
                   {% else %}  
-                    {% if product.type == "Fabric" or product.type == "Carpet" %}
-                      <h4 class="custom-product-quantity-block"><span id="custom-product-quantity">{{ product.selected_or_first_available_variant.inventory_quantity }}</span> yards in stock</h4>
+                    {% if product.metafields.custom.unit_of_sale == "Yard" %}
+                      <h4 class="custom-product-quantity-block"><span id="custom-product-quantity">{{ product.selected_or_first_available_variant.inventory_quantity }}</span> Yards In Stock</h4>
                     {% else %}
-                      <h4 class="custom-product-quantity-block"><span id="custom-product-quantity">{{ product.selected_or_first_available_variant.inventory_quantity }}</span> in stock</h4>
+                      <h4 class="custom-product-quantity-block"><span id="custom-product-quantity">{{ product.selected_or_first_available_variant.inventory_quantity }}</span> In Stock</h4>
                     {% endif %}
                   {% endif %}
                 
