@@ -328,69 +328,69 @@
   
 
                   {%- style -%}
-  .block-custom-fabric-color-swatches {}
+                    .block-custom-fabric-color-swatches {}
 
-  .swatch-color-name {
-    color: #000;
-    font-size: 1.4rem;
-    padding-bottom: 20px;
-  }
+                    .swatch-color-name {
+                      color: #000;
+                      font-size: 1.4rem;
+                      padding-bottom: 20px;
+                    }
 
-  #variant-select {
-    position: relative;
-    list-style: none;
-    margin: 0;
-    padding: 0 0 15px 0;
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(45px, 1fr));
-    gap: 10px;
-  }
+                    #variant-select {
+                      position: relative;
+                      list-style: none;
+                      margin: 0;
+                      padding: 0 0 15px 0;
+                      width: 100%;
+                      display: grid;
+                      grid-template-columns: repeat(auto-fill, minmax(45px, 1fr));
+                      gap: 10px;
+                    }
 
-  #variant-select a {
-    width: 45px;
-    height: 45px;
-    display: block;
-    border-radius: 5px;
-    background-color: #fff;
-    transition: transform 0.25s;
-    position: relative;
-  }
+                    #variant-select a {
+                      width: 45px;
+                      height: 45px;
+                      display: block;
+                      border-radius: 5px;
+                      background-color: #fff;
+                      transition: transform 0.25s;
+                      position: relative;
+                    }
 
-  #variant-select .active {
-    filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.25));
-  }
+                    #variant-select .active {
+                      filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.25));
+                    }
 
-  #variant-select img {
-    border-radius: 5px;
-    max-width: 100%;
-    max-height: 100%;
-    display: block;
-  }
+                    #variant-select img {
+                      border-radius: 5px;
+                      max-width: 100%;
+                      max-height: 100%;
+                      display: block;
+                    }
 
-  #variant-select .active img,
-  #variant-select img:hover {
-    transform: scale(0.85);
-  }
+                    #variant-select .active img,
+                    #variant-select img:hover {
+                      transform: scale(0.85);
+                    }
 
-  @media screen and (min-width: 750px) {
-    .swatch-color-name {
-      font-size: 1.6rem;
-    }
-  }
-{%- endstyle -%}
+                    @media screen and (min-width: 750px) {
+                      .swatch-color-name {
+                        font-size: 1.6rem;
+                      }
+                    }
+                  {%- endstyle -%}
 
-<div class="block-custom-fabric-color-swatches">
-  <div class="swatch-color-name">
-    Colors available in {{ product.metafields.custom.pattern }}:
-  </div>
+                    <div class="block-custom-fabric-color-swatches">
+                      <div class="swatch-color-name">
+                        Colors available in {{ product.metafields.custom.pattern }}:
+                      </div>
 
-  <ul id="variant-select" data-collection-handle="{{ collections[collectionPattern].handle }}"></ul>
+                      <ul id="variant-select" data-collection-handle="{{ collections[collectionPattern].handle }}"></ul>
 
-  <div id="loading-message" style="padding: 10px; display: none;">
-    Loading colors...
-  </div>
-</div>
+                      <div id="loading-message" style="padding: 10px; display: none;">
+                        Loading colors...
+                      </div>
+                    </div>
 
                   
                     
@@ -529,7 +529,7 @@
                     </script>
 
                   
-                </div>
+                
 
                 {% endif %}
 
