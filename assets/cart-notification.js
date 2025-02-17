@@ -39,42 +39,45 @@ class CartNotification extends HTMLElement {
     const tempDiv = document.createElement('div');
     tempDiv.innerHTML = productSectionHtml;
   
-    // Find the first cart item and extract its key from the id
+    // Extract the cart item key from the id of the cart item element
     const cartItemElement = tempDiv.querySelector('.cart-item');
     if (cartItemElement) {
-      const cartItemId = cartItemElement.id; // Example: "cart-notification-product-51075638427955:2d0b7c8b026d081651168cb2bc6956a0"
+      const cartItemId = cartItemElement.getAttribute('id'); // Safe way
       this.cartItemKey = cartItemId.replace('cart-notification-product-', '');
     } else {
       console.warn('Could not find cart item element in cart-notification-product section.');
       this.cartItemKey = null;
     }
   
-    this.getSectionsToRender().forEach((section) => {
+    this.getSectionsToRender().forEach(function (section) {
       const sectionHTML = parsedState.sections[section.id];
       if (!sectionHTML) {
-        console.warn(`Section with ID "${section.id}" was not returned in the response.`);
+        console.warn('Section with ID "' + section.id + '" was not returned in the response.');
         return;
       }
   
       const elementToReplace = document.getElementById(section.id);
       if (!elementToReplace) {
-        console.warn(`Element with ID "${section.id}" not found in DOM.`);
+        console.warn('Element with ID "' + section.id + '" not found in DOM.');
         return;
       }
   
-      const innerHTML = this.getSectionInnerHTML(sectionHTML, section.selector || ".shopify-section");
-      if (innerHTML === "") {
-        console.warn(`Selector "${section.selector}" not found in section "${section.id}" HTML.`);
-        console.warn("Section HTML content:", sectionHTML);
+      const innerHTML = this.getSectionInnerHTML(sectionHTML, section.selector || '.shopify-section');
+      if (innerHTML === '') {
+        console.warn('Selector "' + section.selector + '" not found in section "' + section.id + '" HTML.');
+        console.warn('Section HTML content:', sectionHTML);
         return;
       }
   
       elementToReplace.innerHTML = innerHTML;
-    });
+    }.bind(this)); // Important to bind(this) for 'this' context
   
-    this.header && this.header.reveal();
+    if (this.header) {
+      this.header.reveal();
+    }
     this.open();
   }
+  
   
   
   
