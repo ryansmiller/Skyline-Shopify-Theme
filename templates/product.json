@@ -64,16 +64,16 @@
             "theme_id": "175723512115"
           }
         },
+        "pareto_volume_discount_app_block_wWBjEp": {
+          "type": "shopify://apps/pareto-volume-discount/blocks/app-block/170ada5d-6ed5-4d40-b93c-1aa195de1ccc",
+          "settings": {}
+        },
         "dealeasy_app_block_hUYrQe": {
           "type": "shopify://apps/dealeasy/blocks/app-block/e47a8634-0496-480d-9e46-6f7fafd34b30",
           "settings": {
             "lb-product-handle": "",
             "lb-product-id": ""
           }
-        },
-        "hulk_discounts_offer_table_block_EriGh4": {
-          "type": "shopify://apps/hulk-discounts/blocks/offer_table_block/25745434-52e7-4378-88f1-890df18a0110",
-          "settings": {}
         },
         "quantity_selector": {
           "type": "quantity_selector",
@@ -108,8 +108,8 @@
         "variant_picker_jy9Cx3",
         "custom_stock_detail_yDWiM6",
         "shopacado_discounts_discount_table_Fb7CFp",
+        "pareto_volume_discount_app_block_wWBjEp",
         "dealeasy_app_block_hUYrQe",
-        "hulk_discounts_offer_table_block_EriGh4",
         "quantity_selector",
         "buy_buttons",
         "custom_memo_sample_8GbzFY",
