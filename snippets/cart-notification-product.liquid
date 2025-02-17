@@ -1,0 +1,33 @@
+{% assign added_variant_id = request.query.variant_id | default: 0 | plus: 0 %}
+
+{% assign item = nil %}
+{% for cart_item in cart.items %}
+  {% if cart_item.variant_id == added_variant_id %}
+    {% assign item = cart_item %}
+    {% break %}
+  {% endif %}
+{% endfor %}
+
+{% if item %}
+  <div id="cart-notification-product" class="cart-notification-product">
+    <div class="cart-notification-product__image global-media-settings">
+      <img
+        src="{{ item.product.featured_image | img_url: '140x140' }}"
+        alt="{{ item.product.title | escape }}"
+        width="70"
+        height="70"
+        loading="lazy"
+      >
+    </div>
+    <div>
+      <h3 class="cart-notification-product__name h4">
+        {{ item.product.title }}
+      </h3>
+      <dl>
+        <!-- You can add more product details here if needed -->
+      </dl>
+    </div>
+  </div>
+{% else %}
+  <p>Product not found in cart.</p>
+{% endif %}
