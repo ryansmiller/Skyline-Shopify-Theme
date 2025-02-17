@@ -158,6 +158,11 @@ td.shopacado-custom-table-val,
 .mce-vd-wrapper .mce-prices-tier.mce-items,
 .mce-selector-head {
   text-align: left !important;
+  padding: 0 !important;
+}
+
+.mce-prices-tier.mce-items {
+  margin: 0 !important;
 }
 
 .mce-vd-wrapper .mce-prices-tier.mce-items li, .mce-vd-wrapper .mce-prices-tier.mce-items li:last-child {
