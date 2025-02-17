@@ -35,8 +35,7 @@ class CartNotification extends HTMLElement {
   }
 
   renderContents(parsedState) {
-    this.cartItemKey = parsedState.key;
-  
+
     this.getSectionsToRender().forEach((section) => {
       const sectionHTML = parsedState.sections[section.id];
       if (!sectionHTML) {
@@ -62,18 +61,12 @@ class CartNotification extends HTMLElement {
 
   getSectionsToRender() {
     return [
-      {
-        id: 'cart-notification-product',
-        selector: `[id="cart-notification-product-${this.cartItemKey}"]`,
-      },
-      {
-        id: 'cart-notification-button',
-      },
-      {
-        id: 'cart-icon-bubble',
-      },
+      { id: "cart-notification-product", selector: "#shopify-section-cart-notification-product" },
+      { id: "cart-notification-button" },
+      { id: "cart-icon-bubble" }
     ];
   }
+  
 
   getSectionInnerHTML(html, selector = ".shopify-section") {
     const element = new DOMParser().parseFromString(html, "text/html").querySelector(selector);
