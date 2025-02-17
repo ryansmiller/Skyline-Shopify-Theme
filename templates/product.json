@@ -70,15 +70,15 @@
             "lb-product-id": ""
           }
         },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
         "upsell_koala_bundles_deals_block_F94UKJ": {
           "type": "shopify://apps/upsell-koala-bundles/blocks/deals-block/2b951f75-113f-4fca-bdf3-c92703235716",
           "settings": {
             "product": "{{product}}"
           }
-        },
-        "quantity_selector": {
-          "type": "quantity_selector",
-          "settings": {}
         },
         "buy_buttons": {
           "type": "buy_buttons",
@@ -110,8 +110,8 @@
         "custom_stock_detail_yDWiM6",
         "shopacado_discounts_discount_table_Fb7CFp",
         "dealeasy_app_block_hUYrQe",
-        "upsell_koala_bundles_deals_block_F94UKJ",
         "quantity_selector",
+        "upsell_koala_bundles_deals_block_F94UKJ",
         "buy_buttons",
         "custom_memo_sample_8GbzFY",
         "custom_liquid_beJTqY"
