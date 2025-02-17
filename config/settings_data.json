@@ -160,15 +160,10 @@
       },
       "5460929749692845798": {
         "type": "shopify://apps/shopacado-discounts/blocks/enable/5950831a-4e4e-40a4-82b0-674110b50a14",
-        "disabled": true,
+        "disabled": false,
         "settings": {
           "theme_id": "175723512115"
         }
-      },
-      "8171265131012698934": {
-        "type": "shopify://apps/oc-quantity-breaks-limit/blocks/orichi-discount/3f38eaa3-2a3f-4e55-bcc9-df5d3f75e351",
-        "disabled": false,
-        "settings": {}
       }
     },
     "color_schemes": {
