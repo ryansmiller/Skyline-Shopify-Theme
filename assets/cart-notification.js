@@ -50,12 +50,7 @@ class CartNotification extends HTMLElement {
         return;
       }
   
-      const innerHTML = this.getSectionInnerHTML(sectionHTML, section.selector);
-      if (!innerHTML) {
-        console.warn(`Selector "${section.selector}" not found in section "${section.id}" HTML.`);
-        return;
-      }
-  
+      const innerHTML = this.getSectionInnerHTML(sectionHTML, section.selector || ".shopify-section");
       elementToReplace.innerHTML = innerHTML;
     });
   
@@ -80,9 +75,16 @@ class CartNotification extends HTMLElement {
     ];
   }
 
-  getSectionInnerHTML(html, selector = '.shopify-section') {
-    return new DOMParser().parseFromString(html, 'text/html').querySelector(selector).innerHTML;
+  getSectionInnerHTML(html, selector = ".shopify-section") {
+    const element = new DOMParser().parseFromString(html, "text/html").querySelector(selector);
+    if (!element) {
+      console.warn(`Selector "${selector}" not found in section HTML. Returning full HTML as fallback.`);
+      console.warn("Problematic HTML response:", html);
+      return html; // Fallback for debugging
+    }
+    return element.innerHTML;
   }
+  
 
   handleBodyClick(evt) {
     const target = evt.target;
