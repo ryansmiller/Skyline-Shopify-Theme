@@ -35,76 +35,36 @@ class CartNotification extends HTMLElement {
   }
 
   renderContents(parsedState) {
-    const productSectionHtml = parsedState.sections["cart-notification-product"];
-    const tempDiv = document.createElement('div');
-    tempDiv.innerHTML = productSectionHtml;
-  
-    // Extract the cart item key from the id of the cart item element
-    const cartItemElement = tempDiv.querySelector('.cart-item');
-    if (cartItemElement) {
-      const cartItemId = cartItemElement.getAttribute('id'); // Safe way
-      this.cartItemKey = cartItemId.replace('cart-notification-product-', '');
-    } else {
-      console.warn('Could not find cart item element in cart-notification-product section.');
-      this.cartItemKey = null;
-    }
-  
-    this.getSectionsToRender().forEach(function (section) {
-      const sectionHTML = parsedState.sections[section.id];
-      if (!sectionHTML) {
-        console.warn('Section with ID "' + section.id + '" was not returned in the response.');
-        return;
-      }
-  
-      const elementToReplace = document.getElementById(section.id);
-      if (!elementToReplace) {
-        console.warn('Element with ID "' + section.id + '" not found in DOM.');
-        return;
-      }
-  
-      const innerHTML = this.getSectionInnerHTML(sectionHTML, section.selector || '.shopify-section');
-      if (innerHTML === '') {
-        console.warn('Selector "' + section.selector + '" not found in section "' + section.id + '" HTML.');
-        console.warn('Section HTML content:', sectionHTML);
-        return;
-      }
-  
-      elementToReplace.innerHTML = innerHTML;
-    }.bind(this)); // Important to bind(this) for 'this' context
-  
-    if (this.header) {
-      this.header.reveal();
-    }
+    this.cartItemKey = parsedState.key;
+    this.getSectionsToRender().forEach((section) => {
+      document.getElementById(section.id).innerHTML = this.getSectionInnerHTML(
+        parsedState.sections[section.id],
+        section.selector
+      );
+    });
+
+    if (this.header) this.header.reveal();
     this.open();
   }
-  
-  
-  
-  
 
   getSectionsToRender() {
     return [
-      { id: "cart-notification-product", selector: `[id="cart-notification-product-${this.cartItemKey}"]` },
-      { id: "cart-notification-button" },
-      { id: "cart-icon-bubble" }
+      {
+        id: 'cart-notification-product',
+        selector: `[id="cart-notification-product-${this.cartItemKey}"]`,
+      },
+      {
+        id: 'cart-notification-button',
+      },
+      {
+        id: 'cart-icon-bubble',
+      },
     ];
   }
 
-  console.log('Extracted cartItemKey:', this.cartItemKey);
-  console.log('Full Product Section HTML:', productSectionHtml);
-
-  
-
-  getSectionInnerHTML(html, selector = ".shopify-section") {
-    const element = new DOMParser().parseFromString(html, "text/html").querySelector(selector);
-    if (!element) {
-      console.warn(`Selector "${selector}" not found in section HTML. Returning full HTML as fallback.`);
-      console.warn("Problematic HTML response:", html);
-      return html; // Fallback for debugging
-    }
-    return element.innerHTML;
+  getSectionInnerHTML(html, selector = '.shopify-section') {
+    return new DOMParser().parseFromString(html, 'text/html').querySelector(selector).innerHTML;
   }
-  
 
   handleBodyClick(evt) {
     const target = evt.target;
