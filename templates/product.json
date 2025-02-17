@@ -64,6 +64,13 @@
             "theme_id": "175723512115"
           }
         },
+        "pumper_bundles_quantity_breaks_app_block_qb_q8win6": {
+          "type": "shopify://apps/pumper-bundles-quantity-breaks/blocks/app-block-qb/0856870d-2aca-4b1e-a662-cf1797f61270",
+          "settings": {
+            "selected_product": "{{product}}",
+            "using_page_builder": false
+          }
+        },
         "quantity_selector": {
           "type": "quantity_selector",
           "settings": {}
@@ -104,6 +111,7 @@
         "variant_picker_jy9Cx3",
         "custom_stock_detail_yDWiM6",
         "shopacado_discounts_discount_table_Fb7CFp",
+        "pumper_bundles_quantity_breaks_app_block_qb_q8win6",
         "quantity_selector",
         "dealeasy_app_block_hUYrQe",
         "buy_buttons",
