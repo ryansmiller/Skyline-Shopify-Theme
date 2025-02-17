@@ -508,8 +508,7 @@
         if (dd.isValid) {
             document.getElementById("dateInStock").innerHTML = dd.toFormat('cccc, LLLL d');
             document.getElementById("shipLocation").innerHTML = `to <strong>${sessionStorage.getItem(sessionKeys.city)}, ${sessionStorage.getItem(sessionKeys.region)}</strong>`;
-            document.getElementById("dateMillStock").innerHTML = dd2.toFormat('LLLL d');
-            document.getElementById("shipLocation2").innerHTML = `going to ${sessionStorage.getItem(sessionKeys.city)}, ${sessionStorage.getItem(sessionKeys.region)}`;
+            document.getElementById("dateMillStock").innerHTML = dd2.toFormat('cccc, LLLL d');
         }
     });
     
