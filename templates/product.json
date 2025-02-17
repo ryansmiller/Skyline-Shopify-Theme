@@ -59,6 +59,7 @@
         },
         "shopacado_discounts_product_notification_bar_BLrVG8": {
           "type": "shopify://apps/shopacado-discounts/blocks/product-notification-bar/5950831a-4e4e-40a4-82b0-674110b50a14",
+          "disabled": true,
           "settings": {
             "background_color": "#ffffff",
             "text_color": "#000000",
@@ -71,6 +72,7 @@
         },
         "shopacado_discounts_discount_table_Fb7CFp": {
           "type": "shopify://apps/shopacado-discounts/blocks/discount-table/5950831a-4e4e-40a4-82b0-674110b50a14",
+          "disabled": true,
           "settings": {
             "theme_id": "175723512115"
           }
@@ -79,9 +81,12 @@
           "type": "quantity_selector",
           "settings": {}
         },
-        "mce_volume_discounts_table_VUeATU": {
-          "type": "shopify://apps/mce-volume-discounts/blocks/table/212cd340-a9b9-46d4-825a-5471be2e39a4",
-          "settings": {}
+        "dealeasy_app_block_hUYrQe": {
+          "type": "shopify://apps/dealeasy/blocks/app-block/e47a8634-0496-480d-9e46-6f7fafd34b30",
+          "settings": {
+            "lb-product-handle": "",
+            "lb-product-id": ""
+          }
         },
         "buy_buttons": {
           "type": "buy_buttons",
@@ -114,7 +119,7 @@
         "shopacado_discounts_product_notification_bar_BLrVG8",
         "shopacado_discounts_discount_table_Fb7CFp",
         "quantity_selector",
-        "mce_volume_discounts_table_VUeATU",
+        "dealeasy_app_block_hUYrQe",
         "buy_buttons",
         "custom_memo_sample_8GbzFY",
         "custom_liquid_beJTqY"

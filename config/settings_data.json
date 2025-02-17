@@ -158,20 +158,9 @@
         "disabled": true,
         "settings": {}
       },
-      "16396285335785183745": {
-        "type": "shopify://apps/mce-volume-discounts/blocks/settings/212cd340-a9b9-46d4-825a-5471be2e39a4",
-        "disabled": false,
-        "settings": {
-          "RemoveKey": "",
-          "ScriptAndStyle": "<script></script>\n<style></style>",
-          "CustomFile": "no",
-          "LoadOnHomepage": "no",
-          "VisibleOnlyLogged": "no"
-        }
-      },
       "5460929749692845798": {
         "type": "shopify://apps/shopacado-discounts/blocks/enable/5950831a-4e4e-40a4-82b0-674110b50a14",
-        "disabled": true,
+        "disabled": false,
         "settings": {
           "theme_id": "175723512115"
         }
