@@ -119,19 +119,23 @@ width: 2rem !important;
 
 /* Product - Shopcado Volume Discount Table Edits */ 
 
-.shopacado-discount-table {
+.shopacado-discount-table,
+.lb-vd-container {
   font-size: 1.4rem;
   text-align: left;
   margin: 0 !important;
   color: #000;
   width: 100%;
   line-height: 3.5rem !important;
-
+  background-color: #f7f0e1 !important;
+  border-radius: 8px;
+  padding: 20px 25px !important;
 }
 
 
-.shopacado-discount-table-block h4 {
-  padding: 0 0 10px 0;
+.shopacado-discount-table-block h4,
+.lb-vd-promotion-text {
+  padding: 0 0 10px 10px;
   font-size: 1.8rem !important;
   color: #e74c3c !important;
   margin: 0;
@@ -139,11 +143,7 @@ width: 2rem !important;
   font-weight: 700;
 }
 
-.shopacado-discount-table-block {
- background-color: #f7f0e1 !important;
-  border-radius: 8px;
-  padding: 20px 25px !important;
-}
+
 
 .shopacado-discount-table-block strong,
 .shopacado-discount-table-block span {
@@ -156,7 +156,8 @@ width: 2rem !important;
   .shopacado-discount-table {
     font-size: 1.5rem;
   }
-  .shopacado-discount-table-block h4 {
+  .shopacado-discount-table-block h4,
+  .lb-vd-promotion-text {
     font-size: 2rem !important;
   }
 }
