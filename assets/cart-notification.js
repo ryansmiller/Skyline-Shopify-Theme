@@ -36,16 +36,33 @@ class CartNotification extends HTMLElement {
 
   renderContents(parsedState) {
     this.cartItemKey = parsedState.key;
+  
     this.getSectionsToRender().forEach((section) => {
-      document.getElementById(section.id).innerHTML = this.getSectionInnerHTML(
-        parsedState.sections[section.id],
-        section.selector
-      );
+      const sectionHTML = parsedState.sections[section.id];
+      if (!sectionHTML) {
+        console.warn(`Section with ID "${section.id}" was not returned in the response.`);
+        return;
+      }
+  
+      const elementToReplace = document.getElementById(section.id);
+      if (!elementToReplace) {
+        console.warn(`Element with ID "${section.id}" not found in DOM.`);
+        return;
+      }
+  
+      const innerHTML = this.getSectionInnerHTML(sectionHTML, section.selector);
+      if (!innerHTML) {
+        console.warn(`Selector "${section.selector}" not found in section "${section.id}" HTML.`);
+        return;
+      }
+  
+      elementToReplace.innerHTML = innerHTML;
     });
-
-    if (this.header) this.header.reveal();
+  
+    this.header && this.header.reveal();
     this.open();
   }
+  
 
   getSectionsToRender() {
     return [
