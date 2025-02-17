@@ -63,6 +63,7 @@ class CartNotification extends HTMLElement {
     this.open();
   }
   
+  
 
   getSectionsToRender() {
     return [
