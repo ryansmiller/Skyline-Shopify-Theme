@@ -35,7 +35,19 @@ class CartNotification extends HTMLElement {
   }
 
   renderContents(parsedState) {
-    this.cartItemKey = parsedState.key;
+    const productSectionHtml = parsedState.sections["cart-notification-product"];
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = productSectionHtml;
+  
+    // Find the first cart item and extract its key from the id
+    const cartItemElement = tempDiv.querySelector('.cart-item');
+    if (cartItemElement) {
+      const cartItemId = cartItemElement.id; // Example: "cart-notification-product-51075638427955:2d0b7c8b026d081651168cb2bc6956a0"
+      this.cartItemKey = cartItemId.replace('cart-notification-product-', '');
+    } else {
+      console.warn('Could not find cart item element in cart-notification-product section.');
+      this.cartItemKey = null;
+    }
   
     this.getSectionsToRender().forEach((section) => {
       const sectionHTML = parsedState.sections[section.id];
@@ -51,6 +63,12 @@ class CartNotification extends HTMLElement {
       }
   
       const innerHTML = this.getSectionInnerHTML(sectionHTML, section.selector || ".shopify-section");
+      if (innerHTML === "") {
+        console.warn(`Selector "${section.selector}" not found in section "${section.id}" HTML.`);
+        console.warn("Section HTML content:", sectionHTML);
+        return;
+      }
+  
       elementToReplace.innerHTML = innerHTML;
     });
   
@@ -59,14 +77,19 @@ class CartNotification extends HTMLElement {
   }
   
   
+  
 
   getSectionsToRender() {
     return [
-      { id: "cart-notification-product", selector: "#shopify-section-cart-notification-product" },
+      { id: "cart-notification-product", selector: `[id="cart-notification-product-${this.cartItemKey}"]` },
       { id: "cart-notification-button" },
       { id: "cart-icon-bubble" }
     ];
   }
+
+  console.log('Extracted cartItemKey:', this.cartItemKey);
+  console.log('Full Product Section HTML:', productSectionHtml);
+
   
 
   getSectionInnerHTML(html, selector = ".shopify-section") {
