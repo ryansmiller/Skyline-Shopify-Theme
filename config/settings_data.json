@@ -160,8 +160,8 @@
           "custom_script_and_style": "<script></script>\n<style></style>"
         }
       },
-      "9696655121035291526": {
-        "type": "shopify://apps/rapi/blocks/app-embed/99617c17-a32b-4e70-a883-7a155610d032",
+      "4143866229958350875": {
+        "type": "shopify://apps/upsell-koala-bundles/blocks/deals-embed/2b951f75-113f-4fca-bdf3-c92703235716",
         "disabled": false,
         "settings": {}
       }
