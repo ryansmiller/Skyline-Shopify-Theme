@@ -57,6 +57,10 @@
             "icon_color": "#fa8c01"
           }
         },
+        "mce_volume_discounts_table_86df8M": {
+          "type": "shopify://apps/mce-volume-discounts/blocks/table/212cd340-a9b9-46d4-825a-5471be2e39a4",
+          "settings": {}
+        },
         "quantity_selector": {
           "type": "quantity_selector",
           "settings": {}
@@ -82,6 +86,7 @@
         "custom_swatches_39zNia",
         "variant_picker_jy9Cx3",
         "custom_stock_detail_yDWiM6",
+        "mce_volume_discounts_table_86df8M",
         "quantity_selector",
         "buy_buttons",
         "custom_memo_sample_8GbzFY"
