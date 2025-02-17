@@ -144,11 +144,6 @@
     },
     "content_for_index": [],
     "blocks": {
-      "6544682535036668446": {
-        "type": "shopify://apps/pumper-bundles-quantity-breaks/blocks/app-embed/0856870d-2aca-4b1e-a662-cf1797f61270",
-        "disabled": false,
-        "settings": {}
-      },
       "8746983209849429782": {
         "type": "shopify://apps/dealeasy/blocks/app-embed/e47a8634-0496-480d-9e46-6f7fafd34b30",
         "disabled": true,
@@ -169,6 +164,11 @@
         "settings": {
           "theme_id": "175723512115"
         }
+      },
+      "8171265131012698934": {
+        "type": "shopify://apps/oc-quantity-breaks-limit/blocks/orichi-discount/3f38eaa3-2a3f-4e55-bcc9-df5d3f75e351",
+        "disabled": false,
+        "settings": {}
       }
     },
     "color_schemes": {
