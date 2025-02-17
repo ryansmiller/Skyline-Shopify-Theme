@@ -129,13 +129,13 @@ width: 2rem !important;
   line-height: 2rem !important;
   background-color: #f7f0e1 !important;
   border-radius: 8px;
-  padding: 20px 25px !important;
+  padding: 10px 25px !important;
 }
 
 
 .shopacado-discount-table-block h4,
 .lb-vd-promotion-text {
-  padding: 0 0 10px 0;
+  padding: 0;
   font-size: 1.8rem !important;
   color: #e74c3c !important;
   margin: 0;
@@ -147,6 +147,9 @@ td.lb-vd-table-body-text {
   padding: 5px 0 !important;
 }
 
+.lb-vd-promotion-container {
+  padding: 0 !important;
+}
 
 .shopacado-discount-table-block strong,
 .shopacado-discount-table-block span {
