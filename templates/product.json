@@ -63,21 +63,15 @@
             "theme_id": "175723512115"
           }
         },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
         "dealeasy_app_block_hUYrQe": {
           "type": "shopify://apps/dealeasy/blocks/app-block/e47a8634-0496-480d-9e46-6f7fafd34b30",
           "settings": {
             "lb-product-handle": "",
             "lb-product-id": ""
-          }
-        },
-        "quantity_selector": {
-          "type": "quantity_selector",
-          "settings": {}
-        },
-        "upsell_koala_bundles_deals_block_F94UKJ": {
-          "type": "shopify://apps/upsell-koala-bundles/blocks/deals-block/2b951f75-113f-4fca-bdf3-c92703235716",
-          "settings": {
-            "product": "{{product}}"
           }
         },
         "buy_buttons": {
@@ -109,9 +103,8 @@
         "variant_picker_jy9Cx3",
         "custom_stock_detail_yDWiM6",
         "shopacado_discounts_discount_table_Fb7CFp",
-        "dealeasy_app_block_hUYrQe",
         "quantity_selector",
-        "upsell_koala_bundles_deals_block_F94UKJ",
+        "dealeasy_app_block_hUYrQe",
         "buy_buttons",
         "custom_memo_sample_8GbzFY",
         "custom_liquid_beJTqY"
