@@ -155,6 +155,15 @@ td.shopacado-custom-table-val,
   padding: 5px 0 !important;
 }
 
+.mce-vd-wrapper .mce-prices-tier.mce-items,
+.mce-selector-head {
+  text-align: left !important;
+}
+
+.mce-vd-wrapper .mce-prices-tier.mce-items li, .mce-vd-wrapper .mce-prices-tier.mce-items li:last-child {
+  border-color: transparent !important;
+}
+
 .shopacado-discount-table-block strong,
 .shopacado-discount-table-block span {
   color: #e74c3c;
