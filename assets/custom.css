@@ -143,8 +143,8 @@ width: 2rem !important;
   font-weight: 700;
 }
 
-.lb-vd-table-body-row:first-child {
-  padding-left: 0;
+td.lb-vd-table-body-text {
+  padding: 5px 0 !important;
 }
 
 
