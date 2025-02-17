@@ -20,30 +20,28 @@ if (!customElements.get('product-form')) {
       onSubmitHandler(evt) {
         evt.preventDefault();
         if (this.submitButton.getAttribute('aria-disabled') === 'true') return;
-      
+
         this.handleErrorMessage();
-      
+
         this.submitButton.setAttribute('aria-disabled', true);
         this.submitButton.classList.add('loading');
         this.querySelector('.loading__spinner').classList.remove('hidden');
-      
+
         const config = fetchConfig('javascript');
         config.headers['X-Requested-With'] = 'XMLHttpRequest';
         delete config.headers['Content-Type'];
-      
+
         const formData = new FormData(this.form);
-      
         if (this.cart) {
-          const sectionsToRender = this.cart.getSectionsToRender().map((section) => section.id);
-          sectionsToRender.push('cart-notification-product'); // Add your section ID
-      
-          formData.append('sections', sectionsToRender);
-          formData.append('sections_url', window.location.pathname + `?variant_id=${formData.get('id')}`);
+          formData.append(
+            'sections',
+            this.cart.getSectionsToRender().map((section) => section.id)
+          );
+          formData.append('sections_url', window.location.pathname);
           this.cart.setActiveElement(document.activeElement);
         }
-      
         config.body = formData;
-      
+
         fetch(`${routes.cart_add_url}`, config)
           .then((response) => response.json())
           .then((response) => {
@@ -55,7 +53,7 @@ if (!customElements.get('product-form')) {
                 message: response.message,
               });
               this.handleErrorMessage(response.description);
-      
+
               const soldOutMessage = this.submitButton.querySelector('.sold-out-message');
               if (!soldOutMessage) return;
               this.submitButton.setAttribute('aria-disabled', true);
@@ -67,16 +65,14 @@ if (!customElements.get('product-form')) {
               window.location = window.routes.cart_url;
               return;
             }
-      
-            if (!this.error) {
+
+            if (!this.error)
               publish(PUB_SUB_EVENTS.cartUpdate, {
                 source: 'product-form',
                 productVariantId: formData.get('id'),
                 cartData: response,
               });
-            }
             this.error = false;
-      
             const quickAddModal = this.closest('quick-add-modal');
             if (quickAddModal) {
               document.body.addEventListener(
@@ -84,11 +80,6 @@ if (!customElements.get('product-form')) {
                 () => {
                   setTimeout(() => {
                     this.cart.renderContents(response);
-                    // Update cart notification product section
-                    const cartNotificationProductContainer = document.getElementById('cart-notification-product');
-                    if (cartNotificationProductContainer && response.sections && response.sections['cart-notification-product']) {
-                      cartNotificationProductContainer.innerHTML = response.sections['cart-notification-product'];
-                    }
                   });
                 },
                 { once: true }
@@ -96,11 +87,6 @@ if (!customElements.get('product-form')) {
               quickAddModal.hide(true);
             } else {
               this.cart.renderContents(response);
-              // Update cart notification product section
-              const cartNotificationProductContainer = document.getElementById('cart-notification-product');
-              if (cartNotificationProductContainer && response.sections && response.sections['cart-notification-product']) {
-                cartNotificationProductContainer.innerHTML = response.sections['cart-notification-product'];
-              }
             }
           })
           .catch((e) => {
@@ -113,7 +99,6 @@ if (!customElements.get('product-form')) {
             this.querySelector('.loading__spinner').classList.add('hidden');
           });
       }
-      
 
       handleErrorMessage(errorMessage = false) {
         if (this.hideErrors) return;
