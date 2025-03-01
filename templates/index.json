@@ -1,21 +1,36 @@
 /*
-* ------------------------------------------------------------
-* IMPORTANT: The contents of this file are auto-generated.
-*
-* This file may be updated by the Shopify admin theme editor
-* or related systems. Please exercise caution as any changes
-* made to this file may be overwritten.
-* ------------------------------------------------------------
-*/
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
+    "image_banner_apA3TK": {
+      "type": "image-banner",
+      "settings": {
+        "image": "shopify://shop_images/AMP_Hero_Auto-1.jpg",
+        "image_overlay_opacity": 0,
+        "image_height": "medium",
+        "desktop_content_position": "middle-center",
+        "show_text_box": true,
+        "desktop_content_alignment": "center",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
     "slideshow_bxcXEX": {
       "type": "slideshow",
       "blocks": {
         "slide_HqaHfm": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/bmw-6359790_1920.jpg",
             "heading": "",
             "heading_size": "hxl",
             "subheading": "",
@@ -33,7 +48,6 @@
         "slide_WknDPA": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/istockphoto-171578812-1024x1024.jpg",
             "heading": "",
             "heading_size": "h1",
             "subheading": "",
@@ -53,6 +67,7 @@
         "slide_HqaHfm",
         "slide_WknDPA"
       ],
+      "disabled": true,
       "settings": {
         "layout": "grid",
         "slide_height": "medium",
@@ -87,6 +102,7 @@
         "heading",
         "button"
       ],
+      "disabled": true,
       "settings": {
         "height": "adapt",
         "desktop_image_width": "medium",
@@ -132,6 +148,7 @@
     }
   },
   "order": [
+    "image_banner_apA3TK",
     "slideshow_bxcXEX",
     "image-with-text",
     "featured_collection"

@@ -37,6 +37,7 @@
         "paragraph_gcXa3g",
         "email_form_DbHAKb"
       ],
+      "disabled": true,
       "settings": {
         "color_scheme": "scheme-6ab6a568-61b2-42ed-a1c8-3308b49ca08c",
         "full_width": true,
@@ -51,7 +52,7 @@
           "type": "link_list",
           "settings": {
             "heading": "HELP",
-            "menu": "footer-important-links"
+            "menu": ""
           }
         },
         "link_list_cr6Qi6": {
