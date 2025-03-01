@@ -285,8 +285,8 @@
           "links_on_hover": "#121212",
           "background": "#ffffff",
           "background_gradient": "",
-          "button": "#f70303",
-          "button_label": "#fefefe",
+          "button": "#16abd7",
+          "button_label": "#fafafa",
           "secondary_button": "#f1f1f1",
           "secondary_button_label": "#000000",
           "icons": "#000000"
