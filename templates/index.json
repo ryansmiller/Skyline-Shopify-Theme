@@ -169,12 +169,53 @@
         "padding_top": 32,
         "padding_bottom": 36
       }
+    },
+    "collection_list_yUc8YR": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_Vha7g3": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "morbern-allante-marine-vinyl-fabric"
+          }
+        },
+        "featured_collection_UKdwDG": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "spradling-islander-marine-vinyl-fabric"
+          }
+        },
+        "featured_collection_M6GHMB": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "nassimi-classic-performance-vinyl-fabric"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_Vha7g3",
+        "featured_collection_UKdwDG",
+        "featured_collection_M6GHMB"
+      ],
+      "settings": {
+        "title": "Collections",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 3,
+        "color_scheme": "",
+        "show_view_all": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
     "image_banner_apA3TK",
     "slideshow_bxcXEX",
     "image-with-text",
-    "featured_collection"
+    "featured_collection",
+    "collection_list_yUc8YR"
   ]
 }
