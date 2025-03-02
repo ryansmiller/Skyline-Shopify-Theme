@@ -359,3 +359,10 @@ quantity-input {
   font-weight: 700 !important;
   font-size: 18px;
 }
+
+
+/* Checkout */
+
+.cart-item__old-price div {
+  text-decoration: line-through;
+}
