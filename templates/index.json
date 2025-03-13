@@ -11,11 +11,35 @@
   "sections": {
     "image_banner_apA3TK": {
       "type": "image-banner",
+      "blocks": {
+        "heading_VHMTY9": {
+          "type": "heading",
+          "settings": {
+            "heading": "It's Time to Upgrade your Ride",
+            "heading_size": "h1"
+          }
+        },
+        "buttons_jHpYET": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Explore Automotive Fabric",
+            "button_link_1": "shopify://collections/automotive-fabric",
+            "button_style_secondary_1": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_VHMTY9",
+        "buttons_jHpYET"
+      ],
       "settings": {
         "image": "shopify://shop_images/2384-hero-what-is-nappa-leather-in-a-car.jpg",
         "image_overlay_opacity": 0,
         "image_height": "medium",
-        "desktop_content_position": "middle-right",
+        "desktop_content_position": "middle-center",
         "show_text_box": true,
         "desktop_content_alignment": "center",
         "color_scheme": "scheme-bfaf6a7e-c245-4c5e-8a20-e11db65331ed",
