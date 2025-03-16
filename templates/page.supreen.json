@@ -47,14 +47,107 @@
     },
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "padding_top": 28,
         "padding_bottom": 28
+      }
+    },
+    "custom_collection_list_Q8HbWP": {
+      "type": "custom-collection-list",
+      "settings": {
+        "title": "Collections",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 3,
+        "color_scheme": "",
+        "show_view_all": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "collection_list_gFEmxF": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_t4ncXN": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "supreen-champlain-performance-upholstery-fabric"
+          }
+        },
+        "featured_collection_QQX4q7": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "supreen-como-performance-upholstery-fabric"
+          }
+        },
+        "featured_collection_qVt4mf": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "supreen-constance-performance-upholstery-fabric"
+          }
+        },
+        "featured_collection_XCidQ3": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "supreen-hartwell-performance-upholstery-fabric"
+          }
+        },
+        "featured_collection_7zVdU4": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "supreen-huron-performance-upholstery-fabric"
+          }
+        },
+        "featured_collection_AgKfNN": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "supreen-lucerne-performance-upholstery-fabric"
+          }
+        },
+        "featured_collection_rGrUi4": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "supreen-lugano-performance-upholstery-fabric"
+          }
+        },
+        "featured_collection_hUqnEw": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "supreen-oneida-performance-upholstery-fabric"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_t4ncXN",
+        "featured_collection_QQX4q7",
+        "featured_collection_qVt4mf",
+        "featured_collection_XCidQ3",
+        "featured_collection_7zVdU4",
+        "featured_collection_AgKfNN",
+        "featured_collection_rGrUi4",
+        "featured_collection_hUqnEw"
+      ],
+      "settings": {
+        "title": "Collections",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 3,
+        "color_scheme": "",
+        "show_view_all": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     }
   },
   "order": [
     "image_banner_kNJLEp",
-    "main"
+    "main",
+    "custom_collection_list_Q8HbWP",
+    "collection_list_gFEmxF"
   ]
 }
