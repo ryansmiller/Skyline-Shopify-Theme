@@ -351,7 +351,7 @@
 
           <div class="product-metafields">
             <span class="mf-key">Finish:</span> <span class="mf-value">
-            {% for finish in product.metafields.custom.custom.finish_categories.value %}
+            {% for finish in product.metafields.custom.finish_categories.value %}
               <a href="/collections/{{finish | handleize}}">{{finish}}</a>{% if forloop.last != true %}, {% endif %}
             {% endfor %}
           </span>
