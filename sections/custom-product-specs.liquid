@@ -347,12 +347,12 @@
 
         {% endif %}
 
-        {% if product.metafields.custom.finish_description %}
+        {% if product.metafields.custom.finish_categories %}
 
           <div class="product-metafields">
             <span class="mf-key">Finish:</span> <span class="mf-value">
-            {% for finish in product.metafields.custom.finish_description.value %}
-              {{finish}}{% if forloop.last != true %}, {% endif %}
+            {% for finish in product.metafields.custom.custom.finish_categories.value %}
+              <a href="/collections/{{finish | handleize}}">{{finish}}</a>{% if forloop.last != true %}, {% endif %}
             {% endfor %}
           </span>
           </div>
