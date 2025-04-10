@@ -66,7 +66,7 @@
             assign columns = 3
           endif
         -%}
-        {% assign child_collection = collection.metafields.custom.featured_collections.value | sort_natural %}
+        {% assign child_collection = collection.metafields.custom.featured_collections.value | sort_natural: 'title' %}
         {% for collection in child_collection %}          
           <li
             id="Slide-{{ section.id }}-{{ forloop.index }}"
