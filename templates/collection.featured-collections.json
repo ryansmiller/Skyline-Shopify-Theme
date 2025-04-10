@@ -83,12 +83,40 @@
         "padding_top": 60,
         "padding_bottom": 60
       }
+    },
+    "rich_text_G7NYUd": {
+      "type": "rich-text",
+      "blocks": {
+        "button_BMMjqX": {
+          "type": "button",
+          "settings": {
+            "button_label": "View all Products In {{ collection.title }}",
+            "button_link": "",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "button_BMMjqX"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-269f0bd2-789e-48df-8675-697b607b2396",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
     }
   },
   "order": [
     "banner",
     "custom_collection_list_a3X7ii",
     "product-grid",
-    "rich_text_rfCdhd"
+    "rich_text_rfCdhd",
+    "rich_text_G7NYUd"
   ]
 }
