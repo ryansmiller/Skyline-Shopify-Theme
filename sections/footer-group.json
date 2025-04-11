@@ -48,13 +48,6 @@
     "footer": {
       "type": "footer",
       "blocks": {
-        "link_list_Q7fnXA": {
-          "type": "link_list",
-          "settings": {
-            "heading": "HELP",
-            "menu": ""
-          }
-        },
         "link_list_cr6Qi6": {
           "type": "link_list",
           "settings": {
@@ -65,13 +58,12 @@
         "link_list_XDPJGH": {
           "type": "link_list",
           "settings": {
-            "heading": "Quick links",
+            "heading": "Policies",
             "menu": "footer"
           }
         }
       },
       "block_order": [
-        "link_list_Q7fnXA",
         "link_list_cr6Qi6",
         "link_list_XDPJGH"
       ],
