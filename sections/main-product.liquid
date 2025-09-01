@@ -641,6 +641,23 @@
                       <h4 class="custom-product-quantity-block"><span id="custom-product-quantity">{{ product.selected_or_first_available_variant.inventory_quantity }}</span> In Stock</h4>
                     {% endif %}
                   {% endif %}
+
+                  <script>
+
+                    document.addEventListener("DOMContentLoaded", function() {
+                      const qtyEl = document.getElementById("custom-product-quantity");
+                      if (qtyEl) {
+                        // Parse the text content as a number
+                        let value = parseInt(qtyEl.textContent.replace(/,/g, ""), 10);
+                        
+                        if (!isNaN(value)) {
+                          // Format with commas
+                          qtyEl.textContent = value.toLocaleString("en-US");
+                        }
+                      }
+                    });
+
+                  </script>
                 
                 {% else %}
                   <h4 class="custom-product-quantity-block">Discontinued - No Stock Available</h4>
