@@ -637,11 +637,11 @@
                   {% else %}  
                     {% if product.metafields.custom.unit_of_sale == "Yard" %}
                       <h4 class="custom-product-quantity-block">
-                        <span id="custom-product-quantity">{{ product.selected_or_first_available_variant.inventory_quantity }}</span> Yards In Stock
+                        Availability: <span id="custom-product-quantity">{{ product.selected_or_first_available_variant.inventory_quantity }}</span> Yards
                       </h4>
                     {% else %}
                       <h4 class="custom-product-quantity-block">
-                        <span id="custom-product-quantity">{{ product.selected_or_first_available_variant.inventory_quantity }}</span> In Stock
+                        Availability: <span id="custom-product-quantity">{{ product.selected_or_first_available_variant.inventory_quantity }}</span> In Stock
                       </h4>
                     {% endif %}
                   {% endif %}
