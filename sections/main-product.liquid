@@ -646,6 +646,47 @@
                     {% endif %}
                   {% endif %}
 
+                  <script>
+(function () {
+  function formatQuantity() {
+    var el = document.getElementById('custom-product-quantity');
+    if (!el) return;
+
+    // get digits only, ignore commas/spaces
+    var digits = (el.textContent || '').replace(/,/g, '').trim();
+
+    // only format plain integers (skip "Stocked at Mill", "1,000+", etc.)
+    if (!/^\d+$/.test(digits)) return;
+
+    var num = parseInt(digits, 10);
+    var formatted = num.toLocaleString('en-US');
+
+    // only write if different to avoid useless reflows
+    if (el.textContent !== formatted) {
+      el.textContent = formatted;
+    }
+  }
+
+  // Format on initial load
+  document.addEventListener('DOMContentLoaded', formatQuantity);
+
+  // Reformat after variant change (most themes update input[name="id"])
+  document.addEventListener('change', function (e) {
+    var t = e.target;
+    if (!t) return;
+
+    // If the variant selector changed, reformat after DOM updates settle
+    if (t.name === 'id' || t.closest('form[action*="/cart/add"]')) {
+      setTimeout(formatQuantity, 0);
+    }
+  });
+
+  // When Shopify sections re-render (theme editor, some dynamic loads)
+  document.addEventListener('shopify:section:load', formatQuantity);
+})();
+</script>
+
+
 
                 {% else %}
                   <h4 class="custom-product-quantity-block">Discontinued - No Stock Available</h4>
