@@ -636,33 +636,41 @@
                     <h4 class="custom-product-quantity-block">Stocked at Mill</h4>
                   {% else %}  
                     {% if product.metafields.custom.unit_of_sale == "Yard" %}
-                      <h4 class="custom-product-quantity-block"><span id="custom-product-quantity">{{ product.selected_or_first_available_variant.inventory_quantity }}</span> Yards In Stock</h4>
+                      <h4 class="custom-product-quantity-block">
+                        <span id="custom-product-quantity">{{ product.selected_or_first_available_variant.inventory_quantity }}</span> Yards In Stock
+                      </h4>
                     {% else %}
-                      <h4 class="custom-product-quantity-block"><span id="custom-product-quantity">{{ product.selected_or_first_available_variant.inventory_quantity }}</span> In Stock</h4>
+                      <h4 class="custom-product-quantity-block">
+                        <span id="custom-product-quantity">{{ product.selected_or_first_available_variant.inventory_quantity }}</span> In Stock
+                      </h4>
                     {% endif %}
                   {% endif %}
 
                   <script>
-
-                    document.addEventListener("DOMContentLoaded", function() {
+                    function formatQuantity() {
                       const qtyEl = document.getElementById("custom-product-quantity");
                       if (qtyEl) {
-                        // Parse the text content as a number
                         let value = parseInt(qtyEl.textContent.replace(/,/g, ""), 10);
-                        
                         if (!isNaN(value)) {
-                          // Format with commas
                           qtyEl.textContent = value.toLocaleString("en-US");
                         }
                       }
-                    });
-                    
+                    }
 
+                    document.addEventListener("DOMContentLoaded", formatQuantity);
+
+                    // Optional: watch for changes if Shopify updates the element dynamically
+                    const targetNode = document.querySelector(".custom-product-quantity-block");
+                    if (targetNode) {
+                      const observer = new MutationObserver(formatQuantity);
+                      observer.observe(targetNode, { childList: true, subtree: true, characterData: true });
+                    }
                   </script>
-                
+
                 {% else %}
                   <h4 class="custom-product-quantity-block">Discontinued - No Stock Available</h4>
                 {% endif %}
+
                 
                 <ul>
                   {%- if block.settings.free_shipping -%}
