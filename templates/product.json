@@ -50,7 +50,6 @@
         },
         "custom_stock_detail_yDWiM6": {
           "type": "custom_stock_detail",
-          "disabled": true,
           "settings": {
             "free_shipping": true,
             "background_color": "#f1f2f6",
