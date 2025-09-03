@@ -155,6 +155,16 @@
           "LoadOnHomepage": "yes",
           "VisibleOnlyLogged": "no"
         }
+      },
+      "5803399549441092565": {
+        "type": "shopify://apps/multi-location-inv/blocks/app-embed/982328e1-99f7-4a7e-8266-6aed71bf0021",
+        "disabled": false,
+        "settings": {
+          "syncLoad": true,
+          "collectionMapping": false,
+          "customerTagMapping": false,
+          "collectionPages": false
+        }
       }
     },
     "color_schemes": {
