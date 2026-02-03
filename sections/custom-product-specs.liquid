@@ -182,7 +182,7 @@
         {% if product.metafields.custom.color_name %}
 
           <div class="product-metafields ">
-            <span class="mf-key">Color:</span><span class="mf-value">{{product.metafields.custom.color_name}}</span>
+            <span class="mf-key">Color:</span> <span class="mf-value">{{product.metafields.custom.color_name}}</span>
           </div>
 
         {% endif %}  
@@ -191,7 +191,7 @@
         {% if product.metafields.custom.color_family %}
 
           <div class="product-metafields ">
-            <span class="mf-key">Color Family:</span><span class="mf-value">
+            <span class="mf-key">Color Family:</span> <span class="mf-value">
               {% for color_family in product.metafields.custom.color_family.value %}
                 <a href="/collections/{{color_family | handleize}}">{{color_family}}</a>{% if forloop.last != true %}, {% endif %}
               {% endfor %}
@@ -203,7 +203,7 @@
         {% if product.metafields.custom.book %}
 
           <div class="product-metafields ">
-            <span class="mf-key">Book:</span><span class="mf-value">
+            <span class="mf-key">Book:</span> <span class="mf-value">
               {% for book in product.metafields.custom.book.value %}
                 <a href="/collections/{{book | handleize}}">{{book}}</a>{% if forloop.last != true %}, {% endif %}
               {% endfor %}
