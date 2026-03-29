@@ -62,7 +62,7 @@
           "settings": {}
         },
         "mce_volume_discounts_table_86df8M": {
-          "type": "shopify://apps/mce-volume-discounts/blocks/table/212cd340-a9b9-46d4-825a-5471be2e39a4",
+          "type": "shopify://apps/mce-bundles/blocks/table/212cd340-a9b9-46d4-825a-5471be2e39a4",
           "settings": {}
         },
         "quantity_selector": {
@@ -99,7 +99,7 @@
       "settings": {
         "enable_sticky_info": true,
         "color_scheme": "scheme-1",
-        "media_size": "medium",
+        "media_size": "small",
         "constrain_to_viewport": false,
         "media_fit": "contain",
         "gallery_layout": "thumbnail",
